@@ -24,6 +24,7 @@ export const zCreateFormRequest = zForm.extend({
 export const zFormResponse = zForm.extend({
   ...zBase.shape,
   questions: z.array(zFormSubmissionResponse),
+  submissions: z.array(zFormSubmissionResponse),
 });
 
 export type Form = z.infer<typeof zForm>;
