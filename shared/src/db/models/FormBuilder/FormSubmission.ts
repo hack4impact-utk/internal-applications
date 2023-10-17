@@ -2,7 +2,6 @@ import { model, Schema, Document, models, Model } from "mongoose";
 import { FormSubmission } from "@/types/FormBuilder/formSubmission";
 
 const FormSubmissionSchema = new Schema({
-  form: { ref: "Form", type: Schema.Types.ObjectId, required: true },
   questionResponses: {
     type: [
       {
@@ -19,7 +18,7 @@ const FormSubmissionSchema = new Schema({
   responderEmail: { type: String, required: false },
 });
 
-export type FormSubmissionDocument = Omit<FormSubmission, "_id"> & Document;
+export type FormSubmissionDocument = FormSubmission & Document;
 
 export default (models.FormSubmission as Model<FormSubmissionDocument>) ||
   model<FormSubmissionDocument>(

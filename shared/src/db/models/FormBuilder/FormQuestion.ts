@@ -7,7 +7,6 @@ import {
 } from "../../../types/FormBuilder/formQuestion";
 
 export const FormQuestionSchema = new Schema({
-  form: { ref: "Form", type: Schema.Types.ObjectId, required: true },
   title: { type: Schema.Types.String, required: true },
   description: { type: Schema.Types.String, required: false },
   isRequired: { type: Schema.Types.Boolean, required: true },
@@ -62,7 +61,7 @@ export const FormQuestionSchema = new Schema({
   },
 });
 
-export type FormQuestionDocument = Omit<FormQuestion, "_id"> & Document;
+export type FormQuestionDocument = FormQuestion & Document;
 
 export default (models.Form as Model<FormQuestionDocument>) ||
   model<FormQuestionDocument>(

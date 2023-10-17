@@ -8,7 +8,7 @@ const FormSchema = new Schema({
     ],
     required: true,
   },
-  responder: {
+  responderType: {
     type: String,
     enum: responderTypes,
     required: true,
