@@ -16,7 +16,12 @@ const FormSubmissionSchema = new Schema({
     required: true,
   },
   responderEmail: { type: String, required: false },
-});
+},
+  {
+    versionKey: false,
+    timestamps: true,
+  }
+);
 
 export type FormSubmissionDocument = FormSubmission & Document;
 

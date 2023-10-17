@@ -6,7 +6,6 @@ const FormSchema = new Schema({
     type: [
       { type: Schema.Types.ObjectId, ref: "FormQuestion", required: true },
     ],
-    required: true,
   },
   responderType: {
     type: String,
@@ -17,8 +16,13 @@ const FormSchema = new Schema({
   isAnonymous: { type: Boolean, required: true },
   submissions: [
     { type: Schema.Types.ObjectId, ref: "FormSubmission", required: true },
-  ],
-});
+  ]
+},
+  {
+    versionKey: false,
+    timestamps: true,
+  }
+);
 
 export type FormDocument = Form & Document;
 

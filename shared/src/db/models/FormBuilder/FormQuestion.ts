@@ -59,7 +59,12 @@ export const FormQuestionSchema = new Schema({
     },
     required: false,
   },
-});
+},
+  {
+    versionKey: false,
+    timestamps: true,
+  }
+);
 
 export type FormQuestionDocument = FormQuestion & Document;
 
