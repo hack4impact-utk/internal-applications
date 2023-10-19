@@ -11,7 +11,7 @@ assignees: ''
 
 ### Technical Details
 
-### Teachable
+### Teachables
 
 ### Testing Steps
 
