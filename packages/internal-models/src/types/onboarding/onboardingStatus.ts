@@ -1,6 +1,6 @@
-import { z } from 'zod';
-import zOnboarding from './onboarding';
-import zOnboardingStepStatus from './onboardingStepStatus';
+import { z } from "zod";
+import zOnboarding from "./onboarding";
+import zOnboardingStepStatus from "./onboardingStepStatus";
 
 export const zOnboardingStatus = z.object({
   onboarding: zOnboarding,
@@ -8,6 +8,6 @@ export const zOnboardingStatus = z.object({
   completed: z.boolean(),
 });
 
-export type OnboardingStatus = z.infer<typeof zOnboardingStatus>;
+export interface OnboardingStatus extends z.infer<typeof zOnboardingStatus> {}
 
 export default zOnboardingStatus;

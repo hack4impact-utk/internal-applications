@@ -1,14 +1,14 @@
-import { z } from 'zod';
-import zBase, { Base } from './base';
-import zTeamMember from './teamMember';
-import zTerm from './term';
-import zOnboardingStatus from './onboarding/onboardingStatus';
+import { z } from "zod";
+import zBase, { Base } from "./base";
+import zTeamMember from "./teamMember";
+import zTerm from "./term";
+import zOnboardingStatus from "./onboarding/onboardingStatus";
 
 export const organizationRoles = [
-  'Director',
-  'Executive',
-  'Member',
-  'Alumni',
+  "Director",
+  "Executive",
+  "Member",
+  "Alumni",
 ] as const;
 
 export const OrganizationRole = z.enum(organizationRoles);
@@ -37,6 +37,6 @@ export const zMember = zBase.extend({
   onboardings: z.array(zOnboardingStatus),
 });
 
-export type Member = z.infer<typeof zMember>;
+export interface Member extends z.infer<typeof zMember> {}
 
 export default zMember;

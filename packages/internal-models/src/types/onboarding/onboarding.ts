@@ -1,6 +1,6 @@
-import { z } from 'zod';
-import zBase from '../base';
-import zOnboardingStep from './onboardingStep';
+import { z } from "zod";
+import zBase from "../base";
+import zOnboardingStep from "./onboardingStep";
 
 export const zOnboarding = zBase.extend({
   title: z.string(),
@@ -8,6 +8,6 @@ export const zOnboarding = zBase.extend({
   steps: z.array(zOnboardingStep),
 });
 
-export type Onboarding = z.infer<typeof zOnboarding>;
+export interface Onboarding extends z.infer<typeof zOnboarding> {}
 
 export default zOnboarding;

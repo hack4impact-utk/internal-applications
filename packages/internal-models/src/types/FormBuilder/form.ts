@@ -27,8 +27,8 @@ export const zFormResponse = zForm.extend({
   submissions: z.array(zFormSubmissionResponse),
 });
 
-export type Form = z.infer<typeof zForm>;
-export type CreateFormRequest = z.infer<typeof zCreateFormRequest>;
-export type FormResponse = z.infer<typeof zFormResponse>;
+export interface Form extends z.infer<typeof zForm> {}
+export interface CreateFormRequest extends z.infer<typeof zCreateFormRequest> {}
+export interface FormResponse extends z.infer<typeof zFormResponse> {}
 
 export default zForm;

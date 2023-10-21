@@ -15,10 +15,10 @@ const zFormSubmission = z.object({
 export const zCreateFormSubmissionRequest = zFormSubmission.extend({});
 export const zFormSubmissionResponse = zFormSubmission.extend(zBase.shape);
 
-export type FormSubmission = z.infer<typeof zFormSubmission>;
-export type CreateFormSubmissionRequest = z.infer<
-  typeof zCreateFormSubmissionRequest
->;
-export type FormSubmissionResponse = z.infer<typeof zFormSubmissionResponse>;
+export interface FormSubmission extends z.infer<typeof zFormSubmission> {}
+export interface CreateFormSubmissionRequest
+  extends z.infer<typeof zCreateFormSubmissionRequest> {}
+export interface FormSubmissionResponse
+  extends z.infer<typeof zFormSubmissionResponse> {}
 
 export default zFormSubmission;
