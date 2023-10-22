@@ -1,6 +1,6 @@
 {
   "name": "@hack4impact-utk/internal-models",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "files": [
     "dist/*"

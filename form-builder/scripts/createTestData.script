@@ -1,0 +1,1975 @@
+use("test")
+
+// if specified, clear out all existing form-related collections (except the users collection)
+if (true) {
+   db.forms.deleteMany({})
+   db.formSubmissions.deleteMany({})
+   db.formQuestions.deleteMany({})
+}
+
+// -------- FORM QUESTIONS -------- //
+
+// creates 30 formQuestionId variables
+for (let i = 0; i <= 30; i++) {
+  this[`formQuestionId${i}`] = ObjectId();
+}
+
+db.formQuestions.insertMany([
+ // "Software developer application"
+  {
+    "_id": formQuestionId1,
+    "title": "Full Name",
+    "description": null,
+    "isRequired": true,
+    "questionType": "Text",
+    "textOptions": {
+      "isParagraph": false
+    },
+    "numericOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId2,
+    "title": "How many years of software development experience do you have?",
+    "description": null,
+    "isRequired": true,
+    "questionType": "Numeric",
+    "numericOptions": {
+      "allowDecimals": false,
+      "minVal": 0,
+      "maxVal": 40
+    },
+    "textOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId3,
+    "title": "Which programming languages are you proficient in?",
+    "description": null,
+    "isRequired": true,
+    "questionType": "MultipleChoice",
+    "multipleChoiceOptions": {
+      "options": ["Python", "Java", "C++", "JavaScript", "Go", "Ruby"],
+      "allowOther": true,
+      "choiceType": "Multiple"
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "fileUploadOptions": null
+  },
+  {
+    "_id": formQuestionId4,
+    "title": "Please upload your resume.",
+    "description": null,
+    "isRequired": true,
+    "questionType": "FileUpload",
+    "fileUploadOptions": {
+      "maxFileSize": 10,
+      "supportedFileTypes": ["Document", "PDF"]
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId5,
+    "title": "Why do you want to work here?",
+    "description": null,
+    "isRequired": false,
+    "questionType": "Text",
+    "textOptions": {
+      "isParagraph": true
+    },
+    "numericOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId6,
+    "title": "Preferred Work Environment",
+    "description": null,
+    "isRequired": false,
+    "questionType": "MultipleChoice",
+    "multipleChoiceOptions": {
+      "options": ["Office", "Remote", "Hybrid"],
+      "allowOther": false,
+      "choiceType": "Single"
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "fileUploadOptions": null
+  },
+
+
+
+  // "Nonprofit project application"
+  {
+    "_id": formQuestionId7,
+    "title": "Project Name",
+    "description": null,
+    "isRequired": true,
+    "questionType": "Text",
+    "textOptions": {
+      "isParagraph": false
+    },
+    "numericOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId8,
+    "title": "Project Description",
+    "description": "Include things like the project goals, where it will be deployed, etc.",
+    "isRequired": true,
+    "questionType": "Text",
+    "textOptions": {
+      "isParagraph": true
+    },
+    "numericOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId9,
+    "title": "Who is the target audience for this project?",
+    "description": null,
+    "isRequired": true,
+    "questionType": "MultipleChoice",
+    "multipleChoiceOptions": {
+      "options": ["Children", "Teenagers", "Adults", "Seniors", "Other"],
+      "allowOther": true,
+      "choiceType": "Single"
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "fileUploadOptions": null
+  },
+  {
+    "_id": formQuestionId10,
+    "title": "What is the estimated budget for your project?",
+    "description": null,
+    "isRequired": true,
+    "questionType": "Numeric",
+    "numericOptions": {
+      "allowDecimals": true,
+      "minVal": 500,
+      "maxVal": 1000000
+    },
+    "textOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId11,
+    "title": "Upload any supporting documentss",
+    "description": "This can include things a project proposal or budget breakdown.",
+    "isRequired": false,
+    "questionType": "FileUpload",
+    "fileUploadOptions": {
+      "maxFileSize": 15,
+      "supportedFileTypes": ["Document", "PDF", "Spreadsheet"]
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId12,
+    "title": "Have you managed a nonprofit project before?",
+    "description": null,
+    "isRequired": false,
+    "questionType": "MultipleChoice",
+    "multipleChoiceOptions": {
+      "options": ["Yes", "No"],
+      "allowOther": false,
+      "choiceType": "Single"
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "fileUploadOptions": null
+  },
+
+
+
+
+  // "Designer Application"
+  {
+    "_id": formQuestionId13,
+    "title": "Full Name",
+    "description": null,
+    "isRequired": true,
+    "questionType": "Text",
+    "textOptions": {
+      "isParagraph": false
+    },
+    "numericOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId14,
+    "title": "How many years of professional design experience do you have?",
+    "description": null,
+    "isRequired": true,
+    "questionType": "Numeric",
+    "numericOptions": {
+      "allowDecimals": false,
+      "minVal": 0,
+      "maxVal": 40
+    },
+    "textOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId15,
+    "title": "Which design tools are you proficient in?",
+    "description": null,
+    "isRequired": true,
+    "questionType": "MultipleChoice",
+    "multipleChoiceOptions": {
+      "options": ["Adobe Photoshop", "Adobe Illustrator", "Figma", "Sketch", "InVision"],
+      "allowOther": true,
+      "choiceType": "Multiple"
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "fileUploadOptions": null
+  },
+  {
+    "_id": formQuestionId16,
+    "title": "Please upload your design portfolio.",
+    "description": null,
+    "isRequired": true,
+    "questionType": "FileUpload",
+    "fileUploadOptions": {
+      "maxFileSize": 50,
+      "supportedFileTypes": ["Document", "PDF", "Image", "Video"]
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId17,
+    "title": "Why do you want to work as a designer at our company?",
+    "description": null,
+    "isRequired": false,
+    "questionType": "Text",
+    "textOptions": {
+      "isParagraph": true
+    },
+    "numericOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId18,
+    "title": "Preferred Work Style",
+    "description": null,
+    "isRequired": false,
+    "questionType": "MultipleChoice",
+    "multipleChoiceOptions": {
+      "options": ["Freelance", "Part-Time", "Full-Time"],
+      "allowOther": false,
+      "choiceType": "Single"
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "fileUploadOptions": null
+  },
+
+
+  // "Social Event Preference Form"
+  {
+    "_id": formQuestionId19,
+    "title": "Name",
+    "description": null,
+    "isRequired": true,
+    "questionType": "Text",
+    "textOptions": {
+      "isParagraph": false
+    },
+    "numericOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId20,
+    "title": "Age",
+    "description": null,
+    "isRequired": true,
+    "questionType": "Numeric",
+    "numericOptions": {
+      "allowDecimals": false,
+      "minVal": 18,
+      "maxVal": 99
+    },
+    "textOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId21,
+    "title": "Which types of social events are you most interested in?",
+    "description": null,
+    "isRequired": true,
+    "questionType": "MultipleChoice",
+    "multipleChoiceOptions": {
+      "options": ["Concert", "Movie Night", "Board Game Night", "Food Tasting", "Outdoor Adventure"],
+      "allowOther": true,
+      "choiceType": "Multiple"
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "fileUploadOptions": null
+  },
+  {
+    "_id": formQuestionId22,
+    "title": "Do you have any dietary restrictions we should be aware of?",
+    "description": null,
+    "isRequired": false,
+    "questionType": "Text",
+    "textOptions": {
+      "isParagraph": true
+    },
+    "numericOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId23,
+    "title": "Preferred Days",
+    "description": null,
+    "isRequired": false,
+    "questionType": "MultipleChoice",
+    "multipleChoiceOptions": {
+      "options": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "allowOther": false,
+      "choiceType": "Multiple"
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "fileUploadOptions": null
+  },
+  {
+    "_id": formQuestionId24,
+    "title": "Additional Comments",
+    "description": null,
+    "isRequired": false,
+    "questionType": "Text",
+    "textOptions": {
+      "isParagraph": true
+    },
+    "numericOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+
+
+
+  // "Software development feedback form"
+  {
+    "_id": formQuestionId25,
+    "title": "Your Name",
+    "description": null,
+    "isRequired": false,
+    "questionType": "Text",
+    "textOptions": {
+      "isParagraph": false
+    },
+    "numericOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId26,
+    "title": "What is your role on the team?",
+    "description": null,
+    "isRequired": true,
+    "questionType": "MultipleChoice",
+    "multipleChoiceOptions": {
+      "options": ["Developer", "QA", "Product Manager", "Designer", "DevOps"],
+      "allowOther": true,
+      "choiceType": "Single"
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "fileUploadOptions": null
+  },
+  {
+    "_id": formQuestionId27,
+    "title": "How satisfied are you with the current state of the project?",
+    "description": "1 being the least satisfied, 5 being the most satisfied",
+    "isRequired": true,
+    "questionType": "Numeric",
+    "numericOptions": {
+      "allowDecimals": false,
+      "minVal": 1,
+      "maxVal": 5
+    },
+    "textOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId28,
+    "title": "Suggestion or Feedback",
+    "description": null,
+    "isRequired": true,
+    "questionType": "Text",
+    "textOptions": {
+      "isParagraph": true
+    },
+    "numericOptions": null,
+    "fileUploadOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId29,
+    "title": "Attachments",
+    "description": "Attach any relevant documents or files (Optional)",
+    "isRequired": false,
+    "questionType": "FileUpload",
+    "fileUploadOptions": {
+      "maxFileSize": 20,
+      "supportedFileTypes": ["Document", "Spreadsheet", "PDF", "Image"]
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "multipleChoiceOptions": null
+  },
+  {
+    "_id": formQuestionId30,
+    "title": "Would you like someone to follow up with you regarding your feedback?",
+    "description": null,
+    "isRequired": false,
+    "questionType": "MultipleChoice",
+    "multipleChoiceOptions": {
+      "options": ["Yes", "No"],
+      "allowOther": false,
+      "choiceType": "Single"
+    },
+    "textOptions": null,
+    "numericOptions": null,
+    "fileUploadOptions": null
+  }
+]
+)
+
+
+
+// -------- FORM SUMBISSIONS -------- //
+
+// creates 50 FormSubmissionId variables
+for (let i = 0; i <= 50; i++) {
+  this[`formSubmissionId${i}`] = ObjectId();
+}
+
+db.formSubmissions.insertMany([
+    // "Software developer application
+  {
+    "_id": formSubmissionId1,
+    "questionResponses": [
+      {
+        "question": formQuestionId1,
+        "answer": "John Doe"
+      },
+      {
+        "question": formQuestionId2,
+        "answer": 5
+      },
+      {
+        "question": formQuestionId3,
+        "answer": ["Python","Java"]
+      },
+      {
+        "question": formQuestionId4,
+        "answer": "resume1.pdf"
+      },
+      {
+        "question": formQuestionId5,
+        "answer": "I admire the company's focus on open-source projects."
+      },
+      {
+        "question": formQuestionId6,
+        "answer": "Remote"
+      }
+    ],
+    "responderEmail": "john.doe@example.com"
+  },
+  {
+    "_id": formSubmissionId2,
+    "questionResponses": [
+      {
+        "question": formQuestionId1,
+        "answer": "Jane Smith"
+      },
+      {
+        "question": formQuestionId2,
+        "answer": 2
+      },
+      {
+        "question": formQuestionId3,
+        "answer": ["JavaScript","Go"]
+      },
+      {
+        "question": formQuestionId4,
+        "answer": "resume2.pdf"
+      },
+      {
+        "question": formQuestionId5,
+        "answer": "Opportunities for career growth excite me."
+      },
+      {
+        "question": formQuestionId6,
+        "answer": "Office"
+      }
+    ],
+    "responderEmail": "jane.smith@example.com"
+  },
+  {
+    "_id": formSubmissionId3,
+    "questionResponses": [
+      {
+        "question": formQuestionId1,
+        "answer": "Emily Clark"
+      },
+      {
+        "question": formQuestionId2,
+        "answer": 7
+      },
+      {
+        "question": formQuestionId3,
+        "answer": ["C++","Python"]
+      },
+      {
+        "question": formQuestionId4,
+        "answer": "resume3.pdf"
+      },
+      {
+        "question": formQuestionId5,
+        "answer": null
+      },
+      {
+        "question": formQuestionId6,
+        "answer": "Hybrid"
+      }
+    ],
+    "responderEmail": "emily.clark@example.com"
+  },
+  {
+    "_id": formSubmissionId4,
+    "questionResponses": [
+      {
+        "question": formQuestionId1,
+        "answer": "Robert Williams"
+      },
+      {
+        "question": formQuestionId2,
+        "answer": 12
+      },
+      {
+        "question": formQuestionId3,
+        "answer": ["Ruby","Java"]
+      },
+      {
+        "question": formQuestionId4,
+        "answer": "resume4.pdf"
+      },
+      {
+        "question": formQuestionId5,
+        "answer": "I am impressed by your company culture."
+      },
+      {
+        "question": formQuestionId6,
+        "answer": "Remote"
+      }
+    ],
+    "responderEmail": "robert.williams@example.com"
+  },
+  {
+    "_id": formSubmissionId5,
+    "questionResponses": [
+      {
+        "question": formQuestionId1,
+        "answer": "Alice Johnson"
+      },
+      {
+        "question": formQuestionId2,
+        "answer": 3
+      },
+      {
+        "question": formQuestionId3,
+        "answer": ["JavaScript"]
+      },
+      {
+        "question": formQuestionId4,
+        "answer": "resume5.pdf"
+      },
+      {
+        "question": formQuestionId5,
+        "answer": null
+      },
+      {
+        "question": formQuestionId6,
+        "answer": "Office"
+      }
+    ],
+    "responderEmail": "alice.johnson@example.com"
+  },
+  {
+    "_id": formSubmissionId6,
+    "questionResponses": [
+      {
+        "question": formQuestionId1,
+        "answer": "Tom Brown"
+      },
+      {
+        "question": formQuestionId2,
+        "answer": 10
+      },
+      {
+        "question": formQuestionId3,
+        "answer": ["Go","C++"]
+      },
+      {
+        "question": formQuestionId4,
+        "answer": "resume6.pdf"
+      },
+      {
+        "question": formQuestionId5,
+        "answer": "I want to be a part of your innovative team."
+      },
+      {
+        "question": formQuestionId6,
+        "answer": "Hybrid"
+      }
+    ],
+    "responderEmail": "tom.brown@example.com"
+  },
+  {
+    "_id": formSubmissionId7,
+    "questionResponses": [
+      {
+        "question": formQuestionId1,
+        "answer": "Karen Wilson"
+      },
+      {
+        "question": formQuestionId2,
+        "answer": 6
+      },
+      {
+        "question": formQuestionId3,
+        "answer": ["Python","Ruby"]
+      },
+      {
+        "question": formQuestionId4,
+        "answer": "resume7.pdf"
+      },
+      {
+        "question": formQuestionId5,
+        "answer": "I align with your mission and values."
+      },
+      {
+        "question": formQuestionId6,
+        "answer": "Remote"
+      }
+    ],
+    "responderEmail": "karen.wilson@example.com"
+  },
+  {
+    "_id": formSubmissionId8,
+    "questionResponses": [
+      {
+        "question": formQuestionId1,
+        "answer": "James Johnson"
+      },
+      {
+        "question": formQuestionId2,
+        "answer": 8
+      },
+      {
+        "question": formQuestionId3,
+        "answer": ["Java","Python"]
+      },
+      {
+        "question": formQuestionId4,
+        "answer": "resume8.pdf"
+      },
+      {
+        "question": formQuestionId5,
+        "answer": null
+      },
+      {
+        "question": formQuestionId6,
+        "answer": "Office"
+      }
+    ],
+    "responderEmail": "james.johnson@example.com"
+  },
+  {
+    "_id": formSubmissionId9,
+    "questionResponses": [
+      {
+        "question": formQuestionId1,
+        "answer": "Patricia Williams"
+      },
+      {
+        "question": formQuestionId2,
+        "answer": 9
+      },
+      {
+        "question": formQuestionId3,
+        "answer": ["Go","Java"]
+      },
+      {
+        "question": formQuestionId4,
+        "answer": "resume9.pdf"
+      },
+      {
+        "question": formQuestionId5,
+        "answer": "Your focus on AI and machine learning excites me."
+      },
+      {
+        "question": formQuestionId6,
+        "answer": "Hybrid"
+      }
+    ],
+    "responderEmail": "patricia.williams@example.com"
+  },
+  {
+    "_id": formSubmissionId10,
+    "questionResponses": [
+      {
+        "question": formQuestionId1,
+        "answer": "Michael Davis"
+      },
+      {
+        "question": formQuestionId2,
+        "answer": 15
+      },
+      {
+        "question": formQuestionId3,
+        "answer": ["Python","C++"]
+      },
+      {
+        "question": formQuestionId4,
+        "answer": "resume10.pdf"
+      },
+      {
+        "question": formQuestionId5,
+        "answer": "I want to work on impactful projects."
+      },
+      {
+        "question": formQuestionId6,
+        "answer": "Remote"
+      }
+    ],
+    "responderEmail": "michael.davis@example.com"
+  },
+
+
+
+
+  // "Nonprofit project application"
+   {
+    "_id": formSubmissionId11,
+    "questionResponses": [
+      {
+        "answer": "Clean Water Initiative"
+      },
+      {
+        "answer": "The goal is to provide clean water in rural areas. The project will be deployed in Kenya."
+      },
+      {
+        "answer": "Adults"
+      },
+      {
+        "answer": 10000
+      },
+      {
+        "answer": "proposal1.pdf"
+      },
+      {
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "applicant1@example.com"
+  },
+  {
+    "_id": formSubmissionId12,
+    "questionResponses": [
+      {
+        "answer": "Tech for Seniors"
+      },
+      {
+        "answer": "To teach seniors how to use technology for daily tasks. Will be deployed in local community centers."
+      },
+      {
+        "answer": "Seniors"
+      },
+      {
+        "answer": 1500
+      },
+      {
+        "answer": null
+      },
+      {
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "applicant2@example.com"
+  },
+  {
+    "_id": formSubmissionId13,
+    "questionResponses": [
+      {
+        "answer": "Youth Sports Program"
+      },
+      {
+        "answer": "Promote physical activity among children. Will be deployed in public schools."
+      },
+      {
+        "answer": "Children"
+      },
+      {
+        "answer": 5000
+      },
+      {
+        "answer": "budget_breakdown.xlsx"
+      },
+      {
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "applicant3@example.com"
+  },
+  {
+    "_id": formSubmissionId14,
+    "questionResponses": [
+      {
+        "answer": "Mental Health for Teens"
+      },
+      {
+        "answer": "To provide mental health resources to teenagers. Will be deployed online."
+      },
+      {
+        "answer": "Teenagers"
+      },
+      {
+        "answer": 2000
+      },
+      {
+        "answer": null
+      },
+      {
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "applicant4@example.com"
+  },
+  {
+    "_id": formSubmissionId15,
+    "questionResponses": [
+      {
+        "answer": "Community Garden"
+      },
+      {
+        "answer": "Establish a community garden for local residents. Will be deployed in New York."
+      },
+      {
+        "answer": "Adults"
+      },
+      {
+        "answer": 3000
+      },
+      {
+        "answer": "proposal3.pdf"
+      },
+      {
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "applicant5@example.com"
+  },
+  {
+    "_id": formSubmissionId16,
+    "questionResponses": [
+      {
+        "answer": "Books for Kids"
+      },
+      {
+        "answer": "Provide educational books to underprivileged children. Will be deployed in various schools."
+      },
+      {
+        "answer": "Children"
+      },
+      {
+        "answer": 7000
+      },
+      {
+        "answer": null
+      },
+      {
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "applicant6@example.com"
+  },
+  {
+    "_id": formSubmissionId17,
+    "questionResponses": [
+      {
+        "answer": "Healthy Eating Program"
+      },
+      {
+        "answer": "Educate people on the benefits of healthy eating. Will be deployed in hospitals."
+      },
+      {
+        "answer": "Adults"
+      },
+      {
+        "answer": 1200
+      },
+      {
+        "answer": "budget_breakdown2.xlsx"
+      },
+      {
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "applicant7@example.com"
+  },
+  {
+    "_id": formSubmissionId18,
+    "questionResponses": [
+      {
+        "answer": "Digital Skills for Women"
+      },
+      {
+        "answer": "Empower women by teaching them digital skills. Will be deployed in community colleges."
+      },
+      {
+        "answer": "Adults"
+      },
+      {
+        "answer": 8000
+      },
+      {
+        "answer": null
+      },
+      {
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "applicant8@example.com"
+  },
+  {
+    "_id": formSubmissionId19,
+    "questionResponses": [
+      {
+        "answer": "Environmental Awareness"
+      },
+      {
+        "answer": "Promote environmental awareness and sustainability. Will be deployed in schools and colleges."
+      },
+      {
+        "answer": "Teenagers"
+      },
+      {
+        "answer": 2500
+      },
+      {
+        "answer": "proposal4.pdf"
+      },
+      {
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "applicant9@example.com"
+  },
+  {
+    "_id": formSubmissionId20,
+    "questionResponses": [
+      {
+        "answer": "Job Training for Homeless"
+      },
+      {
+        "answer": "Provide job training to homeless individuals. Will be deployed in shelters."
+      },
+      {
+        "answer": "Adults"
+      },
+      {
+        "answer": 6000
+      },
+      {
+        "answer": null
+      },
+      {
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "applicant10@example.com"
+  },
+
+
+
+
+  // "Designer Application"
+  {
+    "_id": formSubmissionId21,
+    "questionResponses": [
+      {
+        "question": formQuestionId7,
+        "answer": "Clean Water Initiative"
+      },
+      {
+        "question": formQuestionId8,
+        "answer": "The goal is to provide clean water in rural areas. The project will be deployed in Kenya."
+      },
+      {
+        "question": formQuestionId9,
+        "answer": "Adults"
+      },
+      {
+        "question": formQuestionId10,
+        "answer": 10000
+      },
+      {
+        "question": formQuestionId11,
+        "answer": "proposal1.pdf"
+      },
+      {
+        "question": formQuestionId12,
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "applicant1@example.com"
+  },
+  {
+    "_id": formSubmissionId22,
+    "questionResponses": [
+      {
+        "question": formQuestionId7,
+        "answer": "Tech for Seniors"
+      },
+      {
+        "question": formQuestionId8,
+        "answer": "To teach seniors how to use technology for daily tasks. Will be deployed in local community centers."
+      },
+      {
+        "question": formQuestionId9,
+        "answer": "Seniors"
+      },
+      {
+        "question": formQuestionId10,
+        "answer": 1500
+      },
+      {
+        "question": formQuestionId11,
+        "answer": null
+      },
+      {
+        "question": formQuestionId12,
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "applicant2@example.com"
+  },
+  {
+    "_id": formSubmissionId23,
+    "questionResponses": [
+      {
+        "question": formQuestionId7,
+        "answer": "Youth Sports Program"
+      },
+      {
+        "question": formQuestionId8,
+        "answer": "Promote physical activity among children. Will be deployed in public schools."
+      },
+      {
+        "question": formQuestionId9,
+        "answer": "Children"
+      },
+      {
+        "question": formQuestionId10,
+        "answer": 5000
+      },
+      {
+        "question": formQuestionId11,
+        "answer": "budget_breakdown.xlsx"
+      },
+      {
+        "question": formQuestionId12,
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "applicant3@example.com"
+  },
+  {
+    "_id": formSubmissionId24,
+    "questionResponses": [
+      {
+        "question": formQuestionId7,
+        "answer": "Mental Health for Teens"
+      },
+      {
+        "question": formQuestionId8,
+        "answer": "To provide mental health resources to teenagers. Will be deployed online."
+      },
+      {
+        "question": formQuestionId9,
+        "answer": "Teenagers"
+      },
+      {
+        "question": formQuestionId10,
+        "answer": 2000
+      },
+      {
+        "question": formQuestionId11,
+        "answer": null
+      },
+      {
+        "question": formQuestionId12,
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "applicant4@example.com"
+  },
+  {
+    "_id": formSubmissionId25,
+    "questionResponses": [
+      {
+        "question": formQuestionId7,
+        "answer": "Community Garden"
+      },
+      {
+        "question": formQuestionId8,
+        "answer": "Establish a community garden for local residents. Will be deployed in New York."
+      },
+      {
+        "question": formQuestionId9,
+        "answer": "Adults"
+      },
+      {
+        "question": formQuestionId10,
+        "answer": 3000.0
+      },
+      {
+        "question": formQuestionId11,
+        "answer": "proposal3.pdf"
+      },
+      {
+        "question": formQuestionId12,
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "applicant5@example.com"
+  },
+  {
+    "_id": formSubmissionId26,
+    "questionResponses": [
+      {
+        "question": formQuestionId7,
+        "answer": "Books for Kids"
+      },
+      {
+        "question": formQuestionId8,
+        "answer": "Provide educational books to underprivileged children. Will be deployed in various schools."
+      },
+      {
+        "question": formQuestionId9,
+        "answer": "Children"
+      },
+      {
+        "question": formQuestionId10,
+        "answer": 7000
+      },
+      {
+        "question": formQuestionId11,
+        "answer": null
+      },
+      {
+        "question": formQuestionId12,
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "applicant6@example.com"
+  },
+  {
+    "_id": formSubmissionId27,
+    "questionResponses": [
+      {
+        "question": formQuestionId7,
+        "answer": "Healthy Eating Program"
+      },
+      {
+        "question": formQuestionId8,
+        "answer": "Educate people on the benefits of healthy eating. Will be deployed in hospitals."
+      },
+      {
+        "question": formQuestionId9,
+        "answer": "Adults"
+      },
+      {
+        "question": formQuestionId10,
+        "answer": 1200.303
+      },
+      {
+        "question": formQuestionId11,
+        "answer": "budget_breakdown2.xlsx"
+      },
+      {
+        "question": formQuestionId12,
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "applicant7@example.com"
+  },
+  {
+    "_id": formSubmissionId28,
+    "questionResponses": [
+      {
+        "question": formQuestionId7,
+        "answer": "Digital Skills for Women"
+      },
+      {
+        "question": formQuestionId8,
+        "answer": "Empower women by teaching them digital skills. Will be deployed in community colleges."
+      },
+      {
+        "question": formQuestionId9,
+        "answer": "Adults"
+      },
+      {
+        "question": formQuestionId10,
+        "answer": 8000.30
+      },
+      {
+        "question": formQuestionId11,
+        "answer": null
+      },
+      {
+        "question": formQuestionId12,
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "applicant8@example.com"
+  },
+  {
+    "_id": formSubmissionId29,
+    "questionResponses": [
+      {
+        "question": formQuestionId7,
+        "answer": "Environmental Awareness"
+      },
+      {
+        "question": formQuestionId8,
+        "answer": "Promote environmental awareness and sustainability. Will be deployed in schools and colleges."
+      },
+      {
+        "question": formQuestionId9,
+        "answer": "Teenagers"
+      },
+      {
+        "question": formQuestionId10,
+        "answer": 2500.21
+      },
+      {
+        "question": formQuestionId11,
+        "answer": "proposal4.pdf"
+      },
+      {
+        "question": formQuestionId12,
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "applicant9@example.com"
+  },
+  {
+    "_id": formSubmissionId30,
+    "questionResponses": [
+      {
+        "question": formQuestionId7,
+        "answer": "Job Training for Homeless"
+      },
+      {
+        "question": formQuestionId8,
+        "answer": "Provide job training to homeless individuals. Will be deployed in shelters."
+      },
+      {
+        "question": formQuestionId9,
+        "answer": "Adults"
+      },
+      {
+        "question": formQuestionId10,
+        "answer": 6000.60
+      },
+      {
+        "question": formQuestionId11,
+        "answer": null
+      },
+      {
+        "question": formQuestionId12,
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "applicant10@example.com"
+  },
+
+
+  // "Social Event Preference Form"
+  {
+    "_id": formSubmissionId31,
+    "questionResponses": [
+      {
+        "question": formQuestionId19,
+        "answer": "Alice"
+      },
+      {
+        "question": formQuestionId20,
+        "answer": 25
+      },
+      {
+        "question": formQuestionId21,
+        "answer": ["Concert", "Movie Night"]
+      },
+      {
+        "question": formQuestionId22,
+        "answer": "Vegetarian"
+      },
+      {
+        "question": formQuestionId23,
+        "answer": ["Friday", "Saturday"]
+      },
+      {
+        "question": formQuestionId24,
+        "answer": null
+      }
+    ],
+    "responderEmail": "alice@email.com"
+  },
+  {
+    "_id": formSubmissionId32,
+    "questionResponses": [
+      {
+        "question": formQuestionId19,
+        "answer": "Bob"
+      },
+      {
+        "question": formQuestionId20,
+        "answer": 35
+      },
+      {
+        "question": formQuestionId21,
+        "answer": ["Board Game Night", "Outdoor Adventure"]
+      },
+      {
+        "question": formQuestionId22,
+        "answer": "None"
+      },
+      {
+        "question": formQuestionId23,
+        "answer": ["Saturday", "Sunday"]
+      },
+      {
+        "question": formQuestionId24,
+        "answer": "Excited for the upcoming events."
+      }
+    ],
+    "responderEmail": "bob@email.com"
+  },
+  {
+    "_id": formSubmissionId33,
+    "questionResponses": [
+      {
+        "question": formQuestionId19,
+        "answer": "Cathy"
+      },
+      {
+        "question": formQuestionId20,
+        "answer": 45
+      },
+      {
+        "question": formQuestionId21,
+        "answer": ["Concert", "Food Tasting"]
+      },
+      {
+        "question": formQuestionId22,
+        "answer": "Gluten-free"
+      },
+      {
+        "question": formQuestionId23,
+        "answer": ["Wednesday", "Thursday"]
+      },
+      {
+        "question": formQuestionId24,
+        "answer": null
+      }
+    ],
+    "responderEmail": "cathy@email.com"
+  },
+  {
+    "_id": formSubmissionId34,
+    "questionResponses": [
+      {
+        "question": formQuestionId19,
+        "answer": "David"
+      },
+      {
+        "question": formQuestionId20,
+        "answer": 30
+      },
+      {
+        "question": formQuestionId21,
+        "answer": ["Movie Night", "Food Tasting"]
+      },
+      {
+        "question": formQuestionId22,
+        "answer": ""
+      },
+      {
+        "question": formQuestionId23,
+        "answer": ["Monday", "Tuesday"]
+      },
+      {
+        "question": formQuestionId24,
+        "answer": "Great initiative!"
+      }
+    ],
+    "responderEmail": "david@email.com"
+  },
+  {
+    "_id": formSubmissionId35,
+    "questionResponses": [
+      {
+        "question": formQuestionId19,
+        "answer": "Ella"
+      },
+      {
+        "question": formQuestionId20,
+        "answer": 22
+      },
+      {
+        "question": formQuestionId21,
+        "answer": ["Board Game Night", "Outdoor Adventure"]
+      },
+      {
+        "question": formQuestionId22,
+        "answer": "Vegan"
+      },
+      {
+        "question": formQuestionId23,
+        "answer": ["Saturday", "Sunday"]
+      },
+      {
+        "question": formQuestionId24,
+        "answer": null
+      }
+    ],
+    "responderEmail": "ella@email.com"
+  },
+  {
+    "_id": formSubmissionId36,
+    "questionResponses": [
+      {
+        "question": formQuestionId19,
+        "answer": "Frank"
+      },
+      {
+        "question": formQuestionId20,
+        "answer": 40
+      },
+      {
+        "question": formQuestionId21,
+        "answer": ["Concert", "Movie Night"]
+      },
+      {
+        "question": formQuestionId22,
+        "answer": "Lactose intolerant"
+      },
+      {
+        "question": formQuestionId23,
+        "answer": ["Friday"]
+      },
+      {
+        "question": formQuestionId24,
+        "answer": "Please consider hosting more outdoor events."
+      }
+    ],
+    "responderEmail": "frank@email.com"
+  },
+  {
+    "_id": formSubmissionId37,
+    "questionResponses": [
+      {
+        "question": formQuestionId19,
+        "answer": "Grace"
+      },
+      {
+        "question": formQuestionId20,
+        "answer": 33
+      },
+      {
+        "question": formQuestionId21,
+        "answer": ["Food Tasting"]
+      },
+      {
+        "question": formQuestionId22,
+        "answer": ""
+      },
+      {
+        "question": formQuestionId23,
+        "answer": ["Monday", "Tuesday", "Wednesday"]
+      },
+      {
+        "question": formQuestionId24,
+        "answer": null
+      }
+    ],
+    "responderEmail": "grace@email.com"
+  },
+  {
+    "_id": formSubmissionId38,
+    "questionResponses": [
+      {
+        "question": formQuestionId19,
+        "answer": "Harry"
+      },
+      {
+        "question": formQuestionId20,
+        "answer": 50
+      },
+      {
+        "question": formQuestionId21,
+        "answer": ["Board Game Night", "Food Tasting", "Outdoor Adventure"]
+      },
+      {
+        "question": formQuestionId22,
+        "answer": "Nut allergy"
+      },
+      {
+        "question": formQuestionId23,
+        "answer": ["Thursday", "Friday"]
+      },
+      {
+        "question": formQuestionId24,
+        "answer": "Excellent work on the events so far!"
+      }
+    ],
+    "responderEmail": "harry@email.com"
+  },
+  {
+    "_id": formSubmissionId39,
+    "questionResponses": [
+      {
+        "question": formQuestionId19,
+        "answer": "Irene"
+      },
+      {
+        "question": formQuestionId20,
+        "answer": 29
+      },
+      {
+        "question": formQuestionId21,
+        "answer": ["Movie Night"]
+      },
+      {
+        "question": formQuestionId22,
+        "answer": ""
+      },
+      {
+        "question": formQuestionId23,
+        "answer": ["Saturday"]
+      },
+      {
+        "question": formQuestionId24,
+        "answer": "Keep up the good work."
+      }
+    ],
+    "responderEmail": "irene@email.com"
+  },
+  {
+    "_id": formSubmissionId40,
+    "questionResponses": [
+      {
+        "question": formQuestionId19,
+        "answer": "Jack"
+      },
+      {
+        "question": formQuestionId20,
+        "answer": 60
+      },
+      {
+        "question": formQuestionId21,
+        "answer": ["Concert", "Board Game Night"]
+      },
+      {
+        "question": formQuestionId22,
+        "answer": "Vegetarian"
+      },
+      {
+        "question": formQuestionId23,
+        "answer": ["Wednesday", "Thursday", "Friday"]
+      },
+      {
+        "question": formQuestionId24,
+        "answer": "Looking forward to the events."
+      }
+    ],
+    "responderEmail": "jack@email.com"
+  },
+
+
+
+
+  // "Software development feedback form"
+  {
+    "_id": formSubmissionId41,
+    "questionResponses": [
+      {
+        "question": formQuestionId25,
+        "answer": "John Doe"
+      },
+      {
+        "question": formQuestionId26,
+        "answer": "Developer"
+      },
+      {
+        "question": formQuestionId27,
+        "answer": 4
+      },
+      {
+        "question": formQuestionId28,
+        "answer": "Good job overall, but needs better documentation."
+      },
+      {
+        "question": formQuestionId29,
+        "answer": null
+      },
+      {
+        "question": formQuestionId30,
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "john.doe@example.com"
+  },
+  {
+    "_id": formSubmissionId42,
+    "questionResponses": [
+      {
+        "question": formQuestionId25,
+        "answer": "Jane Smith"
+      },
+      {
+        "question": formQuestionId26,
+        "answer": "QA"
+      },
+      {
+        "question": formQuestionId27,
+        "answer": 2
+      },
+      {
+        "question": formQuestionId28,
+        "answer": "Testing is often overlooked. Needs improvement."
+      },
+      {
+        "question": formQuestionId29,
+        "answer": null
+      },
+      {
+        "question": formQuestionId30,
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "jane.smith@example.com"
+  },
+  {
+    "_id": formSubmissionId43,
+    "questionResponses": [
+      {
+        "question": formQuestionId25,
+        "answer": "Emily Johnson"
+      },
+      {
+        "question": formQuestionId26,
+        "answer": "Product Manager"
+      },
+      {
+        "question": formQuestionId27,
+        "answer": 5
+      },
+      {
+        "question": formQuestionId28,
+        "answer": "Fantastic work. Let's keep this up."
+      },
+      {
+        "question": formQuestionId29,
+        "answer": null
+      },
+      {
+        "question": formQuestionId30,
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "emily.johnson@example.com"
+  },
+  {
+    "_id": formSubmissionId44,
+    "questionResponses": [
+      {
+        "question": formQuestionId25,
+        "answer": "Robert Brown"
+      },
+      {
+        "question": formQuestionId26,
+        "answer": "Designer"
+      },
+      {
+        "question": formQuestionId27,
+        "answer": 3
+      },
+      {
+        "question": formQuestionId28,
+        "answer": "Designs could be more aligned with specifications."
+      },
+      {
+        "question": formQuestionId29,
+        "answer": null
+      },
+      {
+        "question": formQuestionId30,
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "robert.brown@example.com"
+  },
+  {
+    "_id": formSubmissionId45,
+    "questionResponses": [
+      {
+        "question": formQuestionId25,
+        "answer": "Mike Williams"
+      },
+      {
+        "question": formQuestionId26,
+        "answer": "DevOps"
+      },
+      {
+        "question": formQuestionId27,
+        "answer": 3
+      },
+      {
+        "question": formQuestionId28,
+        "answer": "Infrastructure could be more robust."
+      },
+      {
+        "question": formQuestionId29,
+        "answer": null
+      },
+      {
+        "question": formQuestionId30,
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "mike.williams@example.com"
+  },
+  {
+    "_id": formSubmissionId46,
+    "questionResponses": [
+      {
+        "question": formQuestionId25,
+        "answer": "Linda Davis"
+      },
+      {
+        "question": formQuestionId26,
+        "answer": "QA"
+      },
+      {
+        "question": formQuestionId27,
+        "answer": 2
+      },
+      {
+        "question": formQuestionId28,
+        "answer": "Automated testing is lacking."
+      },
+      {
+        "question": formQuestionId29,
+        "answer": null
+      },
+      {
+        "question": formQuestionId30,
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "linda.davis@example.com"
+  },
+  {
+    "_id": formSubmissionId47,
+    "questionResponses": [
+      {
+        "question": formQuestionId25,
+        "answer": "Tom Wilson"
+      },
+      {
+        "question": formQuestionId26,
+        "answer": "Developer"
+      },
+      {
+        "question": formQuestionId27,
+        "answer": 4
+      },
+      {
+        "question": formQuestionId28,
+        "answer": "Happy with the progress but we can improve the build process."
+      },
+      {
+        "question": formQuestionId29,
+        "answer": null
+      },
+      {
+        "question": formQuestionId30,
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "tom.wilson@example.com"
+  },
+  {
+    "_id": formSubmissionId48,
+    "questionResponses": [
+      {
+        "question": formQuestionId25,
+        "answer": "Alice Garcia"
+      },
+      {
+        "question": formQuestionId26,
+        "answer": "Designer"
+      },
+      {
+        "question": formQuestionId27,
+        "answer": 1
+      },
+      {
+        "question": formQuestionId28,
+        "answer": "Unhappy with the lack of creative freedom."
+      },
+      {
+        "question": formQuestionId29,
+        "answer": null
+      },
+      {
+        "question": formQuestionId30,
+        "answer": "Yes"
+      }
+    ],
+    "responderEmail": "alice.garcia@example.com"
+  },
+  {
+    "_id": formSubmissionId49,
+    "questionResponses": [
+      {
+        "question": formQuestionId25,
+        "answer": "David Lee"
+      },
+      {
+        "question": formQuestionId26,
+        "answer": "Product Manager"
+      },
+      {
+        "question": formQuestionId27,
+        "answer": 5
+      },
+      {
+        "question": formQuestionId28,
+        "answer": "Excellent team coordination and delivery."
+      },
+      {
+        "question": formQuestionId29,
+        "answer": null
+      },
+      {
+        "question": formQuestionId30,
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "david.lee@example.com"
+  },
+  {
+    "_id": formSubmissionId50,
+    "questionResponses": [
+      {
+        "question": formQuestionId25,
+        "answer": "Sarah Harris"
+      },
+      {
+        "question": formQuestionId26,
+        "answer": "QA"
+      },
+      {
+        "question": formQuestionId27,
+        "answer": 4
+      },
+      {
+        "question": formQuestionId28,
+        "answer": "Test coverage is good but could include more edge cases."
+      },
+      {
+        "question": formQuestionId29,
+        "answer": "exampleFile.txt"
+      },
+      {
+        "question": formQuestionId30,
+        "answer": "No"
+      }
+    ],
+    "responderEmail": "sarah.harris@example.com"
+  }
+]
+)
+
+// -------- FORMS -------- //
+db.forms.insertMany([
+    // "Software developer application"
+    {
+        questions: [formQuestionId1,formQuestionId2,formQuestionId3,formQuestionId4,formQuestionId5,formQuestionId6],
+        responderType: "Student",
+        isAnonymous: false,
+        submissions: [formSubmissionId1,formSubmissionId2,formSubmissionId3,formSubmissionId4,formSubmissionId5,formSubmissionId6,formSubmissionId7,formSubmissionId8,formSubmissionId9,formSubmissionId10]
+    },
+
+    // "Nonprofit project application"
+    {
+        questions: [formQuestionId7,formQuestionId8,formQuestionId9,formQuestionId10,formQuestionId11,formQuestionId12],
+        responderType: "Anyone",
+        isAnonymous: false,
+        submissions: [formSubmissionId11,formSubmissionId12,formSubmissionId13,formSubmissionId14,formSubmissionId15,formSubmissionId16,formSubmissionId17,formSubmissionId18,formSubmissionId19,formSubmissionId20]
+    },
+
+    // "Designer Application"
+    {
+        questions: [formQuestionId13,formQuestionId14,formQuestionId15,formQuestionId16,formQuestionId17,formQuestionId18],
+        responderType: "Student",
+        isAnonymous: false,
+        submissions: [formSubmissionId21,formSubmissionId22,formSubmissionId23,formSubmissionId24,formSubmissionId25,formSubmissionId26,formSubmissionId27,formSubmissionId28,formSubmissionId29,formSubmissionId30]
+    },
+
+    // "Social Event Preference Form"
+    {
+        questions: [formQuestionId19,formQuestionId20,formQuestionId21,formQuestionId22,formQuestionId23,formQuestionId24],
+        responderType: "Member",
+        isAnonymous: true,
+        submissions: [formSubmissionId31,formSubmissionId32,formSubmissionId33,formSubmissionId34,formSubmissionId35,formSubmissionId36,formSubmissionId37,formSubmissionId38,formSubmissionId39,formSubmissionId40]
+    },
+
+    // "Software development feedback form"
+    {
+        questions: [formQuestionId25,formQuestionId26,formQuestionId27,formQuestionId28,formQuestionId29,formQuestionId30],
+        responderType: "Member",
+        isAnonymous: true,
+        submissions: [formSubmissionId41,formSubmissionId42,formSubmissionId43,formSubmissionId44,formSubmissionId45,formSubmissionId46,formSubmissionId47,formSubmissionId48,formSubmissionId49,formSubmissionId50]
+    }
+])

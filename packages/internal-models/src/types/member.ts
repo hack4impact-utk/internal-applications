@@ -18,7 +18,7 @@ export const zTermMember = z.object({
   term: zTerm,
   orgRole: OrganizationRole,
 });
-export type TermMember = z.infer<typeof zTermMember>;
+export interface TermMember extends z.infer<typeof zTermMember> {}
 
 export const zMember = zBase.extend({
   firstName: z.string(),

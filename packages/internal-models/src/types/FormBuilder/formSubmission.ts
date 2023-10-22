@@ -1,12 +1,12 @@
 import { z } from "zod";
 import zBase from "../base";
+import zObjectId from "../objectId";
 
 const zFormSubmission = z.object({
   questionResponses: z.array(
     z.object({
-      title: z.string(),
-      description: z.string().optional(),
-      answer: z.union([z.string(), z.number()]).optional(),
+      question: zObjectId,
+      answer: z.union([z.string(), z.number(), z.array(z.string())]).optional(),
     })
   ),
   responderEmail: z.string().optional(),

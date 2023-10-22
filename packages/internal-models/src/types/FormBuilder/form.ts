@@ -9,6 +9,8 @@ export const zResponderType = z.enum(responderTypes);
 export type ResponderType = z.infer<typeof zResponderType>;
 
 const zForm = z.object({
+  title: z.string(),
+  description: z.string().optional(),
   questions: z.array(zFormQuestion),
   responderType: zResponderType,
   callbackUrl: z.string().optional(),
