@@ -74,13 +74,21 @@ export async function deleteFormQuestion(
       (questionResponse) =>
         questionResponse.question._id.toString() !== formQuestionId
     );
-    const newSubmissionQuestionResponseIds =
-      submission.questionResponses.filter(
-        (qRes) => qRes.question._id.toString() !== formQuestionId
-      );
+    const newSubmissionQuestionResponses = submission.questionResponses.filter(
+      (qRes) => qRes.question._id.toString() !== formQuestionId
+    );
+
+    const convertedSubmissionQuestionResponses: any =
+      newSubmissionQuestionResponses.map((questionResponse) => {
+        return {
+          question: questionResponse.question._id,
+          answer: questionResponse.answer,
+        };
+      });
+
     FormSubmissionSchema.findByIdAndUpdate({
       _id: submission._id,
-      questionResopnses: newSubmissionQuestionResponseIds,
+      questionResopnses: convertedSubmissionQuestionResponses,
     });
   });
 
