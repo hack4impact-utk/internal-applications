@@ -1,8 +1,8 @@
 ---
-name: Applicant Tracking
-about: Template for issues in the applicant tracking project
+name: Applicant Tracking System
+about: Template for issues in the applicant tracking system project
 title: ''
-labels: Applicant Tracking
+labels: Applicant Tracking System
 assignees: ''
 ---
 
