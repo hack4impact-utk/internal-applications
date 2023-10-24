@@ -24,5 +24,14 @@ export async function createFormSubmission(formId: string, formSubmission: Creat
     return res;
   }
   return null;
+}
 
+export async function getFormSubmissions(formId: string): Promise<FormSubmission[] | null> {
+    const formResponse: FormResponse | null = await getFormById(formId);
+
+    if (!formResponse) {
+        return null;
+    }
+
+    return formResponse.submissions
 }
