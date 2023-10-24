@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { zBase } from "../base";
-import zFormQuestion from "./formQuestion";
+import zFormQuestion, { zFormQuestionResponse } from "./formQuestion";
 import zFormSubmission, { zFormSubmissionResponse } from "./formSubmission";
 import zObjectId from "../objectId";
 
@@ -25,7 +25,7 @@ export const zCreateFormRequest = zForm.extend({
 
 export const zFormResponse = zForm.extend({
   ...zBase.shape,
-  questions: z.array(zFormSubmissionResponse),
+  questions: z.array(zFormQuestionResponse),
   submissions: z.array(zFormSubmissionResponse),
 });
 
