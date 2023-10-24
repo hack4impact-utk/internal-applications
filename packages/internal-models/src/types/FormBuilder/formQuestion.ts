@@ -1,6 +1,5 @@
 import { z } from "zod";
-import zBase, { Base } from "../base";
-import zForm, { Form } from "./form";
+import zBase from "../base";
 
 export const formQuestionTypes = [
   "Numeric",
@@ -46,7 +45,7 @@ const zFormQuestion = z.object({
   fileUploadOptions: z
     .object({
       maxFileSize: z.number(),
-      supportedFileTypes: zFileType,
+      supportedFileTypes: z.array(zFileType),
     })
     .optional(),
   multipleChoiceOptions: z
@@ -59,7 +58,7 @@ const zFormQuestion = z.object({
 });
 
 const zCreateFormQuestionRequest = zFormQuestion.extend({});
-const zFormQuestionResponse = zFormQuestion.extend(zBase.shape);
+export const zFormQuestionResponse = zFormQuestion.extend(zBase.shape);
 
 export interface FormQuestion extends z.infer<typeof zFormQuestion> {}
 export interface CreateFormQuestionRequest

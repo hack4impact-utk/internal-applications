@@ -1,10 +1,10 @@
-import { model, Schema, Document, models, Model } from 'mongoose';
+import { model, Schema, Document, models, Model } from "mongoose";
 import {
   FormQuestion,
   fileTypes,
   formQuestionTypes,
   multipleChoiceTypes,
-} from '../../../types/FormBuilder/formQuestion';
+} from "../../../types/FormBuilder/formQuestion";
 
 export const FormQuestionSchema = new Schema(
   {
@@ -32,6 +32,7 @@ export const FormQuestionSchema = new Schema(
         },
       },
       required: false,
+      _id: false,
     },
     textOptions: {
       type: {
@@ -41,6 +42,7 @@ export const FormQuestionSchema = new Schema(
         },
       },
       required: false,
+      _id: false,
     },
     fileUploadOptions: {
       type: {
@@ -55,6 +57,7 @@ export const FormQuestionSchema = new Schema(
         },
       },
       required: false,
+      _id: false,
     },
     multipleChoiceOptions: {
       type: {
@@ -73,6 +76,7 @@ export const FormQuestionSchema = new Schema(
         },
       },
       required: false,
+      _id: false,
     },
   },
   {
@@ -83,9 +87,9 @@ export const FormQuestionSchema = new Schema(
 
 export type FormQuestionDocument = FormQuestion & Document;
 
-export default (models.Form as Model<FormQuestionDocument>) ||
+export default (models.FormQuestion as Model<FormQuestionDocument>) ||
   model<FormQuestionDocument>(
-    'FormQuestion',
+    "FormQuestion",
     FormQuestionSchema,
-    'formQuestions'
+    "formQuestions"
   );

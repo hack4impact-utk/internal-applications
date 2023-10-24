@@ -12,7 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@hack4impact-utk/internal-models": "^1.0.9",
+    "@hack4impact-utk/internal-models": "^1.0.24",
     "@mui/material": "^5.14.6",
     "mongoose": "^7.4.5",
     "next": "13.4.19",

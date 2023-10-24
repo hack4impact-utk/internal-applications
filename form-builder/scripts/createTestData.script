@@ -19,20 +19,17 @@ db.formQuestions.insertMany([
   {
     "_id": formQuestionId1,
     "title": "Full Name",
-    "description": null,
     "isRequired": true,
     "questionType": "Text",
     "textOptions": {
       "isParagraph": false
     },
-    "numericOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId2,
     "title": "How many years of software development experience do you have?",
-    "description": null,
     "isRequired": true,
     "questionType": "Numeric",
     "numericOptions": {
@@ -40,14 +37,12 @@ db.formQuestions.insertMany([
       "minVal": 0,
       "maxVal": 40
     },
-    "textOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId3,
     "title": "Which programming languages are you proficient in?",
-    "description": null,
     "isRequired": true,
     "questionType": "MultipleChoice",
     "multipleChoiceOptions": {
@@ -55,41 +50,35 @@ db.formQuestions.insertMany([
       "allowOther": true,
       "choiceType": "Multiple"
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "fileUploadOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId4,
     "title": "Please upload your resume.",
-    "description": null,
     "isRequired": true,
     "questionType": "FileUpload",
     "fileUploadOptions": {
       "maxFileSize": 10,
       "supportedFileTypes": ["Document", "PDF"]
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId5,
     "title": "Why do you want to work here?",
-    "description": null,
     "isRequired": false,
     "questionType": "Text",
     "textOptions": {
       "isParagraph": true
     },
-    "numericOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId6,
     "title": "Preferred Work Environment",
-    "description": null,
     "isRequired": false,
     "questionType": "MultipleChoice",
     "multipleChoiceOptions": {
@@ -97,9 +86,8 @@ db.formQuestions.insertMany([
       "allowOther": false,
       "choiceType": "Single"
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "fileUploadOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
 
 
@@ -108,15 +96,13 @@ db.formQuestions.insertMany([
   {
     "_id": formQuestionId7,
     "title": "Project Name",
-    "description": null,
     "isRequired": true,
     "questionType": "Text",
     "textOptions": {
       "isParagraph": false
     },
-    "numericOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId8,
@@ -127,14 +113,12 @@ db.formQuestions.insertMany([
     "textOptions": {
       "isParagraph": true
     },
-    "numericOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId9,
     "title": "Who is the target audience for this project?",
-    "description": null,
     "isRequired": true,
     "questionType": "MultipleChoice",
     "multipleChoiceOptions": {
@@ -142,14 +126,12 @@ db.formQuestions.insertMany([
       "allowOther": true,
       "choiceType": "Single"
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "fileUploadOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId10,
     "title": "What is the estimated budget for your project?",
-    "description": null,
     "isRequired": true,
     "questionType": "Numeric",
     "numericOptions": {
@@ -157,9 +139,8 @@ db.formQuestions.insertMany([
       "minVal": 500,
       "maxVal": 1000000
     },
-    "textOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId11,
@@ -171,14 +152,12 @@ db.formQuestions.insertMany([
       "maxFileSize": 15,
       "supportedFileTypes": ["Document", "PDF", "Spreadsheet"]
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId12,
     "title": "Have you managed a nonprofit project before?",
-    "description": null,
     "isRequired": false,
     "questionType": "MultipleChoice",
     "multipleChoiceOptions": {
@@ -186,9 +165,8 @@ db.formQuestions.insertMany([
       "allowOther": false,
       "choiceType": "Single"
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "fileUploadOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
 
 
@@ -198,20 +176,17 @@ db.formQuestions.insertMany([
   {
     "_id": formQuestionId13,
     "title": "Full Name",
-    "description": null,
     "isRequired": true,
     "questionType": "Text",
     "textOptions": {
       "isParagraph": false
     },
-    "numericOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId14,
     "title": "How many years of professional design experience do you have?",
-    "description": null,
     "isRequired": true,
     "questionType": "Numeric",
     "numericOptions": {
@@ -219,14 +194,12 @@ db.formQuestions.insertMany([
       "minVal": 0,
       "maxVal": 40
     },
-    "textOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId15,
     "title": "Which design tools are you proficient in?",
-    "description": null,
     "isRequired": true,
     "questionType": "MultipleChoice",
     "multipleChoiceOptions": {
@@ -234,41 +207,35 @@ db.formQuestions.insertMany([
       "allowOther": true,
       "choiceType": "Multiple"
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "fileUploadOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId16,
     "title": "Please upload your design portfolio.",
-    "description": null,
     "isRequired": true,
     "questionType": "FileUpload",
     "fileUploadOptions": {
       "maxFileSize": 50,
       "supportedFileTypes": ["Document", "PDF", "Image", "Video"]
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId17,
     "title": "Why do you want to work as a designer at our company?",
-    "description": null,
     "isRequired": false,
     "questionType": "Text",
     "textOptions": {
       "isParagraph": true
     },
-    "numericOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId18,
     "title": "Preferred Work Style",
-    "description": null,
     "isRequired": false,
     "questionType": "MultipleChoice",
     "multipleChoiceOptions": {
@@ -276,9 +243,8 @@ db.formQuestions.insertMany([
       "allowOther": false,
       "choiceType": "Single"
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "fileUploadOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
 
 
@@ -286,20 +252,17 @@ db.formQuestions.insertMany([
   {
     "_id": formQuestionId19,
     "title": "Name",
-    "description": null,
     "isRequired": true,
     "questionType": "Text",
     "textOptions": {
       "isParagraph": false
     },
-    "numericOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId20,
     "title": "Age",
-    "description": null,
     "isRequired": true,
     "questionType": "Numeric",
     "numericOptions": {
@@ -307,14 +270,12 @@ db.formQuestions.insertMany([
       "minVal": 18,
       "maxVal": 99
     },
-    "textOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId21,
     "title": "Which types of social events are you most interested in?",
-    "description": null,
     "isRequired": true,
     "questionType": "MultipleChoice",
     "multipleChoiceOptions": {
@@ -322,27 +283,23 @@ db.formQuestions.insertMany([
       "allowOther": true,
       "choiceType": "Multiple"
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "fileUploadOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId22,
     "title": "Do you have any dietary restrictions we should be aware of?",
-    "description": null,
     "isRequired": false,
     "questionType": "Text",
     "textOptions": {
       "isParagraph": true
     },
-    "numericOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId23,
     "title": "Preferred Days",
-    "description": null,
     "isRequired": false,
     "questionType": "MultipleChoice",
     "multipleChoiceOptions": {
@@ -350,22 +307,19 @@ db.formQuestions.insertMany([
       "allowOther": false,
       "choiceType": "Multiple"
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "fileUploadOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId24,
     "title": "Additional Comments",
-    "description": null,
     "isRequired": false,
     "questionType": "Text",
     "textOptions": {
       "isParagraph": true
     },
-    "numericOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
 
 
@@ -374,20 +328,17 @@ db.formQuestions.insertMany([
   {
     "_id": formQuestionId25,
     "title": "Your Name",
-    "description": null,
     "isRequired": false,
     "questionType": "Text",
     "textOptions": {
       "isParagraph": false
     },
-    "numericOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId26,
     "title": "What is your role on the team?",
-    "description": null,
     "isRequired": true,
     "questionType": "MultipleChoice",
     "multipleChoiceOptions": {
@@ -395,9 +346,8 @@ db.formQuestions.insertMany([
       "allowOther": true,
       "choiceType": "Single"
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "fileUploadOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId27,
@@ -410,22 +360,19 @@ db.formQuestions.insertMany([
       "minVal": 1,
       "maxVal": 5
     },
-    "textOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId28,
     "title": "Suggestion or Feedback",
-    "description": null,
     "isRequired": true,
     "questionType": "Text",
     "textOptions": {
       "isParagraph": true
     },
-    "numericOptions": null,
-    "fileUploadOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId29,
@@ -437,14 +384,12 @@ db.formQuestions.insertMany([
       "maxFileSize": 20,
       "supportedFileTypes": ["Document", "Spreadsheet", "PDF", "Image"]
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "multipleChoiceOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formQuestionId30,
     "title": "Would you like someone to follow up with you regarding your feedback?",
-    "description": null,
     "isRequired": false,
     "questionType": "MultipleChoice",
     "multipleChoiceOptions": {
@@ -452,9 +397,8 @@ db.formQuestions.insertMany([
       "allowOther": false,
       "choiceType": "Single"
     },
-    "textOptions": null,
-    "numericOptions": null,
-    "fileUploadOptions": null
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   }
 ]
 )
@@ -498,7 +442,9 @@ db.formSubmissions.insertMany([
         "answer": "Remote"
       }
     ],
-    "responderEmail": "john.doe@example.com"
+    "responderEmail": "john.doe@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId2,
@@ -528,7 +474,9 @@ db.formSubmissions.insertMany([
         "answer": "Office"
       }
     ],
-    "responderEmail": "jane.smith@example.com"
+    "responderEmail": "jane.smith@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId3,
@@ -551,14 +499,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId5,
-        "answer": null
       },
       {
         "question": formQuestionId6,
         "answer": "Hybrid"
       }
     ],
-    "responderEmail": "emily.clark@example.com"
+    "responderEmail": "emily.clark@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId4,
@@ -588,7 +537,9 @@ db.formSubmissions.insertMany([
         "answer": "Remote"
       }
     ],
-    "responderEmail": "robert.williams@example.com"
+    "responderEmail": "robert.williams@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId5,
@@ -611,14 +562,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId5,
-        "answer": null
       },
       {
         "question": formQuestionId6,
         "answer": "Office"
       }
     ],
-    "responderEmail": "alice.johnson@example.com"
+    "responderEmail": "alice.johnson@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId6,
@@ -648,7 +600,9 @@ db.formSubmissions.insertMany([
         "answer": "Hybrid"
       }
     ],
-    "responderEmail": "tom.brown@example.com"
+    "responderEmail": "tom.brown@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId7,
@@ -678,7 +632,9 @@ db.formSubmissions.insertMany([
         "answer": "Remote"
       }
     ],
-    "responderEmail": "karen.wilson@example.com"
+    "responderEmail": "karen.wilson@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId8,
@@ -701,14 +657,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId5,
-        "answer": null
       },
       {
         "question": formQuestionId6,
         "answer": "Office"
       }
     ],
-    "responderEmail": "james.johnson@example.com"
+    "responderEmail": "james.johnson@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId9,
@@ -738,7 +695,9 @@ db.formSubmissions.insertMany([
         "answer": "Hybrid"
       }
     ],
-    "responderEmail": "patricia.williams@example.com"
+    "responderEmail": "patricia.williams@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId10,
@@ -768,7 +727,9 @@ db.formSubmissions.insertMany([
         "answer": "Remote"
       }
     ],
-    "responderEmail": "michael.davis@example.com"
+    "responderEmail": "michael.davis@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
 
 
@@ -797,7 +758,9 @@ db.formSubmissions.insertMany([
         "answer": "Yes"
       }
     ],
-    "responderEmail": "applicant1@example.com"
+    "responderEmail": "applicant1@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId12,
@@ -815,13 +778,14 @@ db.formSubmissions.insertMany([
         "answer": 1500
       },
       {
-        "answer": null
       },
       {
         "answer": "No"
       }
     ],
-    "responderEmail": "applicant2@example.com"
+    "responderEmail": "applicant2@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId13,
@@ -845,7 +809,9 @@ db.formSubmissions.insertMany([
         "answer": "Yes"
       }
     ],
-    "responderEmail": "applicant3@example.com"
+    "responderEmail": "applicant3@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId14,
@@ -863,13 +829,14 @@ db.formSubmissions.insertMany([
         "answer": 2000
       },
       {
-        "answer": null
       },
       {
         "answer": "No"
       }
     ],
-    "responderEmail": "applicant4@example.com"
+    "responderEmail": "applicant4@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId15,
@@ -893,7 +860,9 @@ db.formSubmissions.insertMany([
         "answer": "Yes"
       }
     ],
-    "responderEmail": "applicant5@example.com"
+    "responderEmail": "applicant5@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId16,
@@ -911,13 +880,14 @@ db.formSubmissions.insertMany([
         "answer": 7000
       },
       {
-        "answer": null
       },
       {
         "answer": "No"
       }
     ],
-    "responderEmail": "applicant6@example.com"
+    "responderEmail": "applicant6@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId17,
@@ -941,7 +911,9 @@ db.formSubmissions.insertMany([
         "answer": "Yes"
       }
     ],
-    "responderEmail": "applicant7@example.com"
+    "responderEmail": "applicant7@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId18,
@@ -959,13 +931,14 @@ db.formSubmissions.insertMany([
         "answer": 8000
       },
       {
-        "answer": null
       },
       {
         "answer": "No"
       }
     ],
-    "responderEmail": "applicant8@example.com"
+    "responderEmail": "applicant8@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId19,
@@ -989,7 +962,9 @@ db.formSubmissions.insertMany([
         "answer": "Yes"
       }
     ],
-    "responderEmail": "applicant9@example.com"
+    "responderEmail": "applicant9@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId20,
@@ -1007,13 +982,14 @@ db.formSubmissions.insertMany([
         "answer": 6000
       },
       {
-        "answer": null
       },
       {
         "answer": "No"
       }
     ],
-    "responderEmail": "applicant10@example.com"
+    "responderEmail": "applicant10@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
 
 
@@ -1048,7 +1024,9 @@ db.formSubmissions.insertMany([
         "answer": "Yes"
       }
     ],
-    "responderEmail": "applicant1@example.com"
+    "responderEmail": "applicant1@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId22,
@@ -1071,14 +1049,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId11,
-        "answer": null
       },
       {
         "question": formQuestionId12,
         "answer": "No"
       }
     ],
-    "responderEmail": "applicant2@example.com"
+    "responderEmail": "applicant2@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId23,
@@ -1108,7 +1087,9 @@ db.formSubmissions.insertMany([
         "answer": "Yes"
       }
     ],
-    "responderEmail": "applicant3@example.com"
+    "responderEmail": "applicant3@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId24,
@@ -1131,14 +1112,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId11,
-        "answer": null
       },
       {
         "question": formQuestionId12,
         "answer": "No"
       }
     ],
-    "responderEmail": "applicant4@example.com"
+    "responderEmail": "applicant4@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId25,
@@ -1168,7 +1150,9 @@ db.formSubmissions.insertMany([
         "answer": "Yes"
       }
     ],
-    "responderEmail": "applicant5@example.com"
+    "responderEmail": "applicant5@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId26,
@@ -1191,14 +1175,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId11,
-        "answer": null
       },
       {
         "question": formQuestionId12,
         "answer": "No"
       }
     ],
-    "responderEmail": "applicant6@example.com"
+    "responderEmail": "applicant6@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId27,
@@ -1228,7 +1213,9 @@ db.formSubmissions.insertMany([
         "answer": "Yes"
       }
     ],
-    "responderEmail": "applicant7@example.com"
+    "responderEmail": "applicant7@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId28,
@@ -1251,14 +1238,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId11,
-        "answer": null
       },
       {
         "question": formQuestionId12,
         "answer": "No"
       }
     ],
-    "responderEmail": "applicant8@example.com"
+    "responderEmail": "applicant8@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId29,
@@ -1288,7 +1276,9 @@ db.formSubmissions.insertMany([
         "answer": "Yes"
       }
     ],
-    "responderEmail": "applicant9@example.com"
+    "responderEmail": "applicant9@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId30,
@@ -1311,14 +1301,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId11,
-        "answer": null
       },
       {
         "question": formQuestionId12,
         "answer": "No"
       }
     ],
-    "responderEmail": "applicant10@example.com"
+    "responderEmail": "applicant10@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
 
 
@@ -1348,10 +1339,11 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId24,
-        "answer": null
       }
     ],
-    "responderEmail": "alice@email.com"
+    "responderEmail": "alice@email.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId32,
@@ -1381,7 +1373,9 @@ db.formSubmissions.insertMany([
         "answer": "Excited for the upcoming events."
       }
     ],
-    "responderEmail": "bob@email.com"
+    "responderEmail": "bob@email.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId33,
@@ -1408,10 +1402,11 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId24,
-        "answer": null
       }
     ],
-    "responderEmail": "cathy@email.com"
+    "responderEmail": "cathy@email.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId34,
@@ -1441,7 +1436,9 @@ db.formSubmissions.insertMany([
         "answer": "Great initiative!"
       }
     ],
-    "responderEmail": "david@email.com"
+    "responderEmail": "david@email.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId35,
@@ -1468,10 +1465,11 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId24,
-        "answer": null
       }
     ],
-    "responderEmail": "ella@email.com"
+    "responderEmail": "ella@email.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId36,
@@ -1501,7 +1499,9 @@ db.formSubmissions.insertMany([
         "answer": "Please consider hosting more outdoor events."
       }
     ],
-    "responderEmail": "frank@email.com"
+    "responderEmail": "frank@email.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId37,
@@ -1528,10 +1528,11 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId24,
-        "answer": null
       }
     ],
-    "responderEmail": "grace@email.com"
+    "responderEmail": "grace@email.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId38,
@@ -1561,7 +1562,9 @@ db.formSubmissions.insertMany([
         "answer": "Excellent work on the events so far!"
       }
     ],
-    "responderEmail": "harry@email.com"
+    "responderEmail": "harry@email.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId39,
@@ -1591,7 +1594,9 @@ db.formSubmissions.insertMany([
         "answer": "Keep up the good work."
       }
     ],
-    "responderEmail": "irene@email.com"
+    "responderEmail": "irene@email.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId40,
@@ -1621,7 +1626,9 @@ db.formSubmissions.insertMany([
         "answer": "Looking forward to the events."
       }
     ],
-    "responderEmail": "jack@email.com"
+    "responderEmail": "jack@email.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
 
 
@@ -1649,14 +1656,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId29,
-        "answer": null
       },
       {
         "question": formQuestionId30,
         "answer": "Yes"
       }
     ],
-    "responderEmail": "john.doe@example.com"
+    "responderEmail": "john.doe@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId42,
@@ -1679,14 +1687,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId29,
-        "answer": null
       },
       {
         "question": formQuestionId30,
         "answer": "Yes"
       }
     ],
-    "responderEmail": "jane.smith@example.com"
+    "responderEmail": "jane.smith@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId43,
@@ -1709,14 +1718,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId29,
-        "answer": null
       },
       {
         "question": formQuestionId30,
         "answer": "No"
       }
     ],
-    "responderEmail": "emily.johnson@example.com"
+    "responderEmail": "emily.johnson@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId44,
@@ -1739,14 +1749,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId29,
-        "answer": null
       },
       {
         "question": formQuestionId30,
         "answer": "Yes"
       }
     ],
-    "responderEmail": "robert.brown@example.com"
+    "responderEmail": "robert.brown@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId45,
@@ -1769,14 +1780,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId29,
-        "answer": null
       },
       {
         "question": formQuestionId30,
         "answer": "No"
       }
     ],
-    "responderEmail": "mike.williams@example.com"
+    "responderEmail": "mike.williams@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId46,
@@ -1799,14 +1811,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId29,
-        "answer": null
       },
       {
         "question": formQuestionId30,
         "answer": "Yes"
       }
     ],
-    "responderEmail": "linda.davis@example.com"
+    "responderEmail": "linda.davis@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId47,
@@ -1829,14 +1842,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId29,
-        "answer": null
       },
       {
         "question": formQuestionId30,
         "answer": "No"
       }
     ],
-    "responderEmail": "tom.wilson@example.com"
+    "responderEmail": "tom.wilson@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId48,
@@ -1859,14 +1873,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId29,
-        "answer": null
       },
       {
         "question": formQuestionId30,
         "answer": "Yes"
       }
     ],
-    "responderEmail": "alice.garcia@example.com"
+    "responderEmail": "alice.garcia@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId49,
@@ -1889,14 +1904,15 @@ db.formSubmissions.insertMany([
       },
       {
         "question": formQuestionId29,
-        "answer": null
       },
       {
         "question": formQuestionId30,
         "answer": "No"
       }
     ],
-    "responderEmail": "david.lee@example.com"
+    "responderEmail": "david.lee@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   },
   {
     "_id": formSubmissionId50,
@@ -1926,7 +1942,9 @@ db.formSubmissions.insertMany([
         "answer": "No"
       }
     ],
-    "responderEmail": "sarah.harris@example.com"
+    "responderEmail": "sarah.harris@example.com",
+    "createdAt": new Date(),
+    "updatedAt": new Date()
   }
 ]
 )
@@ -1935,41 +1953,61 @@ db.formSubmissions.insertMany([
 db.forms.insertMany([
     // "Software developer application"
     {
+        title: "Software developer application",
+        description: "Application to be a developer for Spring 2024",
         questions: [formQuestionId1,formQuestionId2,formQuestionId3,formQuestionId4,formQuestionId5,formQuestionId6],
         responderType: "Student",
         isAnonymous: false,
-        submissions: [formSubmissionId1,formSubmissionId2,formSubmissionId3,formSubmissionId4,formSubmissionId5,formSubmissionId6,formSubmissionId7,formSubmissionId8,formSubmissionId9,formSubmissionId10]
+        submissions: [formSubmissionId1,formSubmissionId2,formSubmissionId3,formSubmissionId4,formSubmissionId5,formSubmissionId6,formSubmissionId7,formSubmissionId8,formSubmissionId9,formSubmissionId10],
+        "createdAt": new Date(),
+        "updatedAt": new Date()
     },
 
     // "Nonprofit project application"
     {
+        title: "Nonprofit project application",
+        description: "Application have Hack4Impact create a project for your organization",
         questions: [formQuestionId7,formQuestionId8,formQuestionId9,formQuestionId10,formQuestionId11,formQuestionId12],
         responderType: "Anyone",
         isAnonymous: false,
-        submissions: [formSubmissionId11,formSubmissionId12,formSubmissionId13,formSubmissionId14,formSubmissionId15,formSubmissionId16,formSubmissionId17,formSubmissionId18,formSubmissionId19,formSubmissionId20]
+        submissions: [formSubmissionId11,formSubmissionId12,formSubmissionId13,formSubmissionId14,formSubmissionId15,formSubmissionId16,formSubmissionId17,formSubmissionId18,formSubmissionId19,formSubmissionId20],
+        "createdAt": new Date(),
+        "updatedAt": new Date()
     },
 
     // "Designer Application"
     {
+        title: "Designer Application",
+        description: "Application to be a designer for Spring 2024",
         questions: [formQuestionId13,formQuestionId14,formQuestionId15,formQuestionId16,formQuestionId17,formQuestionId18],
         responderType: "Student",
         isAnonymous: false,
-        submissions: [formSubmissionId21,formSubmissionId22,formSubmissionId23,formSubmissionId24,formSubmissionId25,formSubmissionId26,formSubmissionId27,formSubmissionId28,formSubmissionId29,formSubmissionId30]
+        submissions: [formSubmissionId21,formSubmissionId22,formSubmissionId23,formSubmissionId24,formSubmissionId25,formSubmissionId26,formSubmissionId27,formSubmissionId28,formSubmissionId29,formSubmissionId30],
+        "createdAt": new Date(),
+        "updatedAt": new Date()
     },
 
     // "Social Event Preference Form"
     {
+        title: "Social Event Preference Form",
+        description: "We will be hosting a social event next month, and are looking to get everyone's preferences and availability",
         questions: [formQuestionId19,formQuestionId20,formQuestionId21,formQuestionId22,formQuestionId23,formQuestionId24],
         responderType: "Member",
         isAnonymous: true,
-        submissions: [formSubmissionId31,formSubmissionId32,formSubmissionId33,formSubmissionId34,formSubmissionId35,formSubmissionId36,formSubmissionId37,formSubmissionId38,formSubmissionId39,formSubmissionId40]
+        submissions: [formSubmissionId31,formSubmissionId32,formSubmissionId33,formSubmissionId34,formSubmissionId35,formSubmissionId36,formSubmissionId37,formSubmissionId38,formSubmissionId39,formSubmissionId40],
+        "createdAt": new Date(),
+        "updatedAt": new Date()
     },
 
     // "Software development feedback form"
     {
+        title: "Software development feedback form",
+        description: "Thank you all for a great semester! We would like to get some feedback from you so we can improve our processes.",
         questions: [formQuestionId25,formQuestionId26,formQuestionId27,formQuestionId28,formQuestionId29,formQuestionId30],
         responderType: "Member",
         isAnonymous: true,
-        submissions: [formSubmissionId41,formSubmissionId42,formSubmissionId43,formSubmissionId44,formSubmissionId45,formSubmissionId46,formSubmissionId47,formSubmissionId48,formSubmissionId49,formSubmissionId50]
+        submissions: [formSubmissionId41,formSubmissionId42,formSubmissionId43,formSubmissionId44,formSubmissionId45,formSubmissionId46,formSubmissionId47,formSubmissionId48,formSubmissionId49,formSubmissionId50],
+        "createdAt": new Date(),
+        "updatedAt": new Date()
     }
 ])
