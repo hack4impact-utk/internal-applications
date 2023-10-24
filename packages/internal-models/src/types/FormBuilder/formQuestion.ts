@@ -57,7 +57,7 @@ const zFormQuestion = z.object({
     .optional(),
 });
 
-const zCreateFormQuestionRequest = zFormQuestion.extend({});
+export const zCreateFormQuestionRequest = zFormQuestion.extend({});
 export const zFormQuestionResponse = zFormQuestion.extend(zBase.shape);
 
 export interface FormQuestion extends z.infer<typeof zFormQuestion> {}
