@@ -1,5 +1,9 @@
-import { applicantDecisions, applicantStatuses } from '@/types/applicant';
-import { Schema } from 'mongoose';
+import {
+  Applicant,
+  applicantDecisions,
+  applicantStatuses,
+} from '@/types/applicant';
+import { Model, Schema, model, models } from 'mongoose';
 
 const ApplicantSchema = new Schema({
   firstName: {
@@ -75,3 +79,8 @@ const ApplicantSchema = new Schema({
     required: false,
   },
 });
+
+export type ApplicantDocument = Omit<Applicant, '_id'> & Document;
+
+export default (models.Applicant as Model<ApplicantDocument>) ||
+  model<ApplicantDocument>('Applicant', ApplicantSchema);
