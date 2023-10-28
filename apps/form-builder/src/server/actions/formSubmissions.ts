@@ -21,7 +21,7 @@ export async function createFormSubmission(formId: string, formSubmission: Creat
       { _id: formId },
       { submissions: existingSubmissionIds?.concat(formSubmissionId) }
     );
-    return res;
+    return castedFormSubmission;
   }
   return null;
 }
