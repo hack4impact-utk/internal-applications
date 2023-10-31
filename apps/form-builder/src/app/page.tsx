@@ -1,3 +1,4 @@
-export default function Home() {
-  return <h1>Home page</h1>;
+export default async function Home() {
+  const res = await fetch('localhost:3000/api/test');
+  return <h1>{await res.json()}</h1>;
 }
