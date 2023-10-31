@@ -19,6 +19,5 @@ if(!validationResult.success){
 
 await deleteApplicant(applicantId)
 return new NextResponse(undefined, { status: 204 })
-//smegma
 
 }
