@@ -1,38 +1,31 @@
 import { z } from "zod";
 import zBase from "../base";
 import zObjectId from "../objectId";
-import zFormQuestion, { zFormQuestionResponse } from "./formQuestion";
+import { zFormQuestionResponse } from "./formQuestion";
 
-const zFormSubmissionQuestionResponse = z.object({
-  question: zFormQuestion,
-  answer: z.union([z.string(), z.number(), z.array(z.string())]).optional(),
-});
-
-const zFormSubmission = z.object({
-  questionResponses: z.array(zFormSubmissionQuestionResponse),
+const zFormSubmissionBase = z.object({
+  questionResponses: z.array(z.object({
+    question: zObjectId,
+    answer: z.union([z.string(), z.number(), z.array(z.string())]).optional(),
+  })),
   responderEmail: z.string().optional(),
 });
 
-export const zCreateFormSubmissionRequest = zFormSubmission.extend({
-  questionResponses: z.array(
-    zFormSubmissionQuestionResponse.extend({
-      question: zObjectId,
-    })
-  ),
-});
-export const zFormSubmissionResponse = zFormSubmission.extend({
-  ...zBase.shape,
-  questionResponses: z.array(
-    zFormSubmissionQuestionResponse.extend({
-      question: zFormQuestionResponse,
-    })
-  ),
+export const zCreateFormSubmissionRequest = zFormSubmissionBase
+
+export const zFormSubmissionEntity = zFormSubmissionBase.extend(zBase.shape)
+
+export const zFormSubmissionResponse = zFormSubmissionEntity.extend({
+  questionResponses: z.array(z.object({
+    question: zFormQuestionResponse,
+    answer: z.union([z.string(), z.number(), z.array(z.string())]).optional(),
+  })),
 });
 
-export interface FormSubmission extends z.infer<typeof zFormSubmission> {}
+export interface FormSubmissionEntity extends z.infer<typeof zFormSubmissionEntity> {}
 export interface CreateFormSubmissionRequest
   extends z.infer<typeof zCreateFormSubmissionRequest> {}
 export interface FormSubmissionResponse
   extends z.infer<typeof zFormSubmissionResponse> {}
 
-export default zFormSubmission;
+export default zFormSubmissionEntity;

@@ -1,6 +1,6 @@
 import { model, Schema, Document, models, Model } from "mongoose";
 import {
-  FormQuestion,
+  FormQuestionEntity,
   fileTypes,
   formQuestionTypes,
   multipleChoiceTypes,
@@ -85,7 +85,7 @@ export const FormQuestionSchema = new Schema(
   }
 );
 
-export type FormQuestionDocument = FormQuestion & Document;
+export interface FormQuestionDocument extends Omit<FormQuestionEntity, "_id">, Document {};
 
 export default (models.FormQuestion as Model<FormQuestionDocument>) ||
   model<FormQuestionDocument>(

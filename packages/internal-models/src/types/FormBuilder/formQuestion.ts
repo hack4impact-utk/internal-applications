@@ -29,7 +29,8 @@ export const multipleChoiceTypes = ["Single", "Multiple", "Ranked"] as const;
 export const zMultipleChoiceType = z.enum(multipleChoiceTypes);
 export type MultipleChoiceType = z.infer<typeof zMultipleChoiceType>;
 
-const zFormQuestion = z.object({
+
+const zFormQuestionBase = z.object({
   title: z.string(),
   description: z.string().optional(),
   isRequired: z.boolean(),
@@ -57,13 +58,14 @@ const zFormQuestion = z.object({
     .optional(),
 });
 
-export const zCreateFormQuestionRequest = zFormQuestion.extend({});
-export const zFormQuestionResponse = zFormQuestion.extend(zBase.shape);
+export const zCreateFormQuestionRequest = zFormQuestionBase
+export const zFormQuestionEntity = zFormQuestionBase.extend(zBase.shape)
+export const zFormQuestionResponse = zFormQuestionEntity;
 
-export interface FormQuestion extends z.infer<typeof zFormQuestion> {}
+export interface FormQuestionEntity extends z.infer<typeof zFormQuestionEntity> {}
 export interface CreateFormQuestionRequest
   extends z.infer<typeof zCreateFormQuestionRequest> {}
 export interface FormQuestionResponse
   extends z.infer<typeof zFormQuestionResponse> {}
 
-export default zFormQuestion;
+export default zFormQuestionEntity;

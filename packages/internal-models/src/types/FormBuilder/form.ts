@@ -8,29 +8,27 @@ export const responderTypes = ["Member", "Student", "Anyone"] as const;
 export const zResponderType = z.enum(responderTypes);
 export type ResponderType = z.infer<typeof zResponderType>;
 
-const zForm = z.object({
+const zFormBase = z.object({
   title: z.string(),
   description: z.string().optional(),
-  questions: z.array(zFormQuestion),
+  questions: z.array(zObjectId),
   responderType: zResponderType,
   callbackUrl: z.string().optional(),
   isAnonymous: z.boolean(),
-  submissions: z.array(zFormSubmission),
-});
-
-export const zCreateFormRequest = zForm.extend({
-  questions: z.array(zObjectId),
   submissions: z.array(zObjectId),
-});
+})
 
-export const zFormResponse = zForm.extend({
-  ...zBase.shape,
+export const zCreateFormRequest = zFormBase
+
+export const zFormEntity = zFormBase.extend(zBase.shape)
+
+export const zFormResponse = zFormEntity.extend({
   questions: z.array(zFormQuestionResponse),
   submissions: z.array(zFormSubmissionResponse),
 });
 
-export interface Form extends z.infer<typeof zForm> {}
+export interface FormEntity extends z.infer<typeof zFormEntity> {}
 export interface CreateFormRequest extends z.infer<typeof zCreateFormRequest> {}
 export interface FormResponse extends z.infer<typeof zFormResponse> {}
 
-export default zForm;
+export default zFormEntity;

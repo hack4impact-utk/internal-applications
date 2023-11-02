@@ -1,5 +1,5 @@
 import { model, Schema, Document, models, Model } from "mongoose";
-import { Form, responderTypes } from "@/types/FormBuilder/form";
+import { FormEntity, responderTypes } from "@/types/FormBuilder/form";
 
 const FormSchema = new Schema(
   {
@@ -27,7 +27,7 @@ const FormSchema = new Schema(
   }
 );
 
-export type FormDocument = Form & Document;
+export interface FormDocument extends Omit<FormEntity, "_id">, Document {};
 
 export default (models.Form as Model<FormDocument>) ||
   model<FormDocument>("Form", FormSchema, "forms");
