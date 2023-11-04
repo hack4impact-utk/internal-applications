@@ -1,37 +1,52 @@
-import dbConnect from "@/utils/db-connect";
-import { CreateFormSubmissionRequest, FormResponse, FormSchema, FormSubmission, FormSubmissionResponse, FormSubmissionSchema } from "@hack4impact-utk/internal-models";
-import { getFormById } from "./forms";
+import dbConnect from '@/utils/db-connect';
+import {
+  CreateFormSubmissionRequest,
+  FormEntity,
+  FormResponse,
+  FormSchema,
+  FormSubmissionEntity,
+  FormSubmissionResponse,
+  FormSubmissionSchema,
+} from '@hack4impact-utk/internal-models';
+import { getFormById, getFormEntityById } from './forms';
 
+export async function createFormSubmission(
+  formId: string,
+  formSubmission: CreateFormSubmissionRequest
+): Promise<FormSubmissionEntity | null> {
+  await dbConnect();
 
-export async function createFormSubmission(formId: string, formSubmission: CreateFormSubmissionRequest) {
-    await dbConnect()
+  const form: FormEntity | null = await getFormEntityById(formId);
 
-    const createdFormSubmission: FormSubmission = await FormSubmissionSchema.create(formSubmission)
-
-    const castedFormSubmission = createdFormSubmission as FormSubmissionResponse
-
-  const form: FormResponse | null = await getFormById(formId);
-
-  const formSubmissionId = castedFormSubmission._id
-
-  const existingSubmissionIds = form?.submissions.map((q) => q._id);
-
-  if (form != null) {
-    const res: FormResponse | null = await FormSchema.findByIdAndUpdate(
-      { _id: formId },
-      { submissions: existingSubmissionIds?.concat(formSubmissionId) }
-    );
-    return castedFormSubmission;
+  if (!form) {
+    return null;
   }
-  return null;
+
+  const createdFormSubmission: FormSubmissionEntity =
+    await FormSubmissionSchema.create(formSubmission);
+
+  const submissionIds = form.submissions.concat(createdFormSubmission._id);
+
+  const response = await FormSchema.findByIdAndUpdate(formId, {
+    submissions: submissionIds,
+  });
+
+  if (!response) {
+    FormSubmissionSchema.findByIdAndDelete(createdFormSubmission._id);
+    return null;
+  }
+
+  return createdFormSubmission;
 }
 
-export async function getFormSubmissions(formId: string): Promise<FormSubmission[] | null> {
-    const formResponse: FormResponse | null = await getFormById(formId);
+export async function getFormSubmissions(
+  formId: string
+): Promise<FormSubmissionResponse[] | null> {
+  const formResponse: FormResponse | null = await getFormById(formId);
 
-    if (!formResponse) {
-        return null;
-    }
+  if (!formResponse) {
+    return null;
+  }
 
-    return formResponse.submissions
+  return formResponse.submissions;
 }
