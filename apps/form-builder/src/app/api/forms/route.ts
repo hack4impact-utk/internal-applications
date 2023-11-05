@@ -6,15 +6,15 @@ export async function POST (request: NextRequest) {
 
     
     const requestBody = await request.json();
-    const variable = zCreateFormRequest.safeParse(requestBody);
-    if (variable.success) {
+    const validationResult = zCreateFormRequest.safeParse(requestBody);
+    if (validationResult.success) {
         const form = await createForm(requestBody);
         
         
         return NextResponse.json({_id:form._id}, {status: 201})
     }
     else {
-        return NextResponse.json({}, {status: 400})
+        return NextResponse.json({message: "Input was not in correct format"}, {status: 400})
     }
 
 
