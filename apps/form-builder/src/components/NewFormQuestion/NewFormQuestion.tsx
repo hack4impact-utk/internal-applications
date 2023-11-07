@@ -4,7 +4,7 @@ import { Button, Checkbox, FormControl, FormControlLabel, FormLabel, Radio, Radi
 export default function NewFormQuestion() {
     return (
         <div style={{display: 'flex', flexDirection: 'column'}}>
-            <TextField 
+            <TextField
                 id="formId" 
                 label="Form ID" 
                 required
