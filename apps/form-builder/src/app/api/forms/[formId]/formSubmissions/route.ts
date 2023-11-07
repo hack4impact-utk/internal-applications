@@ -7,7 +7,7 @@ export async function GET (_request: NextRequest, { params }: { params: { formId
     // if formId is valid, get form submissions and return them with status code 200, if formSubmissions is null return status code 404 with error message
     if(zObjectId.safeParse(params.formId).success) {
         const formSubmissions = await getFormSubmissions(params.formId)
-        if (formSubmissions == null)
+        if (formSubmissions === null)
             return NextResponse.json({message: "form not found"}, {status: 404})
         return NextResponse.json(formSubmissions, { status: 200 })
     }
