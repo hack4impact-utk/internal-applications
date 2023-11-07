@@ -14,7 +14,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "@hack4impact-utk/internal-models": "^1.0.29"
+=======
+    "@hack4impact-utk/internal-models": "^1.0.28"
+>>>>>>> a3c128f31b514ab4191bef32d3b58bf07efbb878
   },
   "devDependencies": {
     "nx": "17.0.1"
