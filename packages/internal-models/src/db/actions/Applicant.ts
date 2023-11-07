@@ -9,4 +9,6 @@ export async function getApplicantById(id: string) {
   }
 }
 
-
+export async function deleteApplicant(id: string) {
+  await ApplicantSchema.findByIdAndDelete(id);
+}
