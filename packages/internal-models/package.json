@@ -3,11 +3,9 @@
   "version": "1.0.29",
   "description": "",
   "files": [
-    "dist/*"
+    "src/*"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
   "private": false,
   "type": "module",
   "scripts": {
