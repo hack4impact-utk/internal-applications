@@ -1,5 +1,5 @@
 import {
-  Applicant,
+  ApplicantEntity,
   applicantDecisions,
   applicantStatuses,
 } from '@/types/applicant';
@@ -78,9 +78,13 @@ const ApplicantSchema = new Schema({
     ref: 'FormSubmission',
     required: false,
   },
+  statusUpdatedAt: {
+    type: Date,
+    required: false,
+  },
 });
 
-export type ApplicantDocument = Omit<Applicant, '_id'> & Document;
+export type ApplicantDocument = Omit<ApplicantEntity, '_id'> & Document;
 
 export default (models.Applicant as Model<ApplicantDocument>) ||
   model<ApplicantDocument>('Applicant', ApplicantSchema);
