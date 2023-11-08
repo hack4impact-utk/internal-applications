@@ -1,14 +1,16 @@
 import dbConnect from '@/utils/db-connect';
 import {
-  CreateFormQuestionRequest,
-  FormQuestion,
-  FormQuestionResponse,
   FormQuestionSchema,
-  FormResponse,
   FormSchema,
   FormSubmissionSchema,
-} from '@hack4impact-utk/internal-models';
+} from '@shared/db/models';
 import { getFormById } from './forms';
+import {
+  CreateFormQuestionRequest,
+  FormResponse,
+  FormQuestion,
+  FormQuestionResponse,
+} from '@shared/types';
 
 export async function createFormQuestions(
   formId: string,
