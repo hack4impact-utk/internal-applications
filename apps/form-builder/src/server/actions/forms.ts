@@ -8,12 +8,12 @@ import {
   FormSubmissionSchema,
 } from '@hack4impact-utk/internal-models';
 
-export async function createForm(form: CreateFormRequest): Promise<Form> {
+export async function createForm(form: CreateFormRequest): Promise<FormResponse> {
   await dbConnect();
 
   const response: Form = await FormSchema.create(form);
 
-  return response;
+  return response as FormResponse;
 }
 
 export async function getAllForms(): Promise<FormResponse[]> {
