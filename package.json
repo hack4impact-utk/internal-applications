@@ -8,29 +8,17 @@
     "ats-dev": "nx dev applicant-tracking",
     "mp-dev": "nx dev member-portal",
     "ap-dev": "nx dev admin-portal",
-    "fb-dev": "nx dev form-builder"
+    "fb-dev": "nx dev form-builder",
+    "preinstall": "nx build @hack4impact-utk/internal-models"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-<<<<<<< HEAD:.vscode/package.json
-<<<<<<< HEAD
-    "@hack4impact-utk/internal-models": "^1.0.29"
-=======
-    "@hack4impact-utk/internal-models": "^1.0.28"
->>>>>>> a3c128f31b514ab4191bef32d3b58bf07efbb878
-=======
-    "@hack4impact-utk/internal-models": "^1.0.29"
->>>>>>> a2dcec3920b4fc606b0eed5af77e2d1880986226:package.json
-  },
   "devDependencies": {
     "nx": "17.0.1"
   },
-  "nx": {
-    "targets": {}
-  },
   "workspaces": [
-    "apps/**"
+    "apps/*",
+    "packages/*"
   ]
 }

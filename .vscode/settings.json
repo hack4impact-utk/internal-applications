@@ -1,12 +1,14 @@
 {
-    "prettier.endOfLine": "lf",
-    "files.exclude": {
-      "**/.git": true,
-      "**/.svn": true,
-      "**/.hg": true,
-      "**/CVS": true,
-      "**/.DS_Store": true,
-      "**/Thumbs.db": true,
-      "**/.keep": true
-    }
-  }
+  "editor.formatOnSave": true,
+  "prettier.endOfLine": "lf",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.keep": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
