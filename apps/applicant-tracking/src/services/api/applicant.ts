@@ -1,4 +1,4 @@
-import urls from "@/utils/constants/urls";
+import { urls } from "@/utils/constants";
 import ValidationError from "@/utils/errors/validation-error";
 import { zApplicantResponse } from "@hack4impact-utk/internal-models";
 
