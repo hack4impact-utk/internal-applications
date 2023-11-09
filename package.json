@@ -13,16 +13,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@hack4impact-utk/internal-models": "^1.0.29"
-  },
   "devDependencies": {
     "nx": "17.0.1"
   },
-  "nx": {
-    "targets": {}
-  },
   "workspaces": [
-    "apps/**"
+    "apps/*",
+    "packages/*"
   ]
 }
