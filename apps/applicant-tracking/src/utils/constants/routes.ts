@@ -1,13 +1,6 @@
+import React from "react";
+import urls from "./urls";
 import { DashboardOutlined, Groups3Outlined } from '@mui/icons-material';
-
-export const LOGO_URL = '/logo.svg';
-
-const urls = {
-  pages: {
-    dashboard: '/',
-    applicants: '/applicants',
-  },
-} as const;
 
 type AtsPageUrl = (typeof urls)['pages'][keyof (typeof urls)['pages']];
 
@@ -19,13 +12,13 @@ type AtsRoute = {
 
 export const routes: Readonly<AtsRoute[]> = [
   {
-    icon: <DashboardOutlined />,
+    icon: React.createElement(DashboardOutlined, {}, null),
     text: 'Dashboard',
-    route: '/',
+    route: urls.pages.dashboard,
   },
   {
-    icon: <Groups3Outlined />,
+    icon: React.createElement(Groups3Outlined, {}, null),
     text: 'Applicants',
-    route: '/applicants',
+    route: urls.pages.applicants,
   },
 ] as const;
