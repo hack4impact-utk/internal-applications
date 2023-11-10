@@ -1,6 +1,10 @@
-import React from "react";
-import urls from "./urls";
-import { DashboardOutlined, Groups3Outlined } from '@mui/icons-material';
+import React from 'react';
+import urls from './urls';
+import {
+  DashboardOutlined,
+  Groups3Outlined,
+  SettingsOutlined,
+} from '@mui/icons-material';
 
 type AtsPageUrl = (typeof urls)['pages'][keyof (typeof urls)['pages']];
 
@@ -20,5 +24,10 @@ export const routes: Readonly<AtsRoute[]> = [
     icon: React.createElement(Groups3Outlined, {}, null),
     text: 'Applicants',
     route: urls.pages.applicants,
+  },
+  {
+    icon: React.createElement(SettingsOutlined, {}, null),
+    text: 'Settings',
+    route: urls.pages.settings,
   },
 ] as const;

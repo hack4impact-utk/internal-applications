@@ -1,5 +1,7 @@
-import ApplicantApiService from "./api/applicant";
-import { CalendlyApiService } from "./api/calendly";
+import ApplicantApiService from './api/applicant';
+import CalendlyIntegrationApiService from './api/calendly-integration';
 
-export const ApplicantService = new ApplicantApiService()
-export const CalendlyService = new CalendlyApiService(process.env.CALENDLY_PAT)
+const ApplicantService = new ApplicantApiService();
+const CalendlyIntegrationService = new CalendlyIntegrationApiService();
+
+export default { ApplicantService, CalendlyIntegrationService };

@@ -26,5 +26,9 @@
     // "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*",
+    "../../apps/applicant-tracking/src/types/calendly-integration.ts",
+    "../../apps/applicant-tracking/src/server/CalendlyIntegration.ts"
+  ]
 }

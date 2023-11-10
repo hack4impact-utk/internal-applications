@@ -1,6 +1,6 @@
-import { urls } from "@/utils/constants";
-import ValidationError from "@/utils/errors/validation-error";
-import { zApplicantResponse } from "@hack4impact-utk/internal-models";
+import { urls } from '@/utils/constants';
+import ValidationError from '@/utils/errors/validation-error';
+import { zApplicantResponse } from '@hack4impact-utk/internal-models';
 
 class ApplicantApiService {
   async get(id: string) {
@@ -12,8 +12,8 @@ class ApplicantApiService {
       return validationResult.data;
     }
 
-    throw new ValidationError("ApplicantService.get")
+    throw new ValidationError('ApplicantService.get');
   }
 }
 
-export default ApplicantApiService
+export default ApplicantApiService;
