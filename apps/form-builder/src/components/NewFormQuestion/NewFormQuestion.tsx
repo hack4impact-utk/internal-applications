@@ -12,7 +12,7 @@ export default function NewFormQuestion() {
             <TextField 
                 id="title" 
                 label="Title" 
-                required
+                required 
             /> 
             <TextField 
                 id="description" 
