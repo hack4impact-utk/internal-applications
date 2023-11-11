@@ -8,21 +8,17 @@
     "ats-dev": "nx dev applicant-tracking",
     "mp-dev": "nx dev member-portal",
     "ap-dev": "nx dev admin-portal",
-    "fb-dev": "nx dev form-builder"
+    "fb-dev": "nx dev form-builder",
+    "preinstall": "nx build @hack4impact-utk/internal-models"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@hack4impact-utk/internal-models": "^1.0.28"
-  },
   "devDependencies": {
     "nx": "17.0.1"
   },
-  "nx": {
-    "targets": {}
-  },
   "workspaces": [
-    "apps/**"
+    "apps/*",
+    "packages/*"
   ]
 }
