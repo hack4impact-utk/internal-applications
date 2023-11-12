@@ -10,12 +10,14 @@ interface ListProps {
 
 export default function NavigationDrawerItem({ text, route }: ListProps) {
    return (
-      <ListItemButton component={Link} href={route} >
-        <ListItemText
-          primary={text}
-          primaryTypographyProps={{ variant: 'body1' }}
-        /> 
+      <ListItemButton 
+         component={Link} 
+         href={route} 
+      >
+         <ListItemText
+           primary={text}
+           primaryTypographyProps={{ variant: 'body1' }}
+         /> 
       </ListItemButton>
    );
-
 }
