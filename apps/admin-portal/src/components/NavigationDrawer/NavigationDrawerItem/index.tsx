@@ -8,6 +8,7 @@ interface ListProps {
    route: string;
 }
 
+// Navigation Drawer Item function
 export default function NavigationDrawerItem({ text, route }: ListProps) {
    return (
       <ListItemButton
