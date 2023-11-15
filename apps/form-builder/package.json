@@ -12,7 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@hack4impact-utk/internal-models": "^1.0.28",
+    "@hack4impact-utk/internal-models": "file:../../packages/internal-models",
     "@mui/material": "^5.14.6",
     "mongoose": "^7.4.5",
     "next": "13.4.19",
@@ -35,5 +35,30 @@
     "jest": "^29.6.4",
     "jest-environment-jsdom": "^29.6.4",
     "typescript": "5.2.2"
+  },
+  "nx": {
+    "targets": {
+      "dev": {
+        "dependsOn": [
+          {
+            "dependencies": "true",
+            "target": "build",
+            "params": "ignore"
+          }
+        ]
+      },
+      "build": {
+        "outputs": [
+          "{projectRoot}/dist"
+        ],
+        "dependsOn": [
+          {
+            "dependencies": "true",
+            "target": "build",
+            "params": "ignore"
+          }
+        ]
+      }
+    }
   }
 }
