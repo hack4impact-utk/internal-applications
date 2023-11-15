@@ -5,7 +5,6 @@ export async function DELETE  (
     _request: NextRequest,
     { params }: { params: { formId: string, formQuestionId: string } }) 
     {
-        console.log("HERE!")
         const formId = params.formId
         const formQuestionId = params.formQuestionId
 
