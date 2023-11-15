@@ -17,3 +17,13 @@ export async function getApplicants() {
 export async function deleteApplicant(id: string) {
   await ApplicantSchema.findByIdAndDelete(id);
 }
+
+export async function updateApplicantInterviewInfo(id: string, time: Date, link: string) {
+  
+  // update database
+  const applicant = await ApplicantSchema.findOneAndUpdate({ _id: id }, { interviewTime: time, interviewMeetingLink: link }, { new: true })
+  
+  // return  newly updated applicant
+  return applicant;
+
+}
