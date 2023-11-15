@@ -36,7 +36,7 @@ export async function GET(
   const validationResult = zObjectId.safeParse(applicantId);
 
   if (!validationResult.success) {
-    return new Response('Invalid applicant ID', { status: 400 });
+    return new NextResponse('Invalid applicant ID', { status: 400 });
   }
 
   const applicant = await getApplicantById(applicantId);
