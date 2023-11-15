@@ -42,7 +42,7 @@ export async function getFormById(id: string): Promise<FormResponse | null> {
   return form;
 }
 
-export async function deleteForm(formId: string): Promise<void> {
+export async function deleteForm(formId: string): Promise<Form | null> {
   await dbConnect()
 
   const form: Form | null = await FormSchema.findByIdAndDelete(formId)
@@ -54,4 +54,6 @@ export async function deleteForm(formId: string): Promise<void> {
   await FormSubmissionSchema.deleteMany({
     _id: { $in: form?.submissions }
   })
+
+  return form
 }
