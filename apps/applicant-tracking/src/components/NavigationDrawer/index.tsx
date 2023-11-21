@@ -6,6 +6,8 @@ import { Box } from '@mui/system';
 import NavigationDrawerItem from './NavigationDrawerItem';
 import { LOGO_URL, routes } from '@/utils/constants';
 
+
+
 export default function NavigationDrawer() {
   // Params for the Drawer
   const drawerWidth = 280;
@@ -57,3 +59,4 @@ export default function NavigationDrawer() {
     </Drawer>
   );
 }
+
