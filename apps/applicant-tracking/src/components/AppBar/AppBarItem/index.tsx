@@ -1,8 +1,7 @@
-import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
+import { Container } from '@mui/material';
 
 //AppBar design
 
@@ -10,20 +9,22 @@ export default function HeaderAppBar() {
   return (
     <AppBar
       position="static"
-      color="transparent"
-      sx={{ background: 'transparent' }}
+      sx={{
+        display: 'flex',
+        background: 'transparent',
+      }}
     >
-      <Toolbar>
+      {/* keeps avatar in the right most corner */}
+      <Container maxWidth="xl">
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'flex-end',
-            width: '100%',
+            flexDirection: 'row-reverse',
           }}
         >
           <Avatar />
         </Box>
-      </Toolbar>
+      </Container>
     </AppBar>
   );
 }
