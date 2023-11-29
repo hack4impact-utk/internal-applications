@@ -41,7 +41,7 @@ export default function HeaderBar() {
   };
 
   return (
-    <AppBar position="absolute" color="transparent">
+    <AppBar position="fixed" color="transparent">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
