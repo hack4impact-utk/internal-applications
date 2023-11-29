@@ -17,7 +17,7 @@ export default function Member(params: memberParams) {
     <Box
       sx={{
         border: 'solid',
-        maxWidth: 400,
+        maxWidth: 350,
         textAlign: 'center',
         backgroundColor: 'PaleTurquoise',
       }}
