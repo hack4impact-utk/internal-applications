@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 
-interface memberParams {
+interface memberProps {
   email: string;
   name: string;
   project: string;
@@ -12,27 +12,28 @@ interface memberParams {
   linkedin: string;
 }
 
-export default function Member(params: memberParams) {
+export default function Member(memberInfo: memberProps) {
   return (
     <Box
       sx={{
         border: 'solid',
-        maxWidth: 350,
-        textAlign: 'center',
+        width: 500,
+        textAlign: 'left',
+        padding: 2,
         backgroundColor: 'PaleTurquoise',
       }}
     >
-      <Typography variant="h5" fontFamily={'arial'}>
-        Name: {params.name} <br />
-        Email: {params.email} <br />
-        Project: {params.project} <br />
-        Grad Class: {params.gradClass} <br />
-        {params.pronouns ? 'Pronouns: ' + params.pronouns : ''}
-        {params.pronouns ? <br /> : ''}
-        Major: {params.major} <br />
-        Role: {params.role} <br />
-        Github: {params.github} <br />
-        LinkedIn:{params.linkedin}
+      <Typography variant="h5" fontFamily={'Verdana'} width={500}>
+        <b>Name: {memberInfo.name}</b> <br />
+        {memberInfo.pronouns ? 'Pronouns: ' + memberInfo.pronouns : ''}
+        {memberInfo.pronouns ? <br /> : ''}
+        Email: {memberInfo.email} <br />
+        Project: {memberInfo.project} <br />
+        Role: {memberInfo.role} <br />
+        Grad Class: {memberInfo.gradClass} <br />
+        Major: {memberInfo.major} <br />
+        Github: {memberInfo.github} <br />
+        LinkedIn: {memberInfo.linkedin}
       </Typography>
     </Box>
   );
