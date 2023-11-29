@@ -1,4 +1,21 @@
-import HeaderBar from '@/components/Appbar';
+import { Box, Typography } from '@mui/material';
+
 export default function Home() {
-  return <HeaderBar />;
+  return (
+    <>
+      <Box
+        sx={{
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Typography variant="h1" sx={{ color: 'black' }}>
+          Home Page
+        </Typography>
+      </Box>
+    </>
+  );
 }
