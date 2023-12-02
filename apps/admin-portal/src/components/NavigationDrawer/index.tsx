@@ -32,7 +32,7 @@ export default function NavigationDrawer() {
                   justifyContent: 'center'
                }}
             >
-               {/* What is being displayed */}
+               {/* What is being displayed, link to pages */}
                <NavigationDrawerItem text="Dashboard" route="/dashboard" />
                <NavigationDrawerItem text="Events" route="/event" />
                <NavigationDrawerItem text="Members" route="/member" />
