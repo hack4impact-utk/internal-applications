@@ -33,9 +33,10 @@ export default function NavigationDrawer() {
                }}
             >
                {/* What is being displayed */}
-               <NavigationDrawerItem text="Inbox" route="/inbox" />
                <NavigationDrawerItem text="Dashboard" route="/dashboard" />
-               <NavigationDrawerItem text="Categories" route="/categories" />
+               <NavigationDrawerItem text="Events" route="/event" />
+               <NavigationDrawerItem text="Members" route="/member" />
+               <NavigationDrawerItem text="Projects" route="/project" />
             </Box>
          </Box>
       </Drawer>
