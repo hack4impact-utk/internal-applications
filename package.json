@@ -19,6 +19,8 @@
     "packages/*"
   ],
   "dependencies": {
+    "@mui/x-date-pickers": "^6.18.2",
+    "moment": "^2.29.4",
     "nx": "^17.1.3"
   }
 }
