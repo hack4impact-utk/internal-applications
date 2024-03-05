@@ -14,9 +14,11 @@ export default function NumericQuestionAnalytics({
   responses,
 }: Props) {
   const { mean, median, mode } = useMemo(() => {
-    let mean: number | undefined = undefined, median: number | undefined = undefined, mode: number[] = [];
+    let mean: number; 
+    let median: number; 
+    let mode: number[] = [];
     const numbers: number[] = []; 
-    let total = 0, occurrences: number[] = [], maxOccur = 0; 
+    let total = 0, occurrences: number[] = [], maxOccur = 2; 
 
     for (const response of responses) {
       for (const questionResponse of response.questionResponses) {
@@ -41,12 +43,13 @@ export default function NumericQuestionAnalytics({
       median = Math.round((numbers[numbers.length/2 - 1] + numbers[numbers.length/2])/2 * 100) / 100; 
     }
 
-    occurrences.forEach(num => {
-      if(occurrences[num] > maxOccur){
-        mode = [num]; 
-        maxOccur = occurrences[num]; 
-      } else if(occurrences[num] == maxOccur){
-        mode.push(num); 
+    occurrences.forEach((num, i) => {
+      if(occurrences[i] > maxOccur){
+        console.log(num, i); 
+        mode = [i]; 
+        maxOccur = occurrences[i]; 
+      } else if(occurrences[i] == maxOccur){
+        mode.push(i); 
       }
     })
 
@@ -66,7 +69,7 @@ export default function NumericQuestionAnalytics({
         <ListItemText>Median: {median}</ListItemText>
       </ListItem>
       <ListItem>
-        <ListItemText>Mode: {mode}</ListItemText>
+        <ListItemText>Mode: {mode.length ? mode.join(", ") : "None"}</ListItemText>
       </ListItem>
     </List>
   );
