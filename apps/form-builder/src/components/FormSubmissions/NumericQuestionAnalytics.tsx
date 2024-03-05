@@ -18,7 +18,8 @@ export default function NumericQuestionAnalytics({
     let median: number; 
     let mode: number[] = [];
     const numbers: number[] = []; 
-    let total = 0, occurrences: number[] = [], maxOccur = 2; 
+    let total = 0; 
+    let occurrences: number[] = [], maxOccur = 2; 
 
     for (const response of responses) {
       for (const questionResponse of response.questionResponses) {
