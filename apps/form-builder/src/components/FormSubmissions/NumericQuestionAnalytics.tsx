@@ -19,8 +19,10 @@ export default function NumericQuestionAnalytics({
     let mode: number[] = [];
     const numbers: number[] = []; 
     let total = 0; 
-    let occurrences: number[] = [], maxOccur = 2; 
+    let occurrences: number[] = []; 
+    let maxOccur = 2; 
 
+    // total up responses and make array of occurences for each response
     for (const response of responses) {
       for (const questionResponse of response.questionResponses) {
         if (typeof questionResponse.answer !== 'number') {
@@ -35,15 +37,18 @@ export default function NumericQuestionAnalytics({
       }
     }
 
+    // calculate mean
     mean = Math.round(total / numbers.length * 100) / 100; 
-
+    
+    // calculate median
     numbers.sort; 
-    if(numbers.length%2 !== 0){
+    if(numbers.length % 2 !== 0){
       median = Math.round(numbers[Math.floor(numbers.length/2)] * 100) / 100; 
     } else{
       median = Math.round((numbers[numbers.length/2 - 1] + numbers[numbers.length/2])/2 * 100) / 100; 
     }
 
+    // calculate mode
     occurrences.forEach((num, i) => {
       if(occurrences[i] > maxOccur){
         console.log(num, i); 
