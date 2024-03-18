@@ -8,7 +8,9 @@ import {
   FormSubmissionSchema,
 } from '@hack4impact-utk/internal-models';
 
-export async function createForm(form: CreateFormRequest): Promise<FormResponse> {
+export async function createForm(
+  form: CreateFormRequest
+): Promise<FormResponse> {
   await dbConnect();
 
   const response: Form = await FormSchema.create(form);
@@ -43,17 +45,17 @@ export async function getFormById(id: string): Promise<FormResponse | null> {
 }
 
 export async function deleteForm(formId: string): Promise<Form | null> {
-  await dbConnect()
+  await dbConnect();
 
-  const form: Form | null = await FormSchema.findByIdAndDelete(formId)
+  const form: Form | null = await FormSchema.findByIdAndDelete(formId);
 
   await FormQuestionSchema.deleteMany({
-    _id: { $in: form?.questions }
-  })
+    _id: { $in: form?.questions },
+  });
 
   await FormSubmissionSchema.deleteMany({
-    _id: { $in: form?.submissions }
-  })
+    _id: { $in: form?.submissions },
+  });
 
-  return form
+  return form;
 }
