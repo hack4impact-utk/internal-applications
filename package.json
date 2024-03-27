@@ -20,5 +20,11 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@hack4impact-utk/internal-models": "^1.1.0",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+    "@mui/x-data-grid": "^6.18.2",
+    "styled-components": "^6.1.8"
+  }
 }
