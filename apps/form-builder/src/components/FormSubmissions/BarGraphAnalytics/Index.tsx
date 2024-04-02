@@ -14,7 +14,7 @@ interface Props {
 
 export default function BarGraphAnalytics({ choices, answers }: Props) {
   // Initialize an object to store the counts of each choice, including "Other"
-  const choiceCounts: { [property: string]: number } = { Other: 0 };
+  const choiceCounts: any = { Other: 0 };
 
   // Loop through each choice, create a key for it in the object, and initialize its count to 0
   choices.forEach((choice) => {

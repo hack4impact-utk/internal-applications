@@ -1,5 +1,3 @@
-import BarGraphAnalytics from "@/components/FormSubmissions/BarGraphAnalytics";
-
 export default function Home() {
-  return <BarGraphAnalytics choices={[]} answers={[]}/>;
+  return <h1>Home Page</h1>;
 }
