@@ -13,42 +13,16 @@ interface Props {
 }
 
 export default function BarGraphAnalytics({ choices, answers }: Props) {
-  // Hard-coded sample choices and answers for testing
-  //   Strawberry and Watermelon are not choices and should be displayed in others
-  const sampleChoices = [
-    'Apple',
-    'Banana',
-    'Orange',
-    'Grapes',
-    'Mango',
-    'Pineapple',
-  ];
-  const sampleAnswers = [
-    ['Apple', 'Banana', 'Orange', 'Grapes'],
-    ['Banana', 'Orange', 'Grapes'],
-    ['Orange', 'Grapes'],
-    ['Grapes'],
-    ['Mango', 'Pineapple', 'Strawberry'],
-    ['Pineapple', 'Strawberry'],
-    ['Strawberry'],
-    ['Watermelon'],
-    ['Apple', 'Mango', 'Pineapple', 'Watermelon'],
-    ['Banana', 'Orange', 'Strawberry', 'Watermelon'],
-    ['Grapes', 'Mango', 'Pineapple', 'Strawberry', 'Watermelon'],
-    // Uncomment to demonstrate scrollable list functionality
-    // ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-  ];
-
   // Initialize an object to store the counts of each choice, including "Other"
   const choiceCounts: { [property: string]: number } = { Other: 0 };
 
   // Loop through each choice, create a key for it in the object, and initialize its count to 0
-  sampleChoices.forEach((choice) => {
+  choices.forEach((choice) => {
     choiceCounts[choice] = 0;
   });
 
   // Loop through each answer and count the occurrences of each choice
-  sampleAnswers.forEach((answerSet) => {
+  answers.forEach((answerSet) => {
     answerSet.forEach((answer) => {
       // Check if the answer is one of the choices
       if (choiceCounts.hasOwnProperty(answer)) {
@@ -61,12 +35,12 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
   });
 
   // Extract the counts to an array to use as data for the BarChart, including the count for "Other"
-  const data = sampleChoices.map((choice) => choiceCounts[choice]);
+  const data = choices.map((choice) => choiceCounts[choice]);
 
   // Extract items from answers that are not present in choices
-  const itemsToDisplay = sampleAnswers.reduce((accumulator, currentValue) => {
+  const itemsToDisplay = answers.reduce((accumulator, currentValue) => {
     currentValue.forEach((answer) => {
-      if (!sampleChoices.includes(answer) && !accumulator.includes(answer)) {
+      if (!choices.includes(answer) && !accumulator.includes(answer)) {
         accumulator.push(answer);
       }
     });
@@ -97,7 +71,7 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
     >
       <BarChart
         xAxis={[
-          { scaleType: 'band', data: [...sampleChoices, 'Other'] }, // Include "Other" in the x-axis data
+          { scaleType: 'band', data: [...choices, 'Other'] }, // Include "Other" in the x-axis data
         ]}
         series={[{ data: [...data, choiceCounts['Other']] }]} // Include the count for "Other" in the series data
         width={500}
