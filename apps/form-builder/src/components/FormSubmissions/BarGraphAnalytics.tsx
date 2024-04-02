@@ -14,6 +14,7 @@ interface Props {
 
 export default function BarGraphAnalytics({ choices, answers }: Props) {
   // Hard-coded sample choices and answers for testing
+  //   Strawberry and Watermelon are not choices and should be displayed in others
   const sampleChoices = [
     'Apple',
     'Banana',
@@ -22,7 +23,6 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
     'Mango',
     'Pineapple',
   ];
-  // Strawberry and Watermelon are not choices and should be displayed in others
   const sampleAnswers = [
     ['Apple', 'Banana', 'Orange', 'Grapes'],
     ['Banana', 'Orange', 'Grapes'],
@@ -35,6 +35,8 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
     ['Apple', 'Mango', 'Pineapple', 'Watermelon'],
     ['Banana', 'Orange', 'Strawberry', 'Watermelon'],
     ['Grapes', 'Mango', 'Pineapple', 'Strawberry', 'Watermelon'],
+    // Uncomment to demonstrate scrollable list functionality
+    // ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
   ];
 
   // Initialize an object to store the counts of each choice, including "Other"
