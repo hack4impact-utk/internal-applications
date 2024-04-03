@@ -1,3 +1,3 @@
 export default async function NewFormPage() {
-    return <h1>New form page</h1>
+  return <h1>New form page</h1>;
 }
