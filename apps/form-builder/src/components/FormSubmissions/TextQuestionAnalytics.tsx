@@ -20,6 +20,7 @@ export default function TextQuestionAnalytics({ question, responses }: Props) {
   //gets the specific submission to a question from each response from a single form
   function getSubmission() {
     let array = [];
+    //for a given form, the findIndex function will find the specific question from the list of questionResponses
     for (let i = 0; i < responses.length; i++) {
       let num = responses[i].questionResponses.findIndex(
         (element) => element.question._id.toString() === question._id.toString()
