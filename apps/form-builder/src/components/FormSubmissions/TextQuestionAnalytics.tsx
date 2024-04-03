@@ -9,12 +9,15 @@ import ListItemContent from '@mui/joy/ListItemContent';
 import ListItemButton from '@mui/joy/ListItemButton';
 import Sheet from '@mui/joy/sheet';
 
+//Takes in the question and response as props
 interface Props {
   question: FormQuestionResponse;
   responses: FormSubmissionResponse[];
 }
 
+//function that displays the list
 export default function TextQuestionAnalytics({ question, responses }: Props) {
+  //gets the specific submission to a question from each response from a single form
   function getSubmission() {
     let array = [];
     for (let i = 0; i < responses.length; i++) {
@@ -26,6 +29,7 @@ export default function TextQuestionAnalytics({ question, responses }: Props) {
     return array;
   }
 
+  //displays the submissions in a list format
   return (
     <Sheet
       variant="outlined"
