@@ -1,36 +1,31 @@
-import { getFormById } from "@/server/actions/forms";
+import { getFormById } from '@/server/actions/forms';
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import FormTabs from '@/components/FormTabs';
 
-export default async function FormPage({ params }: { params: { formId: string } }) {
-  const form = await getFormById(params.formId);
+export default async function FormPage({
+  params,
+}: {
+  params: { formId: string };
+}) {
+  const form = await getFormById("656ea21e70fac31f8c4aab54");
 
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+  if (form === null) {
+    return;
+  }
 
   return (
     <div>
       <p>Title: {form.title}</p>
-      
-      <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Submissions" />
-            <Tab label="Analytics" />
-            <Tab label="Questions" />
-            <Tab label="Settings" />
-          </Tabs>
-        </Box>
-      </Box>
-      //put in top right
-      <Button variant="outlined">get link</Button>
+      <p>Description: {form.description}</p>
+      <p>Responder Type: {form.responderType}</p>
+      <p>Anonymous: {form.isAnonymous.toLocaleString()}</p>
+      <p>Created At: {form.createdAt.toLocaleString()}</p>
+      <p>Updated At: {form.updatedAt.toLocaleString()}</p>
+      <FormTabs></FormTabs>
     </div>
   );
 }
-
