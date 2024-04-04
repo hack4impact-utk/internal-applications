@@ -1,15 +1,16 @@
 'use client';
-import { Box, Tabs, Tab, Button } from "@mui/material"
-import React from "react";
+import { Box, Tabs, Tab, Button } from '@mui/material';
+import React from 'react';
 
 export default function FormTabs() {
-    const [value, setValue] = React.useState(0);
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-      setValue(newValue);
-    };
-  
-    return <>
-    <Box sx={{ width: '100%' }}>
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  return (
+    <>
+      <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs
             value={value}
@@ -29,5 +30,6 @@ export default function FormTabs() {
       >
         get link
       </Button>
-      </>
+    </>
+  );
 }
