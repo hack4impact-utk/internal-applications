@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
 export default function HeaderBar() {
-  const pages = ['Home'];
+  const pages = ['Home', 'Projects'];
   const settings = ['Account', 'Logout'];
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
