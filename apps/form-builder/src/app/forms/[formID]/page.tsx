@@ -19,14 +19,14 @@ export default async function FormPage({
 
   return (
     <div>
-      //display properties of a form
+      {/* display properties of a form */}
       <p>Title: {form.title}</p>
       <p>Description: {form.description}</p>
       <p>Responder Type: {form.responderType}</p>
       <p>Anonymous: {form.isAnonymous.toLocaleString()}</p>
       <p>Created At: {form.createdAt.toLocaleString()}</p>
       <p>Updated At: {form.updatedAt.toLocaleString()}</p>
-      //added tabs and a button
+      {/* //added tabs and a button */}
       <FormTabs></FormTabs>
     </div>
   );
