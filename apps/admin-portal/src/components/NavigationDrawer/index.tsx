@@ -1,18 +1,13 @@
-'use client';
 import React from 'react';
-// MUI //
+// MUI
 import Drawer from '@mui/material/Drawer';
 import { Box } from '@mui/system';
 import NavigationDrawerItem from './NavigationDrawerItem';
-import { LOGO_URL, routes } from '@/utils/constants';
-
-
 
 export default function NavigationDrawer() {
-  // Params for the Drawer
   const drawerWidth = 280;
 
-  // Drawer setup
+  // Setting up Drawer
   return (
     <Drawer
       variant="permanent"
@@ -31,32 +26,19 @@ export default function NavigationDrawer() {
         <Box
           sx={{
             display: 'flex',
+            flexDirection: 'column',
             px: 2,
+            pt: 2,
             justifyContent: 'center',
           }}
         >
-          <img
-            src={LOGO_URL}
-            alt="Hack4Impact UTK logo"
-            style={{
-              objectFit: 'contain',
-              width: '100%',
-            }}
-          />
+          {/* What is being displayed, link to pages */}
+          <NavigationDrawerItem text="Dashboard" route="/dashboard" />
+          <NavigationDrawerItem text="Events" route="/events" />
+          <NavigationDrawerItem text="Members" route="/members" />
+          <NavigationDrawerItem text="Projects" route="/projects" />
         </Box>
-        <br />
-        {routes.map((route) => {
-          return (
-            <NavigationDrawerItem
-              key={route.text}
-              text={route.text}
-              route={route.route}
-              icon={route.icon}
-            />
-          );
-        })}
       </Box>
     </Drawer>
   );
 }
-

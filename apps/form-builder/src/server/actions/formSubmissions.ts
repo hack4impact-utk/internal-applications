@@ -38,7 +38,7 @@ export async function createFormSubmission(
 
 export async function getFormSubmissions(
   formId: string
-): Promise<FormSubmissionResponse[] | null> {
+): Promise<FormSubmission[] | null> {
   const formResponse: FormResponse | null = await getFormById(formId);
 
   if (!formResponse) {
