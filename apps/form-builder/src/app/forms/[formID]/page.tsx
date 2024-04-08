@@ -11,7 +11,7 @@ export default async function FormPage({
 }: {
   params: { formId: string };
 }) {
-  const form = await getFormById('656ea21e70fac31f8c4aab54');
+  const form = await getFormById(params.formId);
 
   if (form === null) {
     return;
