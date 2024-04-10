@@ -1,9 +1,5 @@
 import { getFormById } from '@/server/actions/forms';
 import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import FormTabs from '@/components/FormTabs';
 
 export default async function FormPage({
