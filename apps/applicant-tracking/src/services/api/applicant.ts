@@ -1,8 +1,8 @@
-import { urls } from "@/utils/constants";
-import ValidationError from "@/utils/errors/validation-error";
-import { zApplicantResponse } from "@hack4impact-utk/internal-models";
-import { zDashboardListApplicantResponse } from "@hack4impact-utk/internal-models";
-import { z } from "zod";
+import { urls } from '@/utils/constants';
+import ValidationError from '@/utils/errors/validation-error';
+import { zApplicantResponse } from '@hack4impact-utk/internal-models';
+import { zDashboardListApplicantResponse } from '@hack4impact-utk/internal-models';
+import { z } from 'zod';
 
 class ApplicantApiService {
   async get(id: string) {
@@ -14,20 +14,37 @@ class ApplicantApiService {
       return validationResult.data;
     }
 
-    throw new ValidationError("ApplicantService.get")
+    throw new ValidationError('ApplicantService.get');
   }
 
-  async getAllActionable() {
-    const response = await fetch(urls.api.getAllActionableApplicants);
-    const data = await response.json();
+  // Get all applicants
+  async getAll() {
+    const response = await fetch(urls.api.getAllApplicants);
 
-    const validationResult = z.array(zDashboardListApplicantResponse).safeParse(data);
+    // Returning array of applicants
+    const data = await response.json();
+    const validationResult = z.array(zApplicantResponse).safeParse(data);
+
     if (validationResult.success) {
       return validationResult.data;
     }
 
-    throw new ValidationError("ApplicantService.getAllActionable")
+    // Returns the error
+    throw new ValidationError('ApplicantService.getAll');
+  }
+  async getAllActionable() {
+    const response = await fetch(urls.api.getAllActionableApplicants);
+    const data = await response.json();
+
+    const validationResult = z
+      .array(zDashboardListApplicantResponse)
+      .safeParse(data);
+    if (validationResult.success) {
+      return validationResult.data;
+    }
+
+    throw new ValidationError('ApplicantService.getAllActionable');
   }
 }
 
-export default ApplicantApiService
+export default ApplicantApiService;
