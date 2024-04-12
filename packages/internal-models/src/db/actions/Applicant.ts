@@ -1,5 +1,13 @@
 import ApplicantSchema from '@/db/models/Applicant';
-import { ApplicantStatus } from '@/types';
+import { ApplicantStatus, DashboardListApplicantResponse } from '@/types';
+
+export async function getApplicantsByStatus(statuses: ApplicantStatus[]) {
+  const applicants: DashboardListApplicantResponse[] =
+    await ApplicantSchema.find({
+      status: { $in: statuses },
+    }).select({ firstName: 1, lastName: 1, status: 1, statusUpdatedAt: 1 });
+  return applicants;
+}
 
 export async function getApplicantById(id: string) {
   try {
