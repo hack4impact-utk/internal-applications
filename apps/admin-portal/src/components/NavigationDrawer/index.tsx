@@ -1,16 +1,22 @@
+'use client';
+
 import React from 'react';
 // MUI
 import Drawer from '@mui/material/Drawer';
 import { Box } from '@mui/system';
 import NavigationDrawerItem from './NavigationDrawerItem';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 export default function NavigationDrawer() {
   const drawerWidth = 280;
+  const theme = useTheme();
+  const isNotMobile = useMediaQuery(theme.breakpoints.up('sm'));
 
   // Setting up Drawer
   return (
     <Drawer
-      variant="permanent"
+      variant={isNotMobile ? 'permanent' : 'temporary'}
+      open={isNotMobile}
       sx={{
         width: drawerWidth,
         flexShrink: 0,
@@ -20,7 +26,6 @@ export default function NavigationDrawer() {
           boxSizing: 'border-box',
         },
       }}
-      open={true}
     >
       <Box sx={{ width: drawerWidth }}>
         <Box
