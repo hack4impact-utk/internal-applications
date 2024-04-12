@@ -11,7 +11,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ display: 'flex' }}>
+      <body style={{ display: 'flex', padding: 0, margin: 0 }}>
         <NavigationDrawer />
         {children}
       </body>
