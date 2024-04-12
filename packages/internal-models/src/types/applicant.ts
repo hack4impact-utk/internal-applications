@@ -16,7 +16,7 @@ export type ApplicantStatus = z.infer<typeof zApplicantStatus>;
 export const applicantDecisions = [
   'Accepted',
   'Waitlisted',
-  'Rejected'
+  'Rejected',
 ] as const;
 export const zApplicantDecision = z.enum(applicantDecisions);
 export type ApplicantDecision = z.infer<typeof zApplicantDecision>;
@@ -26,16 +26,12 @@ const zApplicant = z.object({
   lastName: z.string(),
   netid: z.string(),
   term: zTerm,
-  referrer: z.string().optional(),
-  major: z.string(),
-  expectedGraduation: zTerm,
-  linkedinUrl: z.string().url().optional(),
   status: zApplicantStatus,
   interviewTime: z.date().optional(),
   interviewMeetingLink: z.string().url().optional(),
   noShowCount: z.number().optional(),
   decision: zApplicantDecision.optional(),
-  resumeUrl: z.string().url().optional(),
+  decisionReason: z.string().optional(),
   notes: z.string().optional(),
   application: zFormSubmission, // TODO: figure out verification
   evaluation: zFormSubmission.optional(),
