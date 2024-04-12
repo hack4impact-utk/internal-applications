@@ -8,7 +8,7 @@ import { Toolbar } from '@mui/material';
 export default function HeaderAppBar() {
   return (
     <AppBar
-      position="static"
+      position="relative"
       color="transparent"
       variant="outlined"
       elevation={0}
