@@ -1,10 +1,11 @@
 import ApplicantSchema from '@/db/models/Applicant';
-import { ApplicantStatus } from '@/types';
+import { ApplicantStatus, DashboardListApplicantResponse } from '@/types';
 
-export  async function getApplicantsByStatus(statuses: ApplicantStatus[]) {
-  const applicants = await ApplicantSchema.find({
-    'status': { $in: statuses }
-  }).select({ firstName: 1, lastName: 1, status: 1, statusUpdatedAt: 1 })
+export async function getApplicantsByStatus(statuses: ApplicantStatus[]) {
+  const applicants: DashboardListApplicantResponse[] =
+    await ApplicantSchema.find({
+      status: { $in: statuses },
+    }).select({ firstName: 1, lastName: 1, status: 1, statusUpdatedAt: 1 });
   return applicants;
 }
 
@@ -26,12 +27,33 @@ export async function deleteApplicant(id: string) {
   await ApplicantSchema.findByIdAndDelete(id);
 }
 
-export async function updateApplicantInterviewInfo(id: string, time: Date, link: string) {
-  
+export async function updateApplicantInterviewInfo(
+  id: string,
+  time: Date,
+  link: string
+) {
   // update database
-  const applicant = await ApplicantSchema.findOneAndUpdate({ _id: id }, { interviewTime: time, interviewMeetingLink: link }, { new: true })
-  
+  const applicant = await ApplicantSchema.findOneAndUpdate(
+    { _id: id },
+    { interviewTime: time, interviewMeetingLink: link },
+    { new: true }
+  );
+
   // return  newly updated applicant
   return applicant;
+}
 
+export async function updateApplicantStatus(
+  id: string,
+  status: ApplicantStatus
+) {
+  // update database
+  const applicant = await ApplicantSchema.findOneAndUpdate(
+    { _id: id },
+    { status: status, statusUpdatedAt: new Date() },
+    { new: true }
+  );
+
+  // return  newly updated applicant
+  return applicant;
 }
