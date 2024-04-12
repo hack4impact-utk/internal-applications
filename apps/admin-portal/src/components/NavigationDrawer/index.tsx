@@ -10,13 +10,13 @@ import { useMediaQuery, useTheme } from '@mui/material';
 export default function NavigationDrawer() {
   const drawerWidth = 280;
   const theme = useTheme();
-  const isNotMobile = useMediaQuery(theme.breakpoints.up('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   // Setting up Drawer
   return (
     <Drawer
-      variant={isNotMobile ? 'permanent' : 'temporary'}
-      open={isNotMobile}
+      variant={isMobile ? 'permanent' : 'temporary'}
+      open={isMobile}
       sx={{
         width: drawerWidth,
         flexShrink: 0,
