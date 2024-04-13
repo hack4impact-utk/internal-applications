@@ -1,6 +1,7 @@
 import { getFormById } from '@/server/actions/forms';
 import * as React from 'react';
 import FormTabs from '@/components/FormTabs';
+import IsParagraph from '@/components/TextOptions';
 
 export default async function FormPage({
   params,
