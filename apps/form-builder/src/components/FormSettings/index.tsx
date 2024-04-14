@@ -20,19 +20,16 @@ export default function FormSettings() {
   return (
     <div>
       {/* Select component */}
-      <FormControl sx={{ m: 1, minWidth: 100 }}>
-        <InputLabel id="select-label">None</InputLabel>
+      <FormControl sx={{ m: 1, minWidth: 170 }}>
+        <InputLabel id="select-label">Responder Type</InputLabel>
         <Select
           labelId="select-label"
           id="select"
           value={value}
           onChange={handleChange}
           autoWidth
-          label="Value"
+          label="Responder Type"
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
           <MenuItem value="Member">Member</MenuItem>
           <MenuItem value="Student">Student</MenuItem>
           <MenuItem value="Anyone">Anyone</MenuItem>
@@ -54,7 +51,11 @@ export default function FormSettings() {
         noValidate
         autoComplete="off"
       >
-        <TextField id="outlined-basic" label="Callback URL" variant="outlined" />
+        <TextField
+          id="outlined-basic"
+          label="Callback URL"
+          variant="outlined"
+        />
       </Box>
     </div>
   );
