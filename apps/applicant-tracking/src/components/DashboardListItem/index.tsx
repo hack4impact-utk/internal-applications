@@ -24,7 +24,7 @@ function ActionButton(status: string): JSX.Element {
           schedule interview
         </Button>
       );
-    //do something?
+
     case 'Scheduling Interview':
       return (
         <Button
@@ -53,9 +53,6 @@ function ActionButton(status: string): JSX.Element {
 }
 
 export default function DashboardListItem(props: DashboardListItemProps) {
-  /*how to show the applicant info without the quotes? How to render the caption in a different style?
-                                                                                such as the 'pending review' stuff. How to ensure that the button is in the correct place?*/
-
   const [today, setToday] = useState<Date | null>(null);
   useEffect(() => {
     setToday(new Date());
@@ -93,19 +90,14 @@ export default function DashboardListItem(props: DashboardListItemProps) {
             </span>
             <Chip label={props.applicant.status} />
           </div>
-        } //applicant name *where to display the applicant status?
+        }
         secondary={
           <span>
             <span style={{ color: dateColor }}>{formattedDate}</span>
           </span>
         }
       />
-      <ListItemSecondaryAction>
-        {
-          //how can I include the button in here
-          actionButton
-        }
-      </ListItemSecondaryAction>
+      <ListItemSecondaryAction>{actionButton}</ListItemSecondaryAction>
     </ListItem>
   );
 }
