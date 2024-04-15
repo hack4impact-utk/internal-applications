@@ -48,8 +48,6 @@ export async function getFormQuestions(
     return null;
   }
 
-  console.log(form.questions);
-
   return form.questions;
 }
 

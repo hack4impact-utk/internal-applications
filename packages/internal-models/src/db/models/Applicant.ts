@@ -1,5 +1,5 @@
 import {
-  Applicant,
+  ApplicantEntity,
   applicantDecisions,
   applicantStatuses,
 } from '@/types/applicant';
@@ -21,22 +21,6 @@ const ApplicantSchema = new Schema({
   term: {
     type: String,
     required: true,
-  },
-  referrer: {
-    type: String,
-    required: false,
-  },
-  major: {
-    type: String,
-    required: true,
-  },
-  expectedGraduation: {
-    type: String,
-    required: true,
-  },
-  linkedinUrl: {
-    type: String,
-    required: false,
   },
   status: {
     type: String,
@@ -60,7 +44,7 @@ const ApplicantSchema = new Schema({
     enum: applicantDecisions,
     required: false,
   },
-  resumeUrl: {
+  decisionReason: {
     type: String,
     required: false,
   },
@@ -78,9 +62,13 @@ const ApplicantSchema = new Schema({
     ref: 'FormSubmission',
     required: false,
   },
+  statusUpdatedAt: {
+    type: Date,
+    required: false,
+  },
 });
 
-export type ApplicantDocument = Omit<Applicant, '_id'> & Document;
+export type ApplicantDocument = Omit<ApplicantEntity, '_id'> & Document;
 
 export default (models.Applicant as Model<ApplicantDocument>) ||
   model<ApplicantDocument>('Applicant', ApplicantSchema);

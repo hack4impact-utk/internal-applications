@@ -1,5 +1,23 @@
 {
-  "targetDefaults": {},
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build"]
+      }
+    }
+  },
+  "targetDefaults": {
+    "dev": {
+      "dependsOn": [
+        {
+          "dependencies": "true",
+          "target": "build",
+          "params": "ignore"
+        }
+      ]
+    }
+  },
   "affected": {
     "defaultBase": "main"
   }
