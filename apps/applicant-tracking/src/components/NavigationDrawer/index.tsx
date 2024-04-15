@@ -21,6 +21,7 @@ export default function NavigationDrawer() {
           width: drawerWidth,
           overflowX: 'hidden',
           boxSizing: 'border-box',
+          backgroundColor: '#00000000',
         },
       }}
       open={true}
