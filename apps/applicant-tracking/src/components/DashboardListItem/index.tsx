@@ -14,13 +14,40 @@ interface DashboardListItemProps {
 function ActionButton(status: string): JSX.Element {
   switch (status) {
     case 'Pending Review':
-      return <Button>SCHEDULE INTERVIEW</Button>;
+      return (
+        <Button
+          variant="outlined"
+          onClick={() => {
+            console.log('schedule interview');
+          }}
+        >
+          schedule interview
+        </Button>
+      );
     //do something?
     case 'Scheduling Interview':
-      return <Button>FOLLOW UP</Button>;
+      return (
+        <Button
+          variant="outlined"
+          onClick={() => {
+            console.log('follow up');
+          }}
+        >
+          follow up
+        </Button>
+      );
     case 'Interview Complete':
-      return <Button>MAKE DECISION</Button>;
-    default: //what should I make the default case??
+      return (
+        <Button
+          variant="outlined"
+          onClick={() => {
+            console.log('make decision');
+          }}
+        >
+          MAKE DECISION
+        </Button>
+      );
+    default:
       throw new Error('invalid status argument.');
   }
 }
@@ -74,8 +101,10 @@ export default function DashboardListItem(props: DashboardListItemProps) {
         }
       />
       <ListItemSecondaryAction>
-        {props.applicant.status == 'Pending Review' && //how can I include the button in here
-          actionButton}
+        {
+          //how can I include the button in here
+          actionButton
+        }
       </ListItemSecondaryAction>
     </ListItem>
   );
