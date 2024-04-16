@@ -1,7 +1,6 @@
 'use client';
 import {
   Button,
-  Checkbox,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -10,13 +9,13 @@ import {
   Switch,
   TextField,
 } from '@mui/material';
-import { useEffect, useState } from 'react';
 
 import {
   CreateFormQuestionRequest,
   zFormQuestionType,
 } from '@hack4impact-utk/internal-models';
 import { z } from 'zod';
+import { useState } from 'react';
 
 export default function NewFormQuestion() {
   const [formQuestion, setFormQuestion] = useState<CreateFormQuestionRequest>({
@@ -25,10 +24,6 @@ export default function NewFormQuestion() {
     questionType: 'Text',
     description: '',
   });
-
-  useEffect(() => {
-    console.log(formQuestion);
-  }, [formQuestion]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>

@@ -1,3 +1,5 @@
+import NewFormQuestion from "@/components/NewFormQuestion/NewFormQuestion";
+
 export default function Home() {
-  return <h1>Home page</h1>;
+  return <NewFormQuestion/>;
 }
