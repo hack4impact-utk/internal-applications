@@ -10,6 +10,7 @@ import {
   zObjectId,
 } from '@hack4impact-utk/internal-models';
 import { requestToBodyStream } from 'next/dist/server/body-streams';
+import { SYSTEM_ENTRYPOINTS } from 'next/dist/shared/lib/constants';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -38,14 +39,15 @@ export async function POST(
   const requestValue = await request.json();
 
   if (!z.array(zCreateFormQuestionRequest).safeParse(requestValue)) {
-    return NextResponse.json({}, { status: 400 });
+    return NextResponse.json({}, { status: 400 });//400 if parse fails
   }
 
   if (!zObjectId.safeParse(formId)) {
-    return NextResponse.json({}, { status: 404 });
+    return NextResponse.json({}, { status: 404 });//404 if no form id
+    
   }
 
   createFormQuestions(formId, requestValue);
 
-  return NextResponse.json({}, { status: 201 });
+  return NextResponse.json({}, { status: 201 });//201 on success
 }
