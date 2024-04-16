@@ -44,7 +44,13 @@ export const zApplicantEntity = zApplicant.extend({
   evalutation: zObjectId,
 });
 
-export const zCreateApplicantRequest = zFormSubmissionResponse;
+export const zCreateApplicantRequest = zApplicant.pick({
+  firstName: true,
+  lastName: true,
+  netid: true,
+  term: true,
+  application: true,
+});
 export const zUpdateApplicantStatusRequest = zApplicant.pick({
   status: true,
 });
