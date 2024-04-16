@@ -9,7 +9,8 @@
     "mp-dev": "nx dev member-portal",
     "ap-dev": "nx dev admin-portal",
     "fb-dev": "nx dev form-builder",
-    "preinstall": "nx build @hack4impact-utk/internal-models"
+    "preinstall": "nx build @hack4impact-utk/internal-models",
+    "clean": "rm -rf node_modules **/*/dist **/*/node_modules **/*/.next"
   },
   "keywords": [],
   "author": "",
