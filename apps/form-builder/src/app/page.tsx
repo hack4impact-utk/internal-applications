@@ -1,5 +1,5 @@
 import NewFormQuestion from "@/components/NewFormQuestion/NewFormQuestion";
 
 export default function Home() {
-  return <NewFormQuestion/>;
+  return <h1>Home Page</h1>;
 }
