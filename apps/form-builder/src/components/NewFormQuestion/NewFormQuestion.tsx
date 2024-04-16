@@ -1,40 +1,88 @@
 'use client';
 import {
   Button,
-  Checkbox,
   FormControl,
   FormControlLabel,
   FormLabel,
   Radio,
   RadioGroup,
+  Switch,
   TextField,
 } from '@mui/material';
 
+import {
+  CreateFormQuestionRequest,
+  zFormQuestionType,
+} from '@hack4impact-utk/internal-models';
+import { z } from 'zod';
+import { useState } from 'react';
+
 export default function NewFormQuestion() {
+  const [formQuestion, setFormQuestion] = useState<CreateFormQuestionRequest>({
+    title: '',
+    isRequired: false,
+    questionType: 'Text',
+    description: '',
+  });
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <TextField id="formId" label="Form ID" required />
-      <TextField id="title" label="Title" required />
-      <TextField id="description" label="Description" multiline />
-      <FormControlLabel control={<Checkbox />} label="Required" required />
+      <TextField
+        id="title"
+        label="Title"
+        required
+        value={formQuestion.title}
+        onChange={(e) =>
+          setFormQuestion({ ...formQuestion, title: e.target.value })
+        }
+      />
+      <TextField
+        id="description"
+        label="Description"
+        multiline
+        value={formQuestion.description}
+        onChange={(e) =>
+          setFormQuestion({ ...formQuestion, description: e.target.value })
+        }
+      />
+      <FormControlLabel
+        control={<Switch
+            onChange={(e) =>
+              setFormQuestion({ ...formQuestion, isRequired: e.target.checked })
+            }
+            value={formQuestion.isRequired}
+        />} label="Required" 
+          
+      
+        required
+      />
       <FormControl required>
         <FormLabel id="question-type">Question Type</FormLabel>
-        <RadioGroup>
+        <RadioGroup
+          onChange={(e) =>
+            setFormQuestion({
+              ...formQuestion,
+              questionType: e.target.value as z.infer<typeof zFormQuestionType>,
+            })
+          }
+          value={formQuestion.questionType}
+        >
+          <FormControlLabel value="Text" control={<Radio />} label="Text" />
+
           <FormControlLabel
-            value="numeric"
+            value="Numeric"
             control={<Radio />}
             label="Numeric"
-          />
-          <FormControlLabel value="text" control={<Radio />} label="Text" />
+            />
           <FormControlLabel
-            value="file-upload"
-            control={<Radio />}
-            label="File Upload"
-          />
-          <FormControlLabel
-            value="multiple-choice"
+            value="MultipleChoice"
             control={<Radio />}
             label="Multiple Choice"
+            />
+            <FormControlLabel
+              value="FileUpload"
+              control={<Radio />}
+              label="File Upload"
           />
         </RadioGroup>
       </FormControl>
