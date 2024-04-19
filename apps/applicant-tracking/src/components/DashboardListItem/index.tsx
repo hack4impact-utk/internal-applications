@@ -1,4 +1,4 @@
-//code here
+//Including relevant material from MUI
 'use client';
 import { DashboardListApplicantResponse } from '@hack4impact-utk/internal-models';
 import { Button, Chip, ListItemSecondaryAction } from '@mui/material';
@@ -10,10 +10,11 @@ interface DashboardListItemProps {
   applicant: DashboardListApplicantResponse;
 }
 
-//return a button instead of just a string of text in the switch case
+//designing an action button- will return a different button
+//based on the applicant status
 function ActionButton(status: string): JSX.Element {
   switch (status) {
-    case 'Pending Review':
+    case 'Pending Review': //schedule interview button
       return (
         <Button
           variant="outlined"
@@ -25,7 +26,7 @@ function ActionButton(status: string): JSX.Element {
         </Button>
       );
 
-    case 'Scheduling Interview':
+    case 'Scheduling Interview': //follow up on interview button
       return (
         <Button
           variant="outlined"
@@ -36,7 +37,7 @@ function ActionButton(status: string): JSX.Element {
           follow up
         </Button>
       );
-    case 'Interview Complete':
+    case 'Interview Complete': //make a decision button
       return (
         <Button
           variant="outlined"
@@ -52,6 +53,7 @@ function ActionButton(status: string): JSX.Element {
   }
 }
 
+//deals with the constant time changing for date calculation
 export default function DashboardListItem(props: DashboardListItemProps) {
   const [today, setToday] = useState<Date | null>(null);
   useEffect(() => {
@@ -61,10 +63,11 @@ export default function DashboardListItem(props: DashboardListItemProps) {
   const updatedAt = new Date(props.applicant.statusUpdatedAt); //converting to date type so it can be used in calculation below
   let daysSinceUpdate = 0;
 
+  //computing how long ago status was updated
   if (today) {
     daysSinceUpdate = Math.floor(
       (today.getTime() - updatedAt.getTime()) / (1000 * 3600 * 24)
-    ); //computing how long ago status was updated
+    );
   }
   const actionButton = ActionButton(props.applicant.status); //included eblow
   const formattedDate = updatedAt.toLocaleDateString(); //for display purposes
@@ -72,11 +75,11 @@ export default function DashboardListItem(props: DashboardListItemProps) {
   //determininig what color to make the date text
   let dateColor = '';
   if (daysSinceUpdate < 3) {
-    dateColor = 'gray'; // or any other color
+    dateColor = 'gray';
   } else if (daysSinceUpdate < 7) {
-    dateColor = 'orange'; // or any other color
+    dateColor = 'orange';
   } else {
-    dateColor = 'red'; // or any other color
+    dateColor = 'red';
   }
 
   //use a chip to display applicant status
