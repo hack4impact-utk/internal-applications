@@ -7,7 +7,6 @@ import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
 import ListItemContent from '@mui/joy/ListItemContent';
 import ListItemButton from '@mui/joy/ListItemButton';
-import Sheet from '@mui/joy/sheet';
 
 //Takes in the question and response as props
 interface Props {
@@ -18,31 +17,27 @@ interface Props {
 //function that displays the list
 export default function TextQuestionAnalytics({ question, responses }: Props) {
   //gets the specific submission to a question from each response from a single form
-  function getSubmission() {
+  function getAnswers() {
     let array = [];
     //for a given form, the findIndex function will find the specific question from the list of questionResponses
     for (let i = 0; i < responses.length; i++) {
       let num = responses[i].questionResponses.findIndex(
         (element) => element.question._id.toString() === question._id.toString()
       );
-      array.push(responses[i].questionResponses[num].answer);
+      if (num == -1){
+        continue;
+      }
+      else{
+        array.push(responses[i].questionResponses[num].answer);
+      }
     }
     return array;
   }
 
   //displays the submissions in a list format
   return (
-    <Sheet
-      variant="outlined"
-      sx={{
-        width: 400,
-        maxHeight: 300,
-        overflow: 'auto',
-        borderRadius: 'sm',
-      }}
-    >
       <List>
-        {getSubmission().map((submission, index) => (
+        {getAnswers().map((submission, index) => (
           <ListItem key={index}>
             <ListItemButton selected={false} variant="soft">
               <ListItemContent>{submission}</ListItemContent>
@@ -50,6 +45,5 @@ export default function TextQuestionAnalytics({ question, responses }: Props) {
           </ListItem>
         ))}
       </List>
-    </Sheet>
   );
 }
