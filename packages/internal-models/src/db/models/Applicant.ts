@@ -22,22 +22,6 @@ const ApplicantSchema = new Schema({
     type: String,
     required: true,
   },
-  referrer: {
-    type: String,
-    required: false,
-  },
-  major: {
-    type: String,
-    required: true,
-  },
-  expectedGraduation: {
-    type: String,
-    required: true,
-  },
-  linkedinUrl: {
-    type: String,
-    required: false,
-  },
   status: {
     type: String,
     enum: applicantStatuses,
@@ -60,7 +44,7 @@ const ApplicantSchema = new Schema({
     enum: applicantDecisions,
     required: false,
   },
-  resumeUrl: {
+  decisionReason: {
     type: String,
     required: false,
   },
@@ -80,8 +64,8 @@ const ApplicantSchema = new Schema({
   },
   statusUpdatedAt: {
     type: Date,
-    required: false
-  }
+    required: false,
+  },
 });
 
 export type ApplicantDocument = Omit<ApplicantEntity, '_id'> & Document;

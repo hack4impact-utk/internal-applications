@@ -20,5 +20,8 @@
   },
   "affected": {
     "defaultBase": "main"
+  },
+  "cli": {
+    "packageManager": "npm"
   }
 }
