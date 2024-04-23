@@ -1,6 +1,8 @@
-import React from "react";
-import NavigationDrawer from "@/components/NavigationDrawer";
-import HeaderBar from "@/components/Appbar";
+'use client';
+
+import React from 'react';
+import NavigationDrawer from '@/components/NavigationDrawer';
+import HeaderBar from '@/components/Appbar';
 
 export const metadata = {
   title: 'General Layout',
@@ -15,8 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavigationDrawer/>
-        <HeaderBar/>
+        <NavigationDrawer />
+        <HeaderBar />
         {children}
       </body>
     </html>
