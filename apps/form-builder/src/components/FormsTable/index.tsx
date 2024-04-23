@@ -1,6 +1,11 @@
 'use client';
 import { FormResponse } from '@hack4impact-utk/internal-models';
-import { DataGrid, GridColDef, GridValidRowModel } from '@mui/x-data-grid';
+import {
+  DataGrid,
+  GridColDef,
+  GridToolbar,
+  GridValidRowModel,
+} from '@mui/x-data-grid';
 import * as React from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -15,20 +20,17 @@ interface props {
   forms: FormResponse[];
 }
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
 const responders = ['Student', 'Member', 'Anyone'];
 
 export default function FormTable(props: props) {
+  const [visibleForms, setVisibleForms] = useState<FormResponse[]>(props.forms);
+
+  const [responderTypeSelect, setResponderTypeSelect] = useState<string[]>([
+    'Student',
+    'Member',
+    'Anyone',
+  ]);
+
   if (props.forms == null) {
     return <div>Error: Forms data is empty.</div>;
   }
@@ -69,8 +71,6 @@ export default function FormTable(props: props) {
     },
   ];
 
-  const [visibleForms, setVisibleForms] = useState<FormResponse[]>(props.forms);
-
   const rows: GridValidRowModel[] = visibleForms.map((form) => {
     const responseCount = form.submissions.length;
     let anon;
@@ -84,10 +84,6 @@ export default function FormTable(props: props) {
       lastUpdate: updatedAtDate.toLocaleDateString(),
     };
   });
-
-  const [responderTypeSelect, setResponderTypeSelect] = useState<string[]>([
-    'Anyone',
-  ]);
 
   const handleChange = (
     event: SelectChangeEvent<typeof responderTypeSelect>
@@ -116,7 +112,6 @@ export default function FormTable(props: props) {
           onChange={handleChange}
           input={<OutlinedInput label="Filter Responder Type" />}
           renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
         >
           {responders.map((responder) => (
             <MenuItem key={responder} value={responder}>
@@ -138,6 +133,13 @@ export default function FormTable(props: props) {
         }
         initialState={{
           pagination: { paginationModel: { pageSize: 25 } },
+        }}
+        slots={{ toolbar: GridToolbar }}
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+            quickFilterProps: { debounceMs: 500 },
+          },
         }}
       />
     </div>
