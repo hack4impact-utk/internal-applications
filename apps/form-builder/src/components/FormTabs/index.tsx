@@ -54,7 +54,7 @@ export default function FormTabs(props: formsProp) {
           <Tabs
             value={value}
             onChange={handleChange}
-            aria-label="basic tabs example"
+            aria-label="Form submissions tab page"
           >
             <Tab label="Submissions" {...a11yProps(0)} />
             <Tab label="Analytics" {...a11yProps(1)} />
