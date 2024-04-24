@@ -3,6 +3,7 @@ import { FormResponse } from '@hack4impact-utk/internal-models';
 import {
   DataGrid,
   GridColDef,
+  GridEventListener,
   GridToolbar,
   GridValidRowModel,
 } from '@mui/x-data-grid';
@@ -15,6 +16,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface props {
   forms: FormResponse[];
@@ -77,6 +79,7 @@ export default function FormTable(props: props) {
     form.isAnonymous ? (anon = 'Yes') : (anon = 'No');
     const updatedAtDate: Date = new Date(form.updatedAt);
     return {
+      id: form._id,
       title: form.title,
       responderType: form.responderType,
       anon: anon,
@@ -96,6 +99,12 @@ export default function FormTable(props: props) {
     setVisibleForms(
       props.forms.filter((form) => value.includes(form.responderType))
     );
+  };
+
+  const router = useRouter();
+
+  const handleRowClick: GridEventListener<'rowClick'> = (params) => {
+    router.push('/forms/' + params.row.id);
   };
 
   return (
@@ -122,15 +131,9 @@ export default function FormTable(props: props) {
         </Select>
       </FormControl>
       <DataGrid
+        onRowDoubleClick={handleRowClick}
         rows={rows}
         columns={columns}
-        getRowId={(row: any) =>
-          row.title +
-          row.responderType +
-          row.anon +
-          row.responseCount +
-          row.lastUpdate
-        }
         initialState={{
           pagination: { paginationModel: { pageSize: 25 } },
         }}
