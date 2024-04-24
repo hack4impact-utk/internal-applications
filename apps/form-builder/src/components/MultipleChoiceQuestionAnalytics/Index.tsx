@@ -61,7 +61,8 @@ export default function MultipleChoiceQuestionAnalytics({
   return (
     <>
       <Typography variant="h6">
-        {question.questionType}
+        {'Choice Type: '}
+        {question.multipleChoiceOptions?.choiceType}
         {" 'Other' responses"}
       </Typography>
       <Box sx={{ maxHeight: 300, overflow: 'auto' }}>
