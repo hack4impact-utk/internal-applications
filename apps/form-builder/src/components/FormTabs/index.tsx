@@ -22,23 +22,11 @@ function CustomTabPanel(props: TabPanelProps) {
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
 }
 
 export default function FormTabs(props: formsProp) {
@@ -51,15 +39,11 @@ export default function FormTabs(props: formsProp) {
     <>
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="Form submissions tab page"
-          >
-            <Tab label="Submissions" {...a11yProps(0)} />
-            <Tab label="Analytics" {...a11yProps(1)} />
-            <Tab label="Questions" {...a11yProps(2)} />
-            <Tab label="Settings" {...a11yProps(3)} />
+          <Tabs value={value} onChange={handleChange}>
+            <Tab label="Submissions" id={'0'} />
+            <Tab label="Analytics" id={'1'} />
+            <Tab label="Questions" id={'2'} />
+            <Tab label="Settings" id={'3'} />
           </Tabs>
         </Box>
         <CustomTabPanel index={0} value={value}>
