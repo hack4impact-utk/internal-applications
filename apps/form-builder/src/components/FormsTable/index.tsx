@@ -131,7 +131,7 @@ export default function FormTable(props: props) {
         </Select>
       </FormControl>
       <DataGrid
-        onRowClick={handleRowClick}
+        onRowDoubleClick={handleRowClick}
         rows={rows}
         columns={columns}
         initialState={{
