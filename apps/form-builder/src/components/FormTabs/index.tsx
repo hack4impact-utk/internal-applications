@@ -1,5 +1,5 @@
 'use client';
-import { Box, Tabs, Tab, Button, Typography } from '@mui/material';
+import { Box, Tabs, Tab, Button } from '@mui/material';
 import React from 'react';
 import FormSubmissionTable from '../FormSubmissions/FormSubmissionTable';
 import { FormResponse } from '@hack4impact-utk/internal-models';
