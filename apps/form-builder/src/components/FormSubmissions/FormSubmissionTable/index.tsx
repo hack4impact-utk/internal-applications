@@ -1,8 +1,13 @@
 'use client'; //this component runs with the client and thus requires 'use client'
 import * as React from 'react';
-import { GridValidRowModel } from '@mui/x-data-grid';
+import {
+  GridEventListener,
+  GridToolbar,
+  GridValidRowModel,
+} from '@mui/x-data-grid';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { FormSubmissionResponse } from '@hack4impact-utk/internal-models';
+import { useRouter } from 'next/navigation';
 
 interface Props {
   formSubmissions: FormSubmissionResponse[];
@@ -37,6 +42,29 @@ export default function FormSubmissionTable(props: Props) {
     { field: 'col1', headerName: 'Responder Email', width: 300 },
     { field: 'col2', headerName: 'Date Submitted', width: 150 },
   ];
+
+  const router = useRouter();
+
+  const handleRowClick: GridEventListener<'rowClick'> = (params) => {
+    router.push('/forms/formSubmissions/' + params.row.id);
+  };
+
   //return the table.
-  return <DataGrid rows={rows} columns={columns} />;
+  return (
+    <DataGrid
+      onRowDoubleClick={handleRowClick}
+      rows={rows}
+      columns={columns}
+      initialState={{
+        pagination: { paginationModel: { pageSize: 25 } },
+      }}
+      slots={{ toolbar: GridToolbar }}
+      slotProps={{
+        toolbar: {
+          showQuickFilter: true,
+          quickFilterProps: { debounceMs: 500 },
+        },
+      }}
+    />
+  );
 }
