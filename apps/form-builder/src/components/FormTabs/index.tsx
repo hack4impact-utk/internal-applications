@@ -1,8 +1,10 @@
 'use client';
-import { Box, Tabs, Tab, Button, Typography } from '@mui/material';
+import { Box, Tabs, Tab, Button, Divider } from '@mui/material';
 import React from 'react';
 import FormSubmissionTable from '../FormSubmissions/FormSubmissionTable';
 import { FormResponse } from '@hack4impact-utk/internal-models';
+import FormAnalytics from '../FormAnalytics';
+import { FormQuestionResponse } from '@hack4impact-utk/internal-models';
 
 interface formsProp {
   form: FormResponse;
@@ -51,7 +53,22 @@ export default function FormTabs(props: formsProp) {
             formSubmissions={props.form?.submissions}
           ></FormSubmissionTable>
         </CustomTabPanel>
-        <CustomTabPanel index={1} value={value}></CustomTabPanel>
+        <CustomTabPanel index={1} value={value}>
+          {props.form.questions.map(
+            (question: FormQuestionResponse, i: number) => (
+              <Box key={i}>
+                <h1>Question {i + 1}</h1>
+                <Box minHeight={150} display={'flex'}>
+                  <FormAnalytics
+                    question={question}
+                    responses={props.form.submissions}
+                  ></FormAnalytics>
+                </Box>
+                {i != props.form.questions.length - 1 && <Divider />}
+              </Box>
+            )
+          )}
+        </CustomTabPanel>
         <CustomTabPanel index={2} value={value}></CustomTabPanel>
         <CustomTabPanel index={3} value={value}></CustomTabPanel>
       </Box>
