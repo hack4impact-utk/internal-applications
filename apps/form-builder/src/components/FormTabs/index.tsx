@@ -8,6 +8,7 @@ import {
   FormQuestionResponse,
   FormResponse,
 } from '@hack4impact-utk/internal-models';
+import FormSettings from '../FormSettings';
 
 interface FormTabsProps {
   form?: FormResponse;
@@ -87,7 +88,9 @@ export default function FormTabs(props: FormTabsProps) {
           <FormQuestions form={props.form} />
         </CustomTabPanel>
         {/*Settings*/}
-        <CustomTabPanel index={3} value={value}></CustomTabPanel>
+        <CustomTabPanel index={3} value={value}>
+          <FormSettings />
+        </CustomTabPanel>
       </Box>
       <Button
         variant="outlined"
