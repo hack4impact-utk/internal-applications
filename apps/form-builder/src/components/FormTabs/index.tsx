@@ -1,10 +1,10 @@
 'use client';
-import { Box, Tabs, Tab, Button } from '@mui/material';
+import { Box, Tabs, Tab, Button, Divider, Typography } from '@mui/material';
 import React from 'react';
 import FormSubmissionTable from '../FormSubmissions/FormSubmissionTable';
-import { FormResponse } from '@hack4impact-utk/internal-models';
-import FormSettings from '../FormSettings';
 import FormQuestions from '../FormQuestions';
+import FormAnalytics from '../FormAnalytics';
+import { FormResponse } from '@hack4impact-utk/internal-models';
 
 interface FormTabsProps {
   form?: FormResponse;
@@ -48,18 +48,42 @@ export default function FormTabs(props: FormTabsProps) {
             <Tab label="Settings" id={'3'} />
           </Tabs>
         </Box>
+        {/*Submissions*/}
         <CustomTabPanel index={0} value={value}>
           <FormSubmissionTable
             formSubmissions={props.form?.submissions || []}
           ></FormSubmissionTable>
         </CustomTabPanel>
-        <CustomTabPanel index={1} value={value}></CustomTabPanel>
+        {/*Analytics*/}
+        <CustomTabPanel index={1} value={value}>
+          {props.form.questions.map(
+            (question: FormQuestionResponse, i: number) => (
+              <Box key={i} sx={{ p: 1 }}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{ color: 'text.secondary' }}
+                >
+                  Question {i + 1}
+                </Typography>
+                <Box minHeight={150} display={'flex'}>
+                  <FormAnalytics
+                    question={question}
+                    responses={props.form.submissions}
+                  ></FormAnalytics>
+                </Box>
+                {i !== props.form.questions.length - 1 && (
+                  <Divider sx={{ p: 1 }}></Divider>
+                )}
+              </Box>
+            )
+          )}
+        </CustomTabPanel>
+        {/*Questions*/}
         <CustomTabPanel index={2} value={value}>
           <FormQuestions form={props.form} />
         </CustomTabPanel>
-        <CustomTabPanel index={3} value={value}>
-          <FormSettings />
-        </CustomTabPanel>
+        {/*Settings*/}
+        <CustomTabPanel index={3} value={value}></CustomTabPanel>
       </Box>
       <Button
         variant="outlined"
