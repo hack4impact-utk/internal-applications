@@ -1,9 +1,6 @@
 import { getFormById } from '@/server/actions/forms';
 import * as React from 'react';
 import FormTabs from '@/components/FormTabs';
-import IsParagraph from '@/components/TextOptions';
-import BasicSelect from '@/components/FormSettings';
-import FormSettings from '@/components/FormSettings';
 
 export default async function FormPage({
   params,
@@ -15,6 +12,8 @@ export default async function FormPage({
   if (form === null) {
     return;
   }
+
+  console.log(form.questions[0]);
 
   return (
     <div>
