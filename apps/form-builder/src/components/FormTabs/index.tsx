@@ -4,7 +4,10 @@ import React from 'react';
 import FormSubmissionTable from '../FormSubmissions/FormSubmissionTable';
 import FormQuestions from '../FormQuestions';
 import FormAnalytics from '../FormAnalytics';
-import { FormResponse } from '@hack4impact-utk/internal-models';
+import {
+  FormQuestionResponse,
+  FormResponse,
+} from '@hack4impact-utk/internal-models';
 
 interface FormTabsProps {
   form?: FormResponse;
@@ -56,27 +59,28 @@ export default function FormTabs(props: FormTabsProps) {
         </CustomTabPanel>
         {/*Analytics*/}
         <CustomTabPanel index={1} value={value}>
-          {props.form.questions.map(
-            (question: FormQuestionResponse, i: number) => (
-              <Box key={i} sx={{ p: 1 }}>
-                <Typography
-                  variant="subtitle1"
-                  sx={{ color: 'text.secondary' }}
-                >
-                  Question {i + 1}
-                </Typography>
-                <Box minHeight={150} display={'flex'}>
-                  <FormAnalytics
-                    question={question}
-                    responses={props.form.submissions}
-                  ></FormAnalytics>
+          {props.form &&
+            props.form.questions.map(
+              (question: FormQuestionResponse, i: number) => (
+                <Box key={i} sx={{ p: 1 }}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ color: 'text.secondary' }}
+                  >
+                    Question {i + 1}
+                  </Typography>
+                  <Box minHeight={150} display={'flex'}>
+                    <FormAnalytics
+                      question={question}
+                      responses={props.form!.submissions}
+                    ></FormAnalytics>
+                  </Box>
+                  {i !== props.form!.questions.length - 1 && (
+                    <Divider sx={{ p: 1 }}></Divider>
+                  )}
                 </Box>
-                {i !== props.form.questions.length - 1 && (
-                  <Divider sx={{ p: 1 }}></Divider>
-                )}
-              </Box>
-            )
-          )}
+              )
+            )}
         </CustomTabPanel>
         {/*Questions*/}
         <CustomTabPanel index={2} value={value}>
