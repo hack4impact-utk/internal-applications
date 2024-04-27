@@ -24,10 +24,12 @@ export default function TextQuestionAnalytics({ question, responses }: Props) {
       const num = responses[i].questionResponses.findIndex(
         (element) => element.question._id.toString() === question._id.toString()
       );
-      if (num == -1) {
-        continue;
-      } else {
-        array.push(responses[i].questionResponses[num].answer);
+      if (responses[i].questionResponses[num].answer) {
+        if (num == -1) {
+          continue;
+        } else {
+          array.push(responses[i].questionResponses[num].answer);
+        }
       }
     }
     return array;
