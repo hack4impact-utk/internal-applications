@@ -7,12 +7,12 @@ import {
 } from '@hack4impact-utk/internal-models';
 import MultipleChoiceQuestionAnalytics from '../FormSubmissions/MultipleChoiceQuestionAnalytics/Index';
 
-interface FormAnalyticsProp {
+interface FormAnalyticsProps {
   question: FormQuestionResponse;
   responses: FormSubmissionResponse[];
 }
 
-export default function FormAnalytics(props: FormAnalyticsProp) {
+export default function FormAnalytics(props: FormAnalyticsProps) {
   const questionType = props.question?.questionType.toString();
   return (
     <Box>
