@@ -7,7 +7,7 @@ import FormSettings from '../FormSettings';
 import FormQuestions from '../FormQuestions';
 
 interface FormTabsProps {
-  form: FormResponse;
+  form?: FormResponse;
 }
 
 interface TabPanelProps {
@@ -50,12 +50,12 @@ export default function FormTabs(props: FormTabsProps) {
         </Box>
         <CustomTabPanel index={0} value={value}>
           <FormSubmissionTable
-            formSubmissions={props.form?.submissions}
+            formSubmissions={props.form?.submissions || []}
           ></FormSubmissionTable>
         </CustomTabPanel>
         <CustomTabPanel index={1} value={value}></CustomTabPanel>
         <CustomTabPanel index={2} value={value}>
-          <FormQuestions />
+          <FormQuestions form={props.form} />
         </CustomTabPanel>
         <CustomTabPanel index={3} value={value}>
           <FormSettings />
