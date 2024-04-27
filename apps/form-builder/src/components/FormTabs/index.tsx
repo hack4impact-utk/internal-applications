@@ -3,8 +3,10 @@ import { Box, Tabs, Tab, Button } from '@mui/material';
 import React from 'react';
 import FormSubmissionTable from '../FormSubmissions/FormSubmissionTable';
 import { FormResponse } from '@hack4impact-utk/internal-models';
+import FormSettings from '../FormSettings';
+import FormQuestions from '../FormQuestions';
 
-interface formsProp {
+interface FormTabsProps {
   form: FormResponse;
 }
 
@@ -29,7 +31,7 @@ function CustomTabPanel(props: TabPanelProps) {
   );
 }
 
-export default function FormTabs(props: formsProp) {
+export default function FormTabs(props: FormTabsProps) {
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -52,8 +54,12 @@ export default function FormTabs(props: formsProp) {
           ></FormSubmissionTable>
         </CustomTabPanel>
         <CustomTabPanel index={1} value={value}></CustomTabPanel>
-        <CustomTabPanel index={2} value={value}></CustomTabPanel>
-        <CustomTabPanel index={3} value={value}></CustomTabPanel>
+        <CustomTabPanel index={2} value={value}>
+          <FormQuestions />
+        </CustomTabPanel>
+        <CustomTabPanel index={3} value={value}>
+          <FormSettings />
+        </CustomTabPanel>
       </Box>
       <Button
         variant="outlined"
