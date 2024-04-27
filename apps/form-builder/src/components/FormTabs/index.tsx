@@ -48,11 +48,13 @@ export default function FormTabs(props: formsProp) {
             <Tab label="Settings" id={'3'} />
           </Tabs>
         </Box>
+        {/*Submissions*/}
         <CustomTabPanel index={0} value={value}>
           <FormSubmissionTable
             formSubmissions={props.form?.submissions}
           ></FormSubmissionTable>
         </CustomTabPanel>
+        {/*Analytics*/}
         <CustomTabPanel index={1} value={value}>
           {props.form.questions.map(
             (question: FormQuestionResponse, i: number) => (
@@ -69,7 +71,9 @@ export default function FormTabs(props: formsProp) {
             )
           )}
         </CustomTabPanel>
+        {/*Questions*/}
         <CustomTabPanel index={2} value={value}></CustomTabPanel>
+        {/*Settings*/}
         <CustomTabPanel index={3} value={value}></CustomTabPanel>
       </Box>
       <Button
