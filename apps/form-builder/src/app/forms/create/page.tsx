@@ -1,3 +1,10 @@
+import UpsertForm from '@/components/UpsertForm/UpsertForm';
+import { Box } from '@mui/material';
+
 export default async function NewFormPage() {
-  return <h1>New form page</h1>;
+  return (
+    <Box>
+      <UpsertForm></UpsertForm>
+    </Box>
+  );
 }

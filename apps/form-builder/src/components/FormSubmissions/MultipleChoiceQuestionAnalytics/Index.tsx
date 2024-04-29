@@ -24,18 +24,18 @@ export default function MultipleChoiceQuestionAnalytics({
 }: Props) {
   // Gets the specific submission to a question from each response from a single form
   function getAnswers() {
-    let array = [];
+    const array = [];
     // For a given form, the findIndex function will find the specific question from the list of questionResponses
     for (let i = 0; i < responses.length; i++) {
-      let num = responses[i].questionResponses.findIndex(
+      const num = responses[i].questionResponses.findIndex(
         (element) => element.question._id.toString() === question._id.toString()
       );
       if (num === -1) {
         continue;
       } else {
         // Get the answer and options
-        let answer = responses[i].questionResponses[num].answer;
-        let options =
+        const answer = responses[i].questionResponses[num].answer;
+        const options =
           responses[i].questionResponses[num].question.multipleChoiceOptions
             ?.options;
 
