@@ -1,16 +1,13 @@
 import { getFormById } from '@/server/actions/forms';
 import * as React from 'react';
 import FormTabs from '@/components/FormTabs';
-import IsParagraph from '@/components/TextOptions';
-import BasicSelect from '@/components/FormSettings';
-import FormSettings from '@/components/FormSettings';
 
 export default async function FormPage({
   params,
 }: {
   params: { formId: string };
 }) {
-  const form = await getFormById(params.formId);
+  const form = JSON.parse(JSON.stringify(await getFormById(params.formId)));
 
   if (form === null) {
     return;
@@ -26,7 +23,7 @@ export default async function FormPage({
       <p>Created At: {form.createdAt.toLocaleString()}</p>
       <p>Updated At: {form.updatedAt.toLocaleString()}</p>
       {/* //added tabs and a button */}
-      <FormTabs></FormTabs>
+      <FormTabs form={form}></FormTabs>
     </div>
   );
 }
