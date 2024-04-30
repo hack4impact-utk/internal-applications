@@ -40,7 +40,6 @@ export default function FormTabs(props: FormTabsProps) {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-
   return (
     <>
       <Box sx={{ width: '100%' }}>

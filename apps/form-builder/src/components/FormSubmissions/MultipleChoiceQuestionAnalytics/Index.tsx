@@ -38,19 +38,30 @@ export default function MultipleChoiceQuestionAnalytics({
         const options =
           responses[i].questionResponses[num].question.multipleChoiceOptions
             ?.options;
-
-        // Check if the answer is not in the options array
-        let answerInOptions = false;
-        for (let j = 0; j < options!.length; j++) {
-          if (options![j] === answer) {
-            answerInOptions = true;
-            break;
+        console.log('starting a new response');
+        if (Array.isArray(answer)) {
+          for (const choice of answer) {
+            console.log(choice, options);
+            for (let j = 0; j < options!.length; j++) {
+              if (options?.findIndex((option) => option == choice) === -1) {
+                array.push(choice);
+              }
+            }
           }
-        }
+        } else {
+          // Check if the answer is not in the options array
+          let answerInOptions = false;
+          for (let j = 0; j < options!.length; j++) {
+            if (options![j] == answer) {
+              answerInOptions = true;
+              break;
+            }
+          }
 
-        // If the answer is not in the options, add it to the array
-        if (!answerInOptions) {
-          array.push(answer);
+          // If the answer is not in the options, add it to the array
+          if (!answerInOptions) {
+            array.push(answer);
+          }
         }
       }
     }
