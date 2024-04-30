@@ -13,8 +13,6 @@ export default async function FormPage({
     return;
   }
 
-  console.log(form.questions[0]);
-
   return (
     <div>
       {/* display properties of a form */}
