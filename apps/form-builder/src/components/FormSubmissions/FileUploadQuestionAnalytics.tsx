@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -28,12 +27,14 @@ export default function FileUploadQuestionAnalytics({
       );
       // if found, then push onto array
       if (questionResponse) {
-        answers.push(questionResponse.answer);
+        if (questionResponse.answer) {
+          answers.push(questionResponse.answer);
+        }
       }
     }
+
     return answers;
   }
-
   // display responses as scrollable list
   return (
     <List
