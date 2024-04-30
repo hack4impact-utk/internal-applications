@@ -1,5 +1,5 @@
 import { FormSubmissionResponse } from '@hack4impact-utk/internal-models';
-import { Typography } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 
 // Define interface props to accept FormSubmissionResponse as a parameter
 interface Props {
@@ -9,15 +9,18 @@ interface Props {
 // FormSubmission Component: Displays submission details including date, email, questions, and answers.
 // Handles different types of questions and multiple choice options.
 // If no answer is provided, it displays "No Response".
-const FormSubmission: React.FC<Props> = ({ formSubmission }) => {
+function FormSubmission({ formSubmission }: Props) {
   // Parse submission date
   const submissionDate: Date = new Date(formSubmission.createdAt);
 
   return (
-    <div className="form-submission">
+    <Box>
       {/* Display submission date/time */}
       <Typography variant="subtitle1">
-        Submission Date/Time: {submissionDate.toLocaleDateString() || 'Unknown'}
+        Submission Date/Time:{' '}
+        {submissionDate.toLocaleDateString() +
+          ', ' +
+          submissionDate.toLocaleTimeString() || 'Unknown'}
       </Typography>
 
       {/* Display responder email */}
@@ -28,9 +31,9 @@ const FormSubmission: React.FC<Props> = ({ formSubmission }) => {
       {/* Loop through question responses */}
       {formSubmission.questionResponses &&
         formSubmission.questionResponses.map((response, index) => (
-          <div key={index}>
+          <Box key={index}>
             {/* Display question title */}
-            <Typography variant="h4">{response.question.title}</Typography>
+            <Typography variant="h5">{response.question.title}</Typography>
 
             {/* Display question description */}
             <Typography variant="subtitle1">
@@ -42,22 +45,23 @@ const FormSubmission: React.FC<Props> = ({ formSubmission }) => {
               {response.answer !== null && response.answer !== undefined
                 ? Array.isArray(response.answer)
                   ? response.answer.map((item, idx) => (
-                      <div key={idx}>
+                      <Box key={idx} sx={{ py: 1.5 }}>
                         {/* Handle ranked multiple choice options */}
                         {response.question.questionType === 'MultipleChoice' &&
                         response.question.multipleChoiceOptions?.choiceType ===
                           'Ranked'
                           ? `${idx + 1}. ${item}`
                           : item}
-                      </div>
+                      </Box>
                     ))
                   : response.answer
                 : 'No Response'}
             </Typography>
-          </div>
+            <Divider sx={{ borderBottomWidth: 5, pt: 3 }} />
+          </Box>
         ))}
-    </div>
+    </Box>
   );
-};
+}
 
 export default FormSubmission;
