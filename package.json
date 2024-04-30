@@ -21,11 +21,8 @@
   ],
   "dependencies": {
     "@hack4impact-utk/internal-models": "^1.1.0",
-<<<<<<< HEAD
     "@mui/material": "^5.15.15",
-=======
     "@mui/joy": "^5.0.0-beta.36",
->>>>>>> 5a6919cf1e01a3af9f05f2aa8c5c0060e9595955
     "@mui/x-charts": "^7.1.0",
     "@mui/x-data-grid": "^7.2.0",
     "@mui/x-date-pickers": "^7.1.0",
