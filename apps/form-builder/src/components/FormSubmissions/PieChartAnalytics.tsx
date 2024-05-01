@@ -1,9 +1,5 @@
 'use client';
-import {
-  DefaultChartsLegend,
-  PieChart,
-  pieArcLabelClasses,
-} from '@mui/x-charts';
+import { PieChart, pieArcLabelClasses } from '@mui/x-charts';
 import React from 'react';
 
 interface Props {
@@ -11,6 +7,7 @@ interface Props {
   answers: string[][];
 }
 
+//Function to display pie chart
 export default function PieChartAnalytics({ choices, answers }: Props) {
   // Initialize an object to store the counts of each choice, including "Other"
   const choiceCounts: any = { Other: 0 };
@@ -44,22 +41,26 @@ export default function PieChartAnalytics({ choices, answers }: Props) {
   }));
 
   return (
+    //Displays pie chart on page
     <PieChart
+      //Gets information for each section
       series={[
         {
           arcLabel: (item) =>
-            `${item.label} (${item.value}) ${item.percentage} %`,
+            `${item.label} ${item.percentage}% (${item.value})`,
           data,
           highlightScope: { faded: 'global', highlighted: 'item' },
           faded: { innerRadius: 30, additionalRadius: -30, color: 'grey' },
         },
       ]}
+      //Changes color and font of text
       sx={{
         [`& .${pieArcLabelClasses.root}`]: {
           fill: 'white',
           fontWeight: 'bold',
         },
       }}
+      //Changes size of pie chart
       height={600}
     />
   );
