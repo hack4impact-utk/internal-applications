@@ -2,7 +2,6 @@ import { getFormById } from '@/server/actions/forms';
 import * as React from 'react';
 import FormTabs from '@/components/FormTabs';
 import { Typography } from '@mui/material';
-
 export default async function FormPage({
   params,
 }: {
@@ -13,6 +12,9 @@ export default async function FormPage({
   if (form === null) {
     return;
   }
+
+  const updatedAtDate: Date = new Date(form.updatedAt);
+  const createdAtDate: Date = new Date(form.createdAt);
 
   return (
     <div>
@@ -26,10 +28,10 @@ export default async function FormPage({
         Anonymous: {form.isAnonymous.toLocaleString()}
       </Typography>
       <Typography sx={{ pt: 2 }}>
-        Created At: {form.createdAt.toLocaleString()}
+        Created At: {createdAtDate.toLocaleString()}
       </Typography>
       <Typography sx={{ pt: 2 }}>
-        Updated At: {form.updatedAt.toLocaleString()}
+        Updated At: {updatedAtDate.toLocaleString()}
       </Typography>
       {/* //added tabs and a button */}
       <FormTabs form={form}></FormTabs>
