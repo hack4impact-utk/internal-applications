@@ -31,7 +31,7 @@ export default async function FormPage({
         Created At: {createdAtDate.toLocaleString()}
       </Typography>
       <Typography sx={{ pt: 2 }}>
-        Updated At: {updatedAtDate.toLocaleString()}
+        Last Updated At: {updatedAtDate.toLocaleString()}
       </Typography>
       {/* //added tabs and a button */}
       <FormTabs form={form}></FormTabs>
