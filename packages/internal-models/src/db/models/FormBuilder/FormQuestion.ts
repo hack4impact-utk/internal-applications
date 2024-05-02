@@ -52,7 +52,6 @@ export const FormQuestionSchema = new Schema(
         },
         supportedFileTypes: {
           type: Schema.Types.String,
-          enum: fileTypes,
           required: true,
         },
       },
