@@ -13,9 +13,8 @@ interface Props {
 }
 
 export default function BarGraphAnalytics({ choices, answers }: Props) {
-  // Initialize an object to store the counts of each choice, including "other"
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const choiceCounts: any = { other: 0 };
+  // Initialize an object to store the counts of each choice, including "Other"
+  const choiceCounts: any = { Other: 0 };
 
   // Loop through each choice, create a key for it in the object, and initialize its count to 0
   choices.forEach((choice) => {
@@ -29,13 +28,13 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
       if (choiceCounts.hasOwnProperty(answer)) {
         choiceCounts[answer]++;
       } else {
-        // Increment the count for "other"
-        choiceCounts['other']++;
+        // Increment the count for "Other"
+        choiceCounts['Other']++;
       }
     });
   });
 
-  // Extract the counts to an array to use as data for the BarChart, including the count for "other"
+  // Extract the counts to an array to use as data for the BarChart, including the count for "Other"
   const data = choices.map((choice) => choiceCounts[choice]);
 
   // Extract items from answers that are not present in choices
@@ -72,9 +71,9 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
     >
       <BarChart
         xAxis={[
-          { scaleType: 'band', data: [...choices, 'other'] }, // Include "other" in the x-axis data
+          { scaleType: 'band', data: [...choices, 'Other'] }, // Include "Other" in the x-axis data
         ]}
-        series={[{ data: [...data, choiceCounts['other']] }]} // Include the count for "other" in the series data
+        series={[{ data: [...data, choiceCounts['Other']] }]} // Include the count for "Other" in the series data
         width={500}
         height={300}
       />
