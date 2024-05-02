@@ -71,7 +71,6 @@ export const FormQuestionSchema = new Schema(
         },
         choiceType: {
           type: Schema.Types.String,
-          enum: multipleChoiceTypes,
           required: true,
         },
       },
