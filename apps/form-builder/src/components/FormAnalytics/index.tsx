@@ -34,7 +34,18 @@ export default function FormAnalytics(props: FormAnalyticsProps) {
       <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
         {props.question.title}
       </Typography>
-      <Typography>{props.responses.reduce(numAnswers, 0)} Responses</Typography>
+      <Typography>
+        {props.responses.reduce(numAnswers, 0) === 1 && (
+          <Typography>
+            {props.responses.reduce(numAnswers, 0)} Response
+          </Typography>
+        )}
+        {props.responses.reduce(numAnswers, 0) > 1 && (
+          <Typography>
+            {props.responses.reduce(numAnswers, 0)} Responses
+          </Typography>
+        )}
+      </Typography>
       {questionType === 'Text' && (
         <TextQuestionAnalytics
           question={props.question}
