@@ -52,7 +52,6 @@ export const FormQuestionSchema = new Schema(
         },
         supportedFileTypes: {
           type: Schema.Types.String,
-          enum: fileTypes,
           required: true,
         },
       },
@@ -71,7 +70,6 @@ export const FormQuestionSchema = new Schema(
         },
         choiceType: {
           type: Schema.Types.String,
-          enum: multipleChoiceTypes,
           required: true,
         },
       },
