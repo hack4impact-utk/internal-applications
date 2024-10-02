@@ -1,5 +1,9 @@
 import ApplicantSchema from '@/db/models/Applicant';
-import { ApplicantStatus, DashboardListApplicantResponse } from '@/types';
+import {
+  ApplicantDecision,
+  ApplicantStatus,
+  DashboardListApplicantResponse,
+} from '@/types';
 
 export async function getApplicantsByStatus(statuses: ApplicantStatus[]) {
   const applicants: DashboardListApplicantResponse[] =
@@ -51,6 +55,22 @@ export async function updateApplicantStatus(
   const applicant = await ApplicantSchema.findOneAndUpdate(
     { _id: id },
     { status: status, statusUpdatedAt: new Date() },
+    { new: true }
+  );
+
+  // return  newly updated applicant
+  return applicant;
+}
+
+export async function makeDecisionForApplicant(
+  id: string,
+  decision: ApplicantDecision,
+  reason?: string
+) {
+  // update database
+  const applicant = await ApplicantSchema.findOneAndUpdate(
+    { _id: id },
+    { decision: decision, decisionReason: reason, status: 'Decision Made' },
     { new: true }
   );
 
