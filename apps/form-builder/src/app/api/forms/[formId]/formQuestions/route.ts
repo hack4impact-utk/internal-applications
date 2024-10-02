@@ -42,7 +42,7 @@ export async function POST(
   }
 
   if (!zObjectId.safeParse(formId)) {
-    return NextResponse.json({}, { status: 404 });//404 if no form id
+    return NextResponse.json({}, { status: 400 });//400 if no form id
     
   }
 
