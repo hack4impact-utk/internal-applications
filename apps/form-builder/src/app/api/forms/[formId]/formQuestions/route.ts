@@ -42,13 +42,13 @@ export async function POST(
   }
 
   if (!zObjectId.safeParse(formId)) {
-    return NextResponse.json({}, { status: 400 });//404 if no form id
+    return NextResponse.json({}, { status: 404 });//404 if no form id
     
   }
 
   createFormQuestions(formId, requestValue);
   if(!createFormQuestions){
-    return NextResponse.json({}, { status: 400 });//404 if createFormQuestions is null
+    return NextResponse.json({}, { status: 404 });//404 if createFormQuestions is null
   }
 
   return NextResponse.json({}, { status: 201 });//201 on success
