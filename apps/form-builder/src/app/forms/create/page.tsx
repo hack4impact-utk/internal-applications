@@ -1,10 +1,12 @@
 import { Button } from '@mui/material';
 import { Card } from '@mui/material';
-export default async function NewFormPage() {
+export default function NewFormPage() {
   return (
     <>
-      <h1>New form page</h1>
-      <button> variant click here</button>
+      <h1>New Form Page</h1>
+      <Button variant="contained" color="primary">
+        Click to Open Form
+      </Button>
     </>
   );
 }
