@@ -4,7 +4,7 @@ export default async function NewFormPage() {
   return (
     <>
       <h1>New form page</h1>
-      <button>click here</button>
+      <button> variant click here</button>
     </>
   );
 }
