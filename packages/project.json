@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/internal-models",
         "tsConfig": "packages/internal-models/tsconfig.lib.json",

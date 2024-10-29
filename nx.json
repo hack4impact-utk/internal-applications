@@ -1,4 +1,7 @@
 {
+  "projects": {
+    "@hack4impact-utk/internal-models": "packages/internal-models"
+  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
