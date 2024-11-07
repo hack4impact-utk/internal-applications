@@ -1,3 +1,10 @@
-export default function ApplicationsPage() {
-    return <h1>Applications</h1>
-  }
+import LBPButton from '@/components/LBPTeamsButton';
+
+export default function ApplicantsPage() {
+  return (
+    <div>
+      <h1>Applicants page</h1>
+      <LBPButton />
+    </div>
+  );
+}
