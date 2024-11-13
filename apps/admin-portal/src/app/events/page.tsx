@@ -1,10 +1,24 @@
 import EventCreateForm from '@/components/EventCreateForm';
+import { Box, Typography } from '@mui/material'; 
 
 export default function EventCreationPage() {
   return (
-    <>
-      <h1>Event Creation Page</h1>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        p: 2.5,
+      }}
+    >
+
+      <Typography variant="h3"  
+      sx={{ mb: 3 }}>
+        Event Creation
+      </Typography>
+      
       <EventCreateForm />
-    </>
+    </Box>
   );
 }
