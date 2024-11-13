@@ -15,11 +15,7 @@ const App: React.FC = () => {
         alignItems: 'center',
         padding: '20px',
       }}
-    >
-      <div style={{ margin: '20ptx' }}>
-        <Textfeild label="Question" variant="outlined" fullWidth />
-      </div>
-    </Box>
+    ></Box>
   );
 };
 
