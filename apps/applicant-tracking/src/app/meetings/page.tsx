@@ -1,3 +1,3 @@
 export default function MeetingsPage() {
-    return <h1>Meetings Page</h1>;
-  }
+  return <h1>Meetings Page</h1>;
+}
