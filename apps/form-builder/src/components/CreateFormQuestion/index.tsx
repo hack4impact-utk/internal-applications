@@ -1,5 +1,5 @@
 import React from 'react';
-import Textfeild from '@mui/material/TextField';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -15,7 +15,17 @@ const App: React.FC = () => {
         alignItems: 'center',
         padding: '20px',
       }}
-    ></Box>
+    >
+      <Typography variant="h4" gutterBottom>
+        Create Form Question
+      </Typography>
+      <TextField
+        label="Question"
+        variant="outlined"
+        fullWidth
+        margin="normal"
+      />
+    </Box>
   );
 };
 
