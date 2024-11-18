@@ -1,14 +1,10 @@
-//export default function ApplicantsPage() {
-//return <h1>Applicants page</h1>;
-//}
-
-import LBPButton from '@/components/LBPTeamsButton';
+import HistoryButton from "@/components/HistoryButton";
 
 export default function ApplicantsPage() {
-  return (
-    <div>
-      <h1>Applicants page</h1>
-      <LBPButton />
-    </div>
-  );
+    return (
+        <div>
+            <h1>Application page</h1>
+            <HistoryButton />
+        </div>
+    );
 }

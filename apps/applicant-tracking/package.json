@@ -10,11 +10,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@hack4impact-utk/internal-models": "file:../../packages/internal-models",
     "@mui/icons-material": "^5.14.16",
-    "@mui/material": "^5.14.17",
+    "@mui/material": "^5.16.7",
     "mongoose": "^7.4.5",
     "next": "^13.5.7",
     "react": "^18.2.0",
