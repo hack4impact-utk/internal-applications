@@ -1,8 +1,7 @@
 import { Button, Card, TextField, MenuItem, Select } from '@mui/material';
 import React, { useState } from 'react';
-
+import CreateFormQuestion from '@src/components/CreateFormQuestion/index.tsx';
 export default function NewFormPage() {
-  
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState('');
   const [questionType, setQuestionType] = useState('');
@@ -22,6 +21,7 @@ export default function NewFormPage() {
     event.preventDefault();
     console.log('Question:', question);
     console.log('Question Type:', questionType);
+    ``;
     handleformclose();
   };
 
@@ -50,13 +50,22 @@ export default function NewFormPage() {
               fullWidth
               required
             >
-              <MenuItem value="" disabled>Select Question Type</MenuItem>
+              <MenuItem value="" disabled>
+                Select Question Type
+              </MenuItem>
               <MenuItem value="short-answer">Short Answer</MenuItem>
               <MenuItem value="multiple-choice">Multiple Choice</MenuItem>
               <MenuItem value="true-false">True/False</MenuItem>
             </Select>
-            <Button type="submit" variant="contained" color="secondary">Submit</Button>
-            <Button variant="outlined" color="inherit" onClick={handleformclose} style={{ marginLeft: '10px' }}>
+            <Button type="submit" variant="contained" color="secondary">
+              Submit
+            </Button>
+            <Button
+              variant="outlined"
+              color="inherit"
+              onClick={handleformclose}
+              style={{ marginLeft: '10px' }}
+            >
               Cancel
             </Button>
           </form>
