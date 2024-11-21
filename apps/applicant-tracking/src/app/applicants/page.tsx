@@ -25,16 +25,16 @@ const theme: {
     divider: CSSProperties;
     image: CSSProperties;
   } = {container: {
-    display: 'flex',
+    display: 'flex', /*allows user control over whether the container is displayed inline or inblock */
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center', /*both of these with center just put the things below inside the object */
     height: '70 vh',
     fontFamily: 'Arial, sans-serif',
   },
   title: {
-    fontSize: '3.5rem',
-    marginBottom: '300px',
+    fontSize: '3.5rem', /*how big the title is */
+    marginBottom: '300px', /*how far the title is from where the container is located */
   },
   divider: {
     width: '100%',
@@ -47,7 +47,7 @@ const theme: {
   },
   image: {
     position: 'absolute',
-    top: '-70px',
+    top: '-70px', /*length from container itself: used to move image in line with the divider */
     width: '150px',
     height: '150px',
     border: '2px solid orange',
