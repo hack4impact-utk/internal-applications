@@ -4,7 +4,7 @@ import React from 'react';
 
 interface Props {
   choices: string[];
-  answers: string[][];
+  answers: string[];
 }
 
 //Function to display pie chart
@@ -20,18 +20,20 @@ export default function PieChartAnalytics({ choices, answers }: Props) {
   let totalAnswers = 0;
 
   // Loop through each answer and count the occurrences of each choice
-  answers.forEach((answerSet) => {
-    answerSet.forEach((answer) => {
-      // Check if the answer is one of the choices
-      if (choiceCounts.hasOwnProperty(answer)) {
-        choiceCounts[answer]++;
-      } else {
-        // Increment the count for "Other"
-        choiceCounts['Other']++;
-      }
-      totalAnswers++;
-    });
+  answers.forEach((answer) => {
+    // Check if the answer is one of the choices
+    if (choiceCounts.hasOwnProperty(answer)) {
+      choiceCounts[answer]++;
+    } else {
+      // Increment the count for "Other"
+      choiceCounts['Other']++;
+    }
+    totalAnswers++;
   });
+
+  if (choiceCounts['Other'] === 0) {
+    delete choiceCounts['Other'];
+  }
 
   // Extract the counts to an array to use as data for the BarChart, including the count for "Other"
   const data = Object.keys(choiceCounts).map((key) => ({
@@ -62,6 +64,7 @@ export default function PieChartAnalytics({ choices, answers }: Props) {
       }}
       //Changes size of pie chart
       height={600}
+      width={500}
     />
   );
 }
