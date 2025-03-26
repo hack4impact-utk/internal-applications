@@ -1,4 +1,5 @@
 import HistoryButton from "@/components/HistoryButton";
+import MeetingsButton from "@/components/MeetingsButton";
 import React, { CSSProperties } from 'react';
 export default function ApplicantsPage() {
     return (
