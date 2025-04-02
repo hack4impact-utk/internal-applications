@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 
 const HistoryButton = () =>{
     return (<Button variant='contained'
-    href='/history'>
+    href='/applicants/history'>
         History
     </Button>
     );
