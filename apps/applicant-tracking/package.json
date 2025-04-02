@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@mui/x-charts": "7.28.0",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@hack4impact-utk/internal-models": "file:../../packages/internal-models",
