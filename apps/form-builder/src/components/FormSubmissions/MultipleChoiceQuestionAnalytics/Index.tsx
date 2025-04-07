@@ -10,6 +10,9 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material';
+import BarGraphAnalytics from '../BarGraphAnalytics/Index';
+
+import PieChartAnalytics from '../PieChartAnalytics';
 
 // Takes in the question and response as props
 interface Props {
@@ -57,6 +60,45 @@ export default function MultipleChoiceQuestionAnalytics({
     return array;
   }
 
+  function displayChart() {
+    // Check if the question has multiple choice options
+    let validAnswers;
+    if (responses.length > 0) {
+      validAnswers = getAnswers()
+        .filter(
+          (answer): answer is string | string[] =>
+            answer !== undefined && answer !== null
+        )
+        .map((answer) =>
+          // Convert the answer's type from a string to a string[]
+          Array.isArray(answer)
+            ? answer
+            : typeof answer === 'string'
+            ? [answer]
+            : [String(answer)]
+        );
+    }
+
+      // If it does, display the pie chart and bar graph
+      return (
+        <>
+          {question.multipleChoiceOptions?.choiceType === 'Single' && (
+            <PieChartAnalytics
+              choices={question.multipleChoiceOptions.options}
+              answers={validAnswers ?? []}
+            />
+          )}
+          {question.multipleChoiceOptions?.choiceType === 'Multiple' && (
+              <BarGraphAnalytics
+                choices={question.multipleChoiceOptions.options}
+                answers={validAnswers ?? []}
+              />
+            )}
+        </>
+      );
+    
+  }
+
   // Displays the submissions in a list format with scroll functionality
   return (
     <>
@@ -75,6 +117,7 @@ export default function MultipleChoiceQuestionAnalytics({
           ))}
         </List>
       </Box>
+      {/* { question.multipleChoiceOptions && displayChart()} */}
     </>
   );
 }
