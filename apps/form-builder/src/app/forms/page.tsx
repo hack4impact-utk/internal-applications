@@ -28,7 +28,7 @@ export default async function Forms() {
       <Divider
         sx={{ width: '100%', borderColor: 'lightgray', borderWidth: 2, my: 0 }}
       />
-      <Box position="absolute" left={1000} top={170} ml={5} mt={-0.25}>
+      <Box position="absolute" left={1000} top={170} ml={5} mt={-2}>
         <Box display="flex" justifyContent="flex-end" width="80%" pb={2}>
           <Link href="/forms/create" passHref>
             <Button
