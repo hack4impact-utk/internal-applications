@@ -16,12 +16,15 @@ export default function NumericQuestionAnalytics({
   question,
   responses,
 }: Props) {
-  const { mean, median, mode } = useMemo(() => {
+  const { mean, median, mode, standardDeviation } = useMemo(() => {
     let mean: number;
     let median: number;
+    let standardDeviation: number;
     let mode: number[] = [];
     const numbers: number[] = [];
     let total = 0;
+    let sdTotal = 0;
+    let stdMean: number;
     const occurrences: number[] = [];
     let maxOccur = 2;
 
@@ -35,6 +38,11 @@ export default function NumericQuestionAnalytics({
         const number = questionResponse.answer;
         total += number;
         numbers.push(number);
+
+        // calculate mean for std
+        stdMean = ((total / numbers.length) * 100) / 100;
+        sdTotal += number - stdMean;
+
         if (!occurrences[number]) occurrences[number] = 0;
         occurrences[number]++;
       }
@@ -68,10 +76,17 @@ export default function NumericQuestionAnalytics({
       }
     });
 
+    // calculate standard deviation
+    standardDeviation = Math.sqrt(Math.pow(sdTotal, 2) / numbers.length);
+
+    // Rounds standard deviation to hundredths place
+    standardDeviation = Math.round(standardDeviation * 100) / 100;
+
     return {
       mean,
       mode,
       median,
+      standardDeviation,
     };
   }, [responses]);
 
@@ -87,6 +102,9 @@ export default function NumericQuestionAnalytics({
         <ListItemText>
           Mode: {mode.length ? mode.join(', ') : 'None'}
         </ListItemText>
+      </ListItem>
+      <ListItem>
+        <ListItemText>Standard Deviation: {standardDeviation}</ListItemText>
       </ListItem>
     </List>
   );
