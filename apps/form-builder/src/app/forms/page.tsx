@@ -41,7 +41,12 @@ export default async function Forms() {
           </Link>
         </Box>
       </Box>{' '}
-      <Box position="absolute" left={345} top={125} ml={0} mt={0}>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        width="100%"
+      >
         <Box minHeight={400} width={800} pt={2}>
           <FormsTable forms={forms} />
         </Box>
