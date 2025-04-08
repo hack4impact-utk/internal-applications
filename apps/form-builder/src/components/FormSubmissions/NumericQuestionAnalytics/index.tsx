@@ -1,7 +1,8 @@
+import React, { useMemo } from 'react';
+import { Chart } from 'react-google-charts';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { ListItemText } from '@mui/material';
-import { useMemo } from 'react';
 import {
   FormQuestionResponse,
   FormSubmissionResponse,
@@ -16,7 +17,7 @@ export default function NumericQuestionAnalytics({
   question,
   responses,
 }: Props) {
-  const { mean, median, mode } = useMemo(() => {
+  const { mean, median, mode, chartData } = useMemo(() => {
     let mean: number;
     let median: number;
     let mode: number[] = [];
@@ -25,7 +26,7 @@ export default function NumericQuestionAnalytics({
     const occurrences: number[] = [];
     let maxOccur = 2;
 
-    // total up responses and make array of occurences for each response
+    // Total up responses and make an array of occurrences for each response
     for (const response of responses) {
       for (const questionResponse of response.questionResponses) {
         if (typeof questionResponse.answer !== 'number') {
@@ -40,12 +41,11 @@ export default function NumericQuestionAnalytics({
       }
     }
 
-    // calculate mean
-    // eslint-disable-next-line prefer-const
+    // Calculate mean
     mean = Math.round((total / numbers.length) * 100) / 100;
 
-    // calculate median
-    numbers.sort;
+    // Calculate median
+    numbers.sort((a, b) => a - b); // Sort numbers in ascending order
     if (numbers.length % 2 !== 0) {
       median = Math.round(numbers[Math.floor(numbers.length / 2)] * 100) / 100;
     } else {
@@ -57,37 +57,62 @@ export default function NumericQuestionAnalytics({
         ) / 100;
     }
 
-    // calculate mode
+    // Calculate mode
     occurrences.forEach((num, i) => {
       if (occurrences[i] > maxOccur) {
-        console.log(num, i);
         mode = [i];
         maxOccur = occurrences[i];
-      } else if (occurrences[i] == maxOccur) {
+      } else if (occurrences[i] === maxOccur) {
         mode.push(i);
+      }
+    });
+
+    // Prepare chart data
+    const chartData = [['Number', 'Frequency']];
+    occurrences.forEach((count, number) => {
+      if (count > 0) {
+        chartData.push([number, count]);
       }
     });
 
     return {
       mean,
-      mode,
       median,
+      mode,
+      chartData,
     };
   }, [responses]);
 
   return (
-    <List>
-      <ListItem>
-        <ListItemText>Mean: {mean}</ListItemText>
-      </ListItem>
-      <ListItem>
-        <ListItemText>Median: {median}</ListItemText>
-      </ListItem>
-      <ListItem>
-        <ListItemText>
-          Mode: {mode.length ? mode.join(', ') : 'None'}
-        </ListItemText>
-      </ListItem>
-    </List>
+    <>
+      {/* Display Statistics */}
+      <List>
+        <ListItem>
+          <ListItemText>Mean: {mean}</ListItemText>
+        </ListItem>
+        <ListItem>
+          <ListItemText>Median: {median}</ListItemText>
+        </ListItem>
+        <ListItem>
+          <ListItemText>
+            Mode: {mode.length ? mode.join(', ') : 'None'}
+          </ListItemText>
+        </ListItem>
+      </List>
+
+      {/* Render Histogram */}
+      <Chart
+        chartType="Histogram"
+        width="100%"
+        height="400px"
+        data={chartData}
+        options={{
+          title: 'Histogram of Responses',
+          legend: { position: 'none' },
+          hAxis: { title: 'Numbers' },
+          vAxis: { title: 'Frequency' },
+        }}
+      />
+    </>
   );
 }

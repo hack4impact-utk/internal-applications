@@ -21,14 +21,16 @@
   ],
   "dependencies": {
     "@hack4impact-utk/internal-models": "^1.1.0",
-    "@mui/material": "^5.15.15",
     "@mui/joy": "^5.0.0-beta.36",
+    "@mui/material": "^5.15.15",
     "@mui/x-charts": "^7.1.0",
     "@mui/x-data-grid": "^7.2.0",
     "@mui/x-date-pickers": "^7.1.0",
     "dayjs": "^1.11.10",
     "moment": "^2.30.1",
-    "nx": "^18.3.3",
+    "next": "^15.3.0-canary.44",
+    "nx": "^18.3.5",
+    "react-google-charts": "^5.2.1",
     "react-window": "^1.8.10"
   }
 }
