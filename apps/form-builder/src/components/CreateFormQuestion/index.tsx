@@ -23,7 +23,7 @@ const CreateFormQuestion: React.FC = () => {
         Create Form Question
       </Typography>
       <TextField
-        label="Form Title"
+        label="Question Title"
         variant="outlined"
         value={formTitle}
         onChange={(e) => setFormTitle(e.target.value)}
@@ -31,7 +31,7 @@ const CreateFormQuestion: React.FC = () => {
         margin="normal"
       />
       <TextField
-        label="Form Description"
+        label="Question Description"
         variant="outlined"
         value={formDescription}
         onChange={(e) => setFormDescription(e.target.value)}
