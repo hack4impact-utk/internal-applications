@@ -1,9 +1,7 @@
 import AppBar from '@mui/material/AppBar';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import { Toolbar, Typography, Badge } from '@mui/material';
 
-// Define props interface
 interface ApplicationBarProps {
   title: string; // Title text in the AppBar
   showNotification: boolean; // Whether to show the red dot
@@ -11,35 +9,38 @@ interface ApplicationBarProps {
 
 export default function ApplicationBar({ title, showNotification }: ApplicationBarProps) {
   return (
-    <AppBar
-      position="relative"
-      color="primary"
-      sx={{ px: 2, bgcolor: 'blue' }} // Blue color
-    >
-      <Toolbar disableGutters>
-        {/* Title on the left */}
-        <Typography variant="h6" sx={{ flexGrow: 1, color: 'white', ml: 2 }}>
-          {title}
-        </Typography>
+    <Box sx={{ width: '100%', maxWidth: '900px', mx: 'auto' }}> {/* Match table width */}
+      <AppBar
+        position="static"
+        elevation={0}
+        sx={{
+          bgcolor: '#d6efff', // Match light blue bar
+          color: '#000',      
+          boxShadow: 'none',
+        }}
+      >
+        <Toolbar disableGutters sx={{ px: 2 }}>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            {title}
+          </Typography>
 
-        {/* Avatar with red dot if new notification */}
-        <Box sx={{ flexGrow: 0 }}>
+          {/* Red dot  */}
           <Badge
             variant="dot"
             color="error"
-            overlap="circular"
-            invisible={!showNotification} // Hide dot if false
+            invisible={!showNotification}
             sx={{
               '& .MuiBadge-badge': {
-                top: 4,
-                left: 4,
+                top: 8,
+                right: 8,
+                height: 10,
+                minWidth: 10,
+                borderRadius: '50%',
               },
             }}
           >
-            <Avatar />
+            <Box sx={{ width: 10, height: 10 }} /> 
           </Badge>
-        </Box>
-      </Toolbar>
-    </AppBar>
-  );
-}
+        </Toolbar>
+      </AppBar>
+    </Box>
