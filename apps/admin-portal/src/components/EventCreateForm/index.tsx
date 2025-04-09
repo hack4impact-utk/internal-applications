@@ -1,27 +1,54 @@
-'use client';
 import React from 'react';
-import { Input } from '@mui/base/Input';
-import { Box } from '@mui/material';
+import { Box, Button, Typography, TextField } from '@mui/material'; 
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'; // for clock functionality
-import { TimePicker } from '@mui/x-date-pickers';
-import { DatePicker } from '@mui/x-date-pickers';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { TimePicker, DatePicker } from '@mui/x-date-pickers';
 
 export default function EventCreateForm() {
   return (
-    //LocalizationProvider wraps everything so it doesn't have to be retyped multiple times
     <LocalizationProvider dateAdapter={AdapterMoment}>
-      <Box>
-        <div style={{ display: 'flex', margin: '16px' }}>
-          <Input />
-        </div>
-        <div style={{ display: 'flex', margin: '16px' }}>
-          <DatePicker label="Event Date" />
-          <TimePicker label="Event Time" />
-        </div>
-        <button type="button" style={{ margin: '16px', marginTop: '0px' }}>
+      <Box
+        sx={{
+          maxWidth: 600,
+          width: '30%',
+          mx: 'auto',
+          // p: helps in padding, which makes the page look uniform
+          p: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 2.5,
+          backgroundColor: '#f5f5f5',
+          borderRadius: 4.5,
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{ textAlign: 'center', mb: 2 }}
+        >
+          Create Event
+        </Typography>
+
+        <TextField
+          placeholder="Event Name"
+          sx={{ p: 1, width: '100%', borderRadius: 2 }}
+        />
+
+        <DatePicker
+          label="Event Date"
+          sx={{ width: '100%' }}
+        />
+
+        <TimePicker
+          label="Event Time"
+          sx={{ width: '100%' }}
+        />
+
+        <Button variant="contained" 
+        color="primary" 
+        sx={{ mt: 2, width: '100%', py: 1.5 }}>
           Submit
-        </button>
+        </Button>
       </Box>
     </LocalizationProvider>
   );
