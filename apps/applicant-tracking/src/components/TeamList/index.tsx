@@ -31,8 +31,6 @@ export function TeamList (props: TeamListProperties){
         bgcolor: isOver ? '#f4d9b7' : 'white',
     }
 
-    //const [tall, setTall] = useState(50); //eventually useful if height of the boxes need to be dynamic
-
     return (
         <Box ref={setNodeRef} sx ={styling}>
             <Typography variant='h6' style={{padding: '10px'}}>{props.title}</Typography>
