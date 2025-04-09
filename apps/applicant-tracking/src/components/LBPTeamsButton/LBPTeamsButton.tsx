@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const LBPTeamsButton = () => {
   return (
-    <Link href="/teams">
+    <Link href="teams">
       <button
         style={{
           padding: '10px 20px',
