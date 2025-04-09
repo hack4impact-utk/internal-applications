@@ -2,7 +2,11 @@ import React from 'react';
 import Button from '@mui/material/Button';
 
 const HistoryButton = () =>{
-    return <Button variant='contained'>History</Button>;
+    return (<Button variant='contained'
+    href='/applicants/history'>
+        History
+    </Button>
+    );
 };
 
 export default HistoryButton;
