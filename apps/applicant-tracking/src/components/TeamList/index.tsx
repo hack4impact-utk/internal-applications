@@ -21,12 +21,14 @@ interface TeamListProperties{
 
 
 export function TeamList (props: TeamListProperties){
-    const {setNodeRef} = useDroppable({id: props.id})
+    const {isOver, setNodeRef} = useDroppable({id: props.id})
 
     const styling = {
         display: 'flex', justifyContent: 'top center', alignItems: 'center', flexDirection:'column',
-        borderRadius: 2, border: '1px solid black',
-        width: 300, height: 70 + 50 * props.members.length, margin:'20px'
+        borderRadius: 2,
+        width: 300, height: 70 + 50 * props.members.length, margin:'20px',
+        border: isOver ? '1px dashed orange' : '1px solid black',
+        bgcolor: isOver ? '#f4d9b7' : 'white',
     }
 
     //const [tall, setTall] = useState(50); //eventually useful if height of the boxes need to be dynamic
