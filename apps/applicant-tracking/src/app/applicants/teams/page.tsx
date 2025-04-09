@@ -36,7 +36,7 @@ export default function TeamsPage() {
     <Typography variant='h4' align='center' style={{padding: '10px'}}>LBP Teams</Typography>
     <Box sx={{ width: '95%', height: 5, bgcolor: 'orange', margin: 'auto'}} />
     <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-        <div style={{display: 'flex', flexDirection:'row', flexWrap:'wrap', gap:'100px'}}>        
+        <div style={{display: 'flex', flexDirection:'row', flexWrap:'wrap', gap:'50px'}}>        
             <TeamList id="applicants" title="Applicants" members={items.filter(function(obj) {return obj.team === 'applicants'})}/>
             <div style={{display: 'flex', flexDirection:'row', flexWrap:'wrap'}}>
                 <TeamList id='team1' title='Team 1' members={items.filter(function(obj) {return obj.team === 'team1'})}/>

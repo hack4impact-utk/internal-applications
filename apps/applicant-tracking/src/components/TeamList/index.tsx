@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, useEffect } from 'react';
 import { useDroppable } from "@dnd-kit/core";
 import { Box, Typography } from '@mui/material';
 import { TeamItem } from './TeamItem';
@@ -26,13 +26,13 @@ export function TeamList (props: TeamListProperties){
     const styling = {
         display: 'flex', justifyContent: 'top center', alignItems: 'center', flexDirection:'column',
         borderRadius: 2, border: '1px solid black',
-        width: 300, margin:'10px'
+        width: 300, height: 70 + 50 * props.members.length, margin:'20px'
     }
 
-    const [tall, setTall] = useState(50); //eventually useful if height of the boxes need to be dynamic
+    //const [tall, setTall] = useState(50); //eventually useful if height of the boxes need to be dynamic
 
     return (
-        <Box ref={setNodeRef} sx ={{...styling, height:tall}}>
+        <Box ref={setNodeRef} sx ={styling}>
             <Typography variant='h6' style={{padding: '10px'}}>{props.title}</Typography>
             {props.members.map((member) => (
                 <TeamItem id={member.id} name={member.name} experience={member.experience} team={member.team}/>
