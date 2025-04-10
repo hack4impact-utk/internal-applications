@@ -1,5 +1,29 @@
-import { FormSubmissionResponse } from '@hack4impact-utk/internal-models';
+
 import { Box, Divider, Typography } from '@mui/material';
+// import { DataGrid } from '@mui/x-data-grid';
+
+// Define the FormSubmissionResponse interface locally
+interface FormSubmissionResponse {
+  createdAt: string | Date;
+  responderEmail?: string;
+  questionResponses?: QuestionResponse[];
+}
+
+interface QuestionResponse{
+  question: {
+    title: string;
+    description: string;
+    questionType: string;
+    multipleChoiceOptions?: {
+      choiceType: string;
+    };
+  };
+  answer: string | string[] | null;
+}
+
+
+
+
 
 // Define interface props to accept FormSubmissionResponse as a parameter
 interface Props {
@@ -30,7 +54,7 @@ function FormSubmission({ formSubmission }: Props) {
 
       {/* Loop through question responses */}
       {formSubmission.questionResponses &&
-        formSubmission.questionResponses.map((response, index) => (
+        formSubmission.questionResponses.map((response: QuestionResponse, index: number) => (
           <Box key={index}>
             {/* Display question title */}
             <Typography variant="h5">{response.question.title}</Typography>
