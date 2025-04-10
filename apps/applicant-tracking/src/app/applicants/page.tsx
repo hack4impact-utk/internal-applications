@@ -1,21 +1,36 @@
 import HistoryButton from "@/components/HistoryButton";
 import MeetingsButton from "@/components/MeetingsButton";
+import LBPButton from "@/components/LBPTeamsButton";
+import ApplicantsButton from "@/components/ApplicantsButton";
 import React, { CSSProperties } from 'react';
+
 export default function ApplicantsPage() {
     return (
-        <div style={theme.container}>
-      {/* Title */}
-      <h1 style={theme.title}>Applicant Tracking</h1>
+      <div style={theme.container}>
+        {/* Title */}
+        <h1 style={theme.title}>Applicant Tracking</h1>
+        
+        
+        <div style={{ display: 'flex', gap: "350px", marginBottom: '50px' }}>
+          <ApplicantsButton />
+          <LBPButton />
+        </div>
+        
 
-      {/* Orange Divider with Image */}
-      <div style={theme.divider}>
-        <img
-          src="/globe.png"
-          alt="Globe"
-          style={theme.image}
-        />
+        {/* Orange Divider with Image */}
+        <div style={theme.divider}>
+          <img
+            src="/globe.png"
+            alt="Globe"
+            style={theme.image}
+            />
+        </div>
+        {/* <div style={theme.row}> */}
+        <div style={{ display: 'flex', gap: "350px", marginTop: '50px' }}>
+          <MeetingsButton />
+          <HistoryButton />
+        </div>
       </div>
-    </div>
     );
 }
 
@@ -47,9 +62,9 @@ const theme: {
   },
   image: {
     position: 'absolute',
-    top: '-45px', /*length from container itself: used to move image in line with the divider */
-    width: '100px',
-    height: '100px',
+    top: '-100px', /*length from container itself: used to move image in line with the divider */
+    width: '200px',
+    height: '200px',
     border: '2px solid orange',
     backgroundColor: '#fff', // White background behind the image
   },
