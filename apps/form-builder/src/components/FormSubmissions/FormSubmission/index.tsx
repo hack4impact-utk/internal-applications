@@ -1,6 +1,7 @@
-
+// import {QuestionResponse} from '@hack4impact-utk/internal-models'
 import { Box, Divider, Typography } from '@mui/material';
 // import { DataGrid } from '@mui/x-data-grid';
+import { BarChart } from '@mui/x-charts/BarChart';
 
 // Define the FormSubmissionResponse interface locally
 interface FormSubmissionResponse {
@@ -20,10 +21,6 @@ interface QuestionResponse{
   };
   answer: string | string[] | null;
 }
-
-
-
-
 
 // Define interface props to accept FormSubmissionResponse as a parameter
 interface Props {
