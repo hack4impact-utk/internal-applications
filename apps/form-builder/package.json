@@ -22,6 +22,22 @@
     "react-dom": "18.2.0",
     "zod": "^3.22.2"
   },
+
+{
+"name": "internaltooling"
+"private" : true
+"workspaces": [
+  "apps/*",
+  "packages/*"
+],
+"devDependencies": {
+  "nx":"20.7.2"
+}
+
+},
+
+
+
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.2",
     "@testing-library/react": "^14.0.0",
@@ -37,6 +53,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "jest": "^29.6.4",
     "jest-environment-jsdom": "^29.6.4",
+    "nx": "^20.7.2",
     "typescript": "5.2.2"
   },
   "nx": {
