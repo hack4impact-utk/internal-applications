@@ -23,20 +23,6 @@
     "zod": "^3.22.2"
   },
 
-{
-"name": "internaltooling"
-"private" : true
-"workspaces": [
-  "apps/*",
-  "packages/*"
-],
-"devDependencies": {
-  "nx":"20.7.2"
-}
-
-},
-
-
 
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.2",

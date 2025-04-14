@@ -27,13 +27,35 @@ interface Props {
   formSubmission: FormSubmissionResponse;
 }
 
-// FormSubmission Component: Displays submission details including date, email, questions, and answers.
-// Handles different types of questions and multiple choice options.
-// If no answer is provided, it displays "No Response".
+
 function FormSubmission({ formSubmission }: Props) {
   // Parse submission date
   const submissionDate: Date = new Date(formSubmission.createdAt);
 
+   const rankedresponses = formSubmission.questionResponses?.filter(
+    (response: QuestionResponse) =>
+      response.question.questionType === 'multiplechoice' && 
+      response.question.multipleChoiceOptions?.choiceType === 'ranked' 
+
+      
+  );
+
+
+const rankedchoiseanalytics = (response : QuestionResponse) => {
+  
+}
+  // return (
+  //   <Box sx={{ mt: 3, mb: 5, height: 300 }}>
+  //     <Typography variant="h6">Ranked Choice Analysis</Typography>
+  //     <BarChart
+  //       xAxis={[{ scaleType: 'band', data: xAxisData }]}
+  //       series={seriesData}
+  //       width={600}
+  //       height={300}
+  //       legend={{ position: 'top' }}
+  //     />
+  //   </Box>
+  // );
   return (
     <Box>
       {/* Display submission date/time */}

@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+// import dontev from 'dotenv';
+// dontev.config();
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
