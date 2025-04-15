@@ -5,6 +5,7 @@ import FormSubmissionTable from '../FormSubmissions/FormSubmissionTable';
 import { FormResponse } from '@hack4impact-utk/internal-models';
 import FormAnalytics from '../FormAnalytics';
 import { FormQuestionResponse } from '@hack4impact-utk/internal-models';
+import FormSettings from '../FormSettings';
 
 interface FormsTabProp {
   form: FormResponse;
@@ -81,7 +82,10 @@ export default function FormTabs(props: FormsTabProp) {
         {/*Questions*/}
         <CustomTabPanel index={2} value={value}></CustomTabPanel>
         {/*Settings*/}
-        <CustomTabPanel index={3} value={value}></CustomTabPanel>
+        <CustomTabPanel index={3} value={value}>
+            <FormSettings>
+            </FormSettings>
+        </CustomTabPanel>
       </Box>
       <Button
         variant="outlined"
