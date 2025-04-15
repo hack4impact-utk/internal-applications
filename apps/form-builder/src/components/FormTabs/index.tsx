@@ -83,9 +83,7 @@ export default function FormTabs(props: FormsTabProp) {
         <CustomTabPanel index={2} value={value}></CustomTabPanel>
         {/*Settings*/}
         <CustomTabPanel index={3} value={value}>
-            <FormSettings
-                formSettings = {props.form?.response}
-            >
+            <FormSettings>
             </FormSettings>
         </CustomTabPanel>
       </Box>
