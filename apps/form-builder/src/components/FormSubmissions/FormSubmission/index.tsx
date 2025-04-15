@@ -36,28 +36,68 @@ function FormSubmission({ formSubmission }: Props) {
     (response: QuestionResponse) =>
       response.question.questionType === 'multiplechoice' && 
       response.question.multipleChoiceOptions?.choiceType === 'ranked' 
-
       
   );
 
+const rankedchoiceanalytics = (response: QuestionResponse) => {
+ if(!response.answer || !Array.isArray(response.answer)) return null;
+ // Check if the answer is an array
 
-const rankedchoiseanalytics = (response : QuestionResponse) => {
+ const allchoices = formSubmission.questionResponses 
+ ?.filter(r => r.question.title === response.question.title)
+  ?.flatMap(r => r.answer)
+  //grab unique choices
+  ?.filter((value, index, self) => self.indexOf(value) === index) as string[]; 
+
+if (!allchoices || allchoices.length === 0) return null;
+
+const chartdata = allchoices.map((choice: string) => {
+  const rankCounts: Record<number, number> = {};
+
+  // Count the occurrences of each rank for the current choice
+  if (Array.isArray(response.answer)) {
+    response.answer.forEach((rank: string, index: number) => {
+      if (rank === choice) {
+        rankCounts[index + 1] = (rankCounts[index + 1] || 0) + 1;
+      }
+    });
+  }
   
+  return {
+    choice,
+    ...rankCounts,
+  };
+});
+
+// grab rank positions 
+    const rankpositions = Array.from(
+      new Set(
+        chartdata.flatMap((data: { choice: string, [key: string]: number | string }) => 
+          Object.keys(data).filter(key => key.startsWith('Rank '))
+        )
+      )
+    ).sort();
+
+// Create series data for the bar chart
+const seriesData = rankpositions.map((rank: string) => ({
+  name: rank,
+  data: chartdata.map((data: { [key: string]: number | string }) => data[rank]),
+}));
+
+
+return chartdata;
 }
-  // return (
-  //   <Box sx={{ mt: 3, mb: 5, height: 300 }}>
-  //     <Typography variant="h6">Ranked Choice Analysis</Typography>
-  //     <BarChart
-  //       xAxis={[{ scaleType: 'band', data: xAxisData }]}
-  //       series={seriesData}
-  //       width={600}
-  //       height={300}
-  //       legend={{ position: 'top' }}
-  //     />
-  //   </Box>
-  // );
+// Create x-axis data for the bar chart
   return (
     <Box>
+      {/* Ranked Choice Analysis Chart */}
+      <Box sx={{ mt: 3, mb: 5, height: 300 }}>
+        <Typography variant="h6">Ranked Choice Analysis</Typography>
+        <BarChart
+          width={600}
+          height={300} series={[]}      />
+      </Box>
+      
       {/* Display submission date/time */}
       <Typography variant="subtitle1">
         Submission Date/Time:{' '}
@@ -72,8 +112,7 @@ const rankedchoiseanalytics = (response : QuestionResponse) => {
       </Typography>
 
       {/* Loop through question responses */}
-      {formSubmission.questionResponses &&
-        formSubmission.questionResponses.map((response: QuestionResponse, index: number) => (
+      {formSubmission.questionResponses?.map((response: QuestionResponse, index: number) => (
           <Box key={index}>
             {/* Display question title */}
             <Typography variant="h5">{response.question.title}</Typography>
