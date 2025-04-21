@@ -3,7 +3,7 @@ import { TeamRole } from "../teamMember";
 import zOnboarding from "./onboarding";
 
 export const zRoleOnboarding = z.object({
-  role: TeamRole,
+  //role: TeamRole, //sooooo many dependency loops
   onboardings: z.array(zOnboarding),
 });
 

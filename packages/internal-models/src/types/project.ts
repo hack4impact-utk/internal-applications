@@ -31,9 +31,10 @@ type BaseProject = z.infer<typeof zBaseProject>;
 export type Project = BaseProject & {
   team: Team;
 };
-
-export const zProject: z.ZodType<Project> = zBaseProject.extend({
+/*
+export const zProject: z.ZodType<Project> = zBaseProject.extend({  //sooooo many dependency loops
   team: zTeam,
 });
+*/
 
-export default zProject;
+//export default zProject;
