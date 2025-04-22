@@ -41,7 +41,7 @@ export default function NumericQuestionAnalytics({
 
         // calculate mean for std
         stdMean = ((total / numbers.length) * 100) / 100;
-        sdTotal += number - stdMean;
+        sdTotal += Math.pow(number - stdMean, 2);
 
         if (!occurrences[number]) occurrences[number] = 0;
         occurrences[number]++;
@@ -77,7 +77,7 @@ export default function NumericQuestionAnalytics({
     });
 
     // calculate standard deviation
-    standardDeviation = Math.sqrt(Math.pow(sdTotal, 2) / numbers.length);
+    standardDeviation = Math.sqrt(sdTotal / numbers.length);
 
     // Rounds standard deviation to hundredths place
     standardDeviation = Math.round(standardDeviation * 100) / 100;
