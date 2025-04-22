@@ -3,8 +3,20 @@ import Button from '@mui/material/Button';
 
 const ApplicantsButton: React.FC = () => {
   return (
-    <Button variant="contained" color="primary" style={{ borderRadius: '40px', width:'400px', height:'50px', backgroundColor: '#42A5F5', color:'white', fontSize: '25px', textTransform: 'capitalize' }}
-    href="/applicants"> {/* Added href component to redirect to Applicants page */}
+    <Button
+      variant="contained"
+      color="primary"
+      style={{
+        borderRadius: '40px',
+        width: 'min(400px, 30vw)',
+        height: 'min(50px, 6vh)',
+        backgroundColor: '#42A5F5',
+        color: 'white',
+        fontSize: 'min(25px, 2vw)',
+        textTransform: 'capitalize',
+      }}
+      href="/applicants"
+    >
       Applicants
     </Button>
   );
