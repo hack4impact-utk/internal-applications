@@ -1,6 +1,6 @@
 import dbConnect from "@/utils/db-connect";
 import { NextResponse } from "next/server";
-import { getApplicants } from "@hack4impact-utk/internal-models";
+import { getApplicants } from "@hack4impact-utk/internal-models/src/db/actions";
 
 
 // GET all applicants API endpoint that gets all forms in the database

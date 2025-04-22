@@ -2,7 +2,7 @@ import {
   ApplicantEntity,
   applicantDecisions,
   applicantStatuses,
-} from '@/types/applicant';
+} from '../../types/applicant';
 import { Model, Schema, model, models } from 'mongoose';
 
 const ApplicantSchema = new Schema({

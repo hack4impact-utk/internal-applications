@@ -1,9 +1,10 @@
-import ApplicantSchema from '@/db/models/Applicant';
+import ApplicantSchema from '../models/Applicant';
 import {
   ApplicantDecision,
   ApplicantStatus,
   DashboardListApplicantResponse,
 } from '@/types';
+import dbConnect from  '../../../../../apps/applicant-tracking/src/utils/db-connect'
 
 export async function getApplicantsByStatus(statuses: ApplicantStatus[]) {
   const applicants: DashboardListApplicantResponse[] =
@@ -15,7 +16,8 @@ export async function getApplicantsByStatus(statuses: ApplicantStatus[]) {
 
 export async function getApplicantById(id: string) {
   try {
-    const result = await ApplicantSchema.find({ _id: id });
+    await dbConnect();
+    const result = await ApplicantSchema.findById(id);
     return result;
   } catch (error) {
     throw error;
