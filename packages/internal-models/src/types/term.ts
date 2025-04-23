@@ -8,7 +8,7 @@ function isValidTerm(term: string): boolean {
   }
 
   // we use 'as string' here to ensure typescript doesnt try and convert semester to a literal
-  if (semester !== ('Spring' as string) || semester !== ('Fall' as string)) {
+  if (semester !== ('Spring' as string) && semester !== ('Fall' as string)) {
     return false;
   }
 
