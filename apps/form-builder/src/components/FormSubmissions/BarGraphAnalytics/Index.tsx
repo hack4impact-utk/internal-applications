@@ -102,7 +102,7 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
         }}
       >
         {itemsToDisplay.length > 0 && (
-          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+          <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
             Other Responses
           </Typography>
         )}
