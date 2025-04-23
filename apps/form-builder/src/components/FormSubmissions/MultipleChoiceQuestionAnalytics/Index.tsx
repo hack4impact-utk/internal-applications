@@ -87,6 +87,7 @@ export default function MultipleChoiceQuestionAnalytics({
   function displayChart() {
     const validAnswers = getAnswersForChart();
     
+    // Logged data can be seen in DevTools
     console.log('Display Chart');
     console.log('Question:', question);
     console.log('Responses:', responses);

@@ -82,8 +82,6 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
   // The total width for the chart: 
   const chartWidth = numBars * (maxLabelLength * avgCharWidth + barSpacing);
 
-
-
   return (
     <Box
       sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
@@ -103,6 +101,12 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
           maxWidth: 360,
         }}
       >
+        {itemsToDisplay.length > 0 && (
+          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+            Other Responses
+          </Typography>
+        )}
+        
         <FixedSizeList
           height={400}
           width={360}
