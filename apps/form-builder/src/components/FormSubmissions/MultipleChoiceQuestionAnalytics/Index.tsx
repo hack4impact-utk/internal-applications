@@ -14,6 +14,8 @@ import BarGraphAnalytics from '../BarGraphAnalytics/Index';
 
 import PieChartAnalytics from '../PieChartAnalytics';
 
+import RankedChoiceAnalytics from '../RankedChoiceAnalytics/rankedchoiceanalytics';
+
 // Takes in the question and response as props
 interface Props {
   question: FormQuestionResponse;
@@ -87,11 +89,11 @@ export default function MultipleChoiceQuestionAnalytics({
   function displayChart() {
     const validAnswers = getAnswersForChart();
 
-    // Logged data can be seen in DevTools
-    console.log('Display Chart');
-    console.log('Question:', question);
-    console.log('Responses:', responses);
-    console.log('Valid Answers:', validAnswers);
+    // // Logged data can be seen in DevTools
+    // console.log('Display Chart');
+    // console.log('Question:', question);
+    // console.log('Responses:', responses);
+    // console.log('Valid Answers:', validAnswers);
 
     const hasValidAnswers =
       validAnswers.length > 0 && validAnswers.flat().length > 0;
@@ -108,6 +110,13 @@ export default function MultipleChoiceQuestionAnalytics({
         {question.multipleChoiceOptions?.choiceType === 'Multiple' &&
           hasValidAnswers && (
             <BarGraphAnalytics
+              choices={question.multipleChoiceOptions.options}
+              answers={validAnswers}
+            />
+          )}
+        {question.multipleChoiceOptions?.choiceType === 'Ranked' &&
+          hasValidAnswers && (
+            <RankedChoiceAnalytics
               choices={question.multipleChoiceOptions.options}
               answers={validAnswers}
             />
