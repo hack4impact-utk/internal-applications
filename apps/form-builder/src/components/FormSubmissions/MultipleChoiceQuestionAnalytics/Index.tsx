@@ -60,43 +60,58 @@ export default function MultipleChoiceQuestionAnalytics({
     return array;
   }
 
-  function displayChart() {
-    // Check if the question has multiple choice options
-    let validAnswers;
-    if (responses.length > 0) {
-      validAnswers = getAnswers()
-        .filter(
-          (answer): answer is string | string[] =>
-            answer !== undefined && answer !== null
-        )
-        .map((answer) =>
-          // Convert the answer's type from a string to a string[]
-          Array.isArray(answer)
-            ? answer
-            : typeof answer === 'string'
-            ? [answer]
-            : [String(answer)]
-        );
+  function getAnswersForChart(): string[][] {
+    const result: string[][] = [];
+
+    for (let i = 0; i < responses.length; i++) {
+      const questionIndex = responses[i].questionResponses.findIndex(
+        (element) => element.question._id.toString() === question._id.toString()
+      );
+
+      if (questionIndex === -1) continue;
+
+      const answer = responses[i].questionResponses[questionIndex].answer;
+
+      if (answer === undefined || answer === null) continue;
+
+      if (Array.isArray(answer)) {
+        result.push(answer.map((a) => String(a)));
+      } else {
+        result.push([String(answer)]);
+      }
     }
 
-      // If it does, display the pie chart and bar graph
-      return (
-        <>
-          {question.multipleChoiceOptions?.choiceType === 'Single' && (
+    return result;
+  }
+
+  function displayChart() {
+    const validAnswers = getAnswersForChart();
+    
+    console.log('Display Chart');
+    console.log('Question:', question);
+    console.log('Responses:', responses);
+    console.log('Valid Answers:', validAnswers);
+
+    const hasValidAnswers = validAnswers.length > 0 && validAnswers.flat().length > 0;
+
+    return (
+      <>
+        {question.multipleChoiceOptions?.choiceType === 'Single' &&
+          hasValidAnswers && (
             <PieChartAnalytics
               choices={question.multipleChoiceOptions.options}
-              answers={validAnswers ?? []}
+              answers={validAnswers}
             />
           )}
-          {question.multipleChoiceOptions?.choiceType === 'Multiple' && (
-              <BarGraphAnalytics
-                choices={question.multipleChoiceOptions.options}
-                answers={validAnswers ?? []}
-              />
-            )}
-        </>
-      );
-    
+        {question.multipleChoiceOptions?.choiceType === 'Multiple' &&
+          hasValidAnswers && (
+            <BarGraphAnalytics
+              choices={question.multipleChoiceOptions.options}
+              answers={validAnswers}
+            />
+          )}
+      </>
+    );
   }
 
   // Displays the submissions in a list format with scroll functionality
@@ -117,7 +132,8 @@ export default function MultipleChoiceQuestionAnalytics({
           ))}
         </List>
       </Box>
-      {/* { question.multipleChoiceOptions && displayChart()} */}
+
+      {displayChart()}
     </>
   );
 }

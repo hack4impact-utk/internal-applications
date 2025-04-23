@@ -1,4 +1,5 @@
 'use client';
+import Typography from '@mui/material/Typography';
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts';
 import React from 'react';
 
