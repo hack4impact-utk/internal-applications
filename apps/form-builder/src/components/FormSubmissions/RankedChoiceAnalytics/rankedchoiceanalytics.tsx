@@ -1,5 +1,7 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material'; // Add Box import
+import { BarChart } from '@mui/x-charts';
+// import { string } from 'zod';
 
 interface Props {
   choices: string[];
@@ -8,20 +10,20 @@ interface Props {
 
 const RankedChoiceAnalytics: React.FC<Props> = ({ choices, answers }) => {
   // Clone answers to avoid mutation
-  let activeAnswers = answers.map(r => [...r]);
+  const activeAnswers = answers.map(r => [...r]);
 
   let remainingChoices = [...choices];
   let round = 1;
   let winner = '';
-  let rankings: string[] = [];
+  const rankings: string[] = [];
 
   // Instant-Runoff Voting
   while (!winner && remainingChoices.length > 0) {
     const count: Record<string, number> = {};
 
     // Count first-choice votes
-    for (let response of activeAnswers) {
-      for (let choice of response) {
+    for (const response of activeAnswers) {
+      for (const choice of response) {
         if (remainingChoices.includes(choice)) {
           count[choice] = (count[choice] || 0) + 1;
           break;
@@ -32,7 +34,7 @@ const RankedChoiceAnalytics: React.FC<Props> = ({ choices, answers }) => {
     const totalVotes = Object.values(count).reduce((a, b) => a + b, 0);
 
     // Check for majority
-    for (let [choice, c] of Object.entries(count)) {
+    for (const [choice, c] of Object.entries(count)) {
       if (c > totalVotes / 2) {
         winner = choice;
       }
@@ -67,6 +69,46 @@ const RankedChoiceAnalytics: React.FC<Props> = ({ choices, answers }) => {
     });
   });
 
+  // Prepare data for stacked bar chart
+  // Count frequency of each choice at each rank position
+  const chartData: Record<string, Record<string, number>> = {};
+  
+  // Initialize chartData with all choices
+  choices.forEach(choice => {
+    chartData[choice] = {};
+  });
+  
+  // Count occurrences of each choice at each rank
+  answers.forEach(response => {
+    response.forEach((answer, rankIndex) => {
+      // Only include answers that are among the official choices
+      if (choices.includes(answer)) {
+        const rankLabel = `Rank ${rankIndex + 1}`;
+        chartData[answer][rankLabel] = (chartData[answer][rankLabel] || 0) + 1;
+      }
+    });
+  });
+  
+  // Determine all possible rank labels
+  const rankLabels = Array.from(
+    new Set(
+      Object.values(chartData)
+        .flatMap(ranks => Object.keys(ranks))
+    )
+  ).sort((a, b) => {
+    // Extract numbers from "Rank X" and sort numerically
+    const numA = parseInt(a.split(' ')[1]);
+    const numB = parseInt(b.split(' ')[1]);
+    return numA - numB;
+  });
+  
+  // Format data for BarChart component
+  const series = rankLabels.map(rankLabel => ({
+    data: choices.map(choice => chartData[choice][rankLabel] || 0),
+    label: rankLabel,
+    stack: 'total',
+  }));
+
   return (
     <div>
       <Typography variant="h6">Ranked Choice Results</Typography>
@@ -82,6 +124,23 @@ const RankedChoiceAnalytics: React.FC<Props> = ({ choices, answers }) => {
           ))}
         </>
       )}
+
+      {/* Stacked Bar Chart */}
+      <Box sx={{ mt: 4, mb: 4, height: 400, width: '100%' }}>
+        <Typography variant="h6">Choice Rankings Distribution</Typography>
+        <BarChart
+          xAxis={[{
+            scaleType: 'band',
+            data: choices,
+            label: 'Choices',
+          }]}
+          yAxis={[{
+            label: 'Frequency',
+          }]}
+          series={series}
+        />
+      </Box>
+
     </div>
   );
 };
