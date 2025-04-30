@@ -15,9 +15,9 @@ const ApplicantsButton: React.FC = () => {
         fontSize: 'min(25px, 2vw)',
         textTransform: 'capitalize',
       }}
-      href="/applicants"
+      href="applicants/applications"
     >
-      Applicants
+      Applications
     </Button>
   );
 };
