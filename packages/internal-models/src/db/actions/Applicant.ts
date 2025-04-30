@@ -1,5 +1,6 @@
 import ApplicantSchema from '../models/Applicant';
 import {
+  Applicant,
   ApplicantDecision,
   ApplicantStatus,
   DashboardListApplicantResponse,
@@ -46,6 +47,26 @@ export async function updateApplicantInterviewInfo(
   );
 
   // return  newly updated applicant
+  return applicant;
+}
+export async function updateApplicant (
+  id: string,
+  updateInfo: Applicant
+){
+  const applicant = await ApplicantSchema.findOneAndUpdate(
+    {_id: id },
+    {
+      firstName: updateInfo.firstName, 
+      lastName: updateInfo.lastName, 
+      nedid: updateInfo.netid, 
+      term: updateInfo.term, 
+      status: updateInfo.status, 
+      interviewTime: updateInfo.interviewTime, 
+      interviewMeetingLink: updateInfo.interviewTime, 
+      notes: updateInfo.notes
+    }
+  );
+
   return applicant;
 }
 
