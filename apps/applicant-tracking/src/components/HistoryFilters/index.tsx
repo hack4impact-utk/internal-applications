@@ -6,7 +6,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-export default function BasicSelect() {
+interface FilterProps {
+  id: string;
+}
+
+export function HistoryFilter(props: FilterProps) {
   const [date, setDate] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -16,10 +20,10 @@ export default function BasicSelect() {
   return (
     <Box sx={{ width: '140px'}}>
       <FormControl fullWidth>
-        <InputLabel id="HistoryRightFilterLabel">End Date</InputLabel>
+        <InputLabel id={props.id + "Label"}>End Date</InputLabel>
         <Select
-          labelId="HistoryRightFilterLabel"
-          id="HistoryRightFilter"
+          labelId={props.id + "Label"}
+          id={props.id}
           value={date}
           label="End Date"
           onChange={handleChange}
