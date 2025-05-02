@@ -1,5 +1,6 @@
 'use client'
 import ApplicantList from "@/components/ApplicantList";
+import ApplicationBar from "@/components/ApplicationBar";
 import { Box, Typography } from "@mui/material";
 import { BarChart } from "@mui/x-charts";
 import { usePathname } from "next/navigation";
@@ -30,7 +31,7 @@ export default function MyApplicantsPage() {
           <Typography variant="subtitle1">Status:</Typography>
         </Box>
         {/* List goes here */}
-
+<ApplicationBar title="Marz" showNotification></ApplicationBar>
         {/* Chart vvvvv ignore any warnings its actually fine*/}
         <Typography fontSize={25} align='center' style={{padding: '10px', textDecoration:'underline'}}>Fall 2024 Applications</Typography>
         <BarChart dataset={data}

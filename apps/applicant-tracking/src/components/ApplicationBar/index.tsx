@@ -44,3 +44,4 @@ export default function ApplicationBar({ title, showNotification }: ApplicationB
         </Toolbar>
       </AppBar>
     </Box>
+  )}

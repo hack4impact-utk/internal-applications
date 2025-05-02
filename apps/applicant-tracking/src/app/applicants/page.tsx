@@ -57,7 +57,7 @@ const theme: {
     alignItems: 'center',
     justifyContent:
       'center' /*both of these with center just put the things below inside the object */,
-    height: '70 vh',
+    height: '70vh',
     fontFamily: 'Arial, sans-serif',
     padding: '0 20px',
     width: '100%',
