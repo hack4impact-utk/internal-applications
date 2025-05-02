@@ -40,5 +40,6 @@
     "url": "https://github.com/hack4impact-utk/internal-applications/issues"
   },
   "homepage": "https://github.com/hack4impact-utk/internal-applications#readme",
+  "devDependencies": {},
   "description": ""
 }
