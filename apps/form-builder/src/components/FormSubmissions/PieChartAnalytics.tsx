@@ -1,4 +1,5 @@
 'use client';
+import Typography from '@mui/material/Typography';
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts';
 import React from 'react';
 
@@ -34,11 +35,17 @@ export default function PieChartAnalytics({ choices, answers }: Props) {
   });
 
   // Extract the counts to an array to use as data for the BarChart, including the count for "Other"
-  const data = Object.keys(choiceCounts).map((key) => ({
-    label: key,
-    value: choiceCounts[key],
-    percentage: ((choiceCounts[key] / totalAnswers) * 100).toFixed(0),
-  }));
+  const data = Object.keys(choiceCounts)
+    .map((key) => ({
+      label: key,
+      value: choiceCounts[key],
+      percentage: ((choiceCounts[key] / totalAnswers) * 100).toFixed(0),
+    }))
+    .filter((item) => item.value > 0);
+
+  if (data.length === 0) {
+    return <Typography variant="subtitle1">No responses</Typography>;
+  }
 
   return (
     //Displays pie chart on page
@@ -48,7 +55,11 @@ export default function PieChartAnalytics({ choices, answers }: Props) {
         {
           arcLabel: (item) =>
             `${item.label} ${item.percentage}% (${item.value})`,
+          arcLabelMinAngle: 35,
+          arcLabelRadius: '50%',
           data,
+          outerRadius: '80%',
+          cx: '40%',
           highlightScope: { faded: 'global', highlighted: 'item' },
           faded: { innerRadius: 30, additionalRadius: -30, color: 'grey' },
         },
@@ -56,12 +67,14 @@ export default function PieChartAnalytics({ choices, answers }: Props) {
       //Changes color and font of text
       sx={{
         [`& .${pieArcLabelClasses.root}`]: {
-          fill: 'white',
+          fill: 'black',
           fontWeight: 'bold',
+          fontSize: 16,
         },
       }}
       //Changes size of pie chart
-      height={600}
+      width={700}
+      height={500}
     />
   );
 }

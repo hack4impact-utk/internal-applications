@@ -6,6 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
+import Typography from '@mui/material/Typography';
 
 interface Props {
   choices: string[];
@@ -65,6 +66,22 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
     }
   }
 
+  // Estimate the average pixel width of a character.
+  const avgCharWidth = 8;
+
+  // Find the length (number of characters) of the longest label in the x-axis.
+  const maxLabelLength = Math.max(...[...choices, 'Other'].map(choice => choice.length));
+
+  // Count the total number of bars we need to display.
+  // We add 1 to include the "Other" bar.
+  const numBars = choices.length + 1;
+
+  // Set the approximate horizontal spacing (in pixels) between each bar so labels don't overlap. 
+  const barSpacing = 20;
+
+  // The total width for the chart: 
+  const chartWidth = numBars * (maxLabelLength * avgCharWidth + barSpacing);
+
   return (
     <Box
       sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
@@ -74,7 +91,7 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
           { scaleType: 'band', data: [...choices, 'Other'] }, // Include "Other" in the x-axis data
         ]}
         series={[{ data: [...data, choiceCounts['Other']] }]} // Include the count for "Other" in the series data
-        width={500}
+        width={chartWidth}
         height={300}
       />
       <Box
@@ -84,6 +101,12 @@ export default function BarGraphAnalytics({ choices, answers }: Props) {
           maxWidth: 360,
         }}
       >
+        {itemsToDisplay.length > 0 && (
+          <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+            Other Responses
+          </Typography>
+        )}
+        
         <FixedSizeList
           height={400}
           width={360}

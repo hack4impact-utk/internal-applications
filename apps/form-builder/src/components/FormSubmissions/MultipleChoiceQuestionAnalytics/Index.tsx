@@ -10,6 +10,11 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material';
+import BarGraphAnalytics from '../BarGraphAnalytics/Index';
+
+import PieChartAnalytics from '../PieChartAnalytics';
+
+import RankedChoiceAnalytics from '../RankedChoiceAnalytics/rankedchoiceanalytics';
 
 // Takes in the question and response as props
 interface Props {
@@ -57,6 +62,69 @@ export default function MultipleChoiceQuestionAnalytics({
     return array;
   }
 
+  function getAnswersForChart(): string[][] {
+    const result: string[][] = [];
+
+    for (let i = 0; i < responses.length; i++) {
+      const questionIndex = responses[i].questionResponses.findIndex(
+        (element) => element.question._id.toString() === question._id.toString()
+      );
+
+      if (questionIndex === -1) continue;
+
+      const answer = responses[i].questionResponses[questionIndex].answer;
+
+      if (answer === undefined || answer === null) continue;
+
+      if (Array.isArray(answer)) {
+        result.push(answer.map((a) => String(a)));
+      } else {
+        result.push([String(answer)]);
+      }
+    }
+
+    return result;
+  }
+
+  function displayChart() {
+    const validAnswers = getAnswersForChart();
+
+    // // Logged data can be seen in DevTools
+    // console.log('Display Chart');
+    // console.log('Question:', question);
+    // console.log('Responses:', responses);
+    // console.log('Valid Answers:', validAnswers);
+
+    const hasValidAnswers =
+      validAnswers.length > 0 && validAnswers.flat().length > 0;
+
+    return (
+      <>
+        {question.multipleChoiceOptions?.choiceType === 'Single' &&
+          hasValidAnswers && (
+            <PieChartAnalytics
+              choices={question.multipleChoiceOptions.options}
+              answers={validAnswers}
+            />
+          )}
+        {question.multipleChoiceOptions?.choiceType === 'Multiple' &&
+          hasValidAnswers && (
+            <BarGraphAnalytics
+              choices={question.multipleChoiceOptions.options}
+              answers={validAnswers}
+            />
+          )}
+        {question.multipleChoiceOptions?.choiceType === 'Ranked' &&
+          hasValidAnswers && (
+            <RankedChoiceAnalytics
+              choices={question.multipleChoiceOptions.options}
+              answers={validAnswers}
+            />
+          )}
+      </>
+    );
+  }
+
   // Displays the submissions in a list format with scroll functionality
   return (
     <>
@@ -75,6 +143,8 @@ export default function MultipleChoiceQuestionAnalytics({
           ))}
         </List>
       </Box>
+
+      {displayChart()}
     </>
   );
 }
